@@ -2,6 +2,10 @@ package com.bplead.cad.jni;
 
 public class CaxaIntegrationIfc {
 
+	public CaxaIntegrationIfc() {
+		
+	}
+
 	public native int connect();
 
 	public native void disconnect();
@@ -13,8 +17,4 @@ public class CaxaIntegrationIfc {
 	public native String getCurrentCadTitle();
 
 	public native String getCurrentTechnology();
-
-	public CaxaIntegrationIfc() {
-		
-	}
 }

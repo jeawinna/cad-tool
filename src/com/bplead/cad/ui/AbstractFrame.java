@@ -1,5 +1,7 @@
 package com.bplead.cad.ui;
 
+import java.awt.Window;
+
 import javax.swing.JFrame;
 
 import com.bplead.cad.model.ResourceMap;
@@ -9,13 +11,13 @@ public abstract class AbstractFrame extends JFrame {
 
 	private static final long serialVersionUID = 8333297262635054463L;
 
-	protected ResourceMap resourceMap;
+	protected ResourceMap<?> resourceMap;
 
-	public AbstractFrame() {
-		resourceMap = new GlobleResourceMap();
+	public <T extends Window> AbstractFrame(Class<T> clazz) {
+		resourceMap = new GlobleResourceMap<T>();
 	}
 
-	public ResourceMap getResourceMap() {
+	public ResourceMap<?> getResourceMap() {
 		return this.resourceMap;
 	}
 

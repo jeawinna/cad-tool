@@ -14,7 +14,7 @@ public class PropertiesUtils {
 		try {
 			properties.load(PropertiesUtils.class.getClassLoader().getResourceAsStream("./client-instance.properties"));
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		}
 	}
 

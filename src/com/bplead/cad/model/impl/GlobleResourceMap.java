@@ -1,25 +1,18 @@
 package com.bplead.cad.model.impl;
 
+import java.awt.Window;
+
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JComponent;
 
 import org.apache.log4j.Logger;
 
 import com.bplead.cad.model.ResourceMap;
-import com.bplead.cad.model.ResourceType;
 import com.bplead.cad.util.Assert;
-import com.bplead.cad.util.ObjectUtils;
 
-public class GlobleResourceMap implements ResourceMap {
+public class GlobleResourceMap<T extends Window> implements ResourceMap<T> {
 
 	private static final Logger logger = Logger.getLogger(GlobleResourceMap.class);
-
-	@Override
-	public Icon getIcon(Class<? extends JComponent> clazz) {
-		logger.debug("clazz:" + clazz);
-		return getIcon(buildResourceName(clazz, null));
-	}
 
 	@Override
 	public Icon getIcon(String name) {
@@ -27,11 +20,6 @@ public class GlobleResourceMap implements ResourceMap {
 		logger.debug("name:" + name + ",icon:" + icon);
 		Assert.hasText(icon, "can not find name[" + name + "] configuration");
 		return new ImageIcon(icon);
-	}
-
-	@Override
-	public int getInt(Class<? extends JComponent> clazz, ResourceType type) {
-		return getInt(buildResourceName(clazz, type));
 	}
 
 	@Override
@@ -43,17 +31,7 @@ public class GlobleResourceMap implements ResourceMap {
 	}
 
 	@Override
-	public String getString(Class<? extends JComponent> clazz, ResourceType type) {
-		return getString(buildResourceName(clazz, type));
-	}
-
-	@Override
 	public String getString(String name) {
 		return getResource(name);
-	}
-
-	private String buildResourceName(Class<? extends JComponent> clazz, ResourceType type) {
-		return ObjectUtils.isEmpty(type) ? RESOURCE + clazz.getName() + ICON
-				: RESOURCE + clazz.getName() + type.getType();
 	}
 }

@@ -1,9 +1,11 @@
 package com.bplead.cad.ui;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.LayoutManager;
 
+import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -14,41 +16,13 @@ import com.bplead.cad.util.Assert;
 
 public class PromptTextField extends JComponent {
 
-	class PromptTextFieldDimension {
-		public int promptWidth;
-		public int textWidth;
-		public int height;
-
-		public PromptTextFieldDimension(int promptWidth, int textWidth, int height) {
-			this.promptWidth = promptWidth;
-			this.textWidth = textWidth;
-			this.height = height;
-		}
-
-		@Override
-		public String toString() {
-			StringBuilder builder = new StringBuilder();
-			builder.append("PromptTextFieldDimension [promptWidth=");
-			builder.append(promptWidth);
-			builder.append(", textWidth=");
-			builder.append(textWidth);
-			builder.append(", height=");
-			builder.append(height);
-			builder.append("]");
-			return builder.toString();
-		}
-	}
-
 	private static final Logger logger = Logger.getLogger(PromptTextField.class);
+
 	private static final long serialVersionUID = -6696586333097590589L;
 	private JLabel prompt;
 	private JTextField text;
 	private PromptTextFieldDimension dimension;
-	private LayoutManager layout;
-	{
-		// default flow layout and left alignment
-		layout = getLayout() == null ? new FlowLayout(FlowLayout.LEFT) : getLayout();
-	}
+	private LayoutManager layout = new FlowLayout(FlowLayout.LEFT);
 
 	public PromptTextField() {
 
@@ -65,6 +39,7 @@ public class PromptTextField extends JComponent {
 		this.prompt = prompt;
 		this.text = text;
 		this.dimension = dimension;
+
 		initialize();
 	}
 
@@ -92,19 +67,6 @@ public class PromptTextField extends JComponent {
 		return text;
 	}
 
-	private void initialize() {
-		setLayout(layout);
-
-		if (dimension != null) {
-			prompt.setPreferredSize(new Dimension(dimension.promptWidth, dimension.height));
-			text.setPreferredSize(new Dimension(dimension.textWidth, dimension.height));
-			setPreferredSize(new Dimension(dimension.promptWidth + dimension.textWidth, dimension.height));
-		}
-
-		add(prompt);
-		add(text);
-	}
-
 	public boolean isEditable() {
 		return text.isEditable();
 	}
@@ -117,17 +79,75 @@ public class PromptTextField extends JComponent {
 		text.setEditable(editable);
 	}
 
-	@Override
-	public void setLayout(LayoutManager layout) {
-		super.setLayout(layout);
-		this.layout = layout;
-	}
-
 	public void setPrompt(JLabel prompt) {
 		this.prompt = prompt;
 	}
 
 	public void setText(JTextField text) {
 		this.text = text;
+	}
+
+	private void initialize() {
+		setLayout(layout);
+
+		if (dimension != null) {
+			logger.debug("promptWidth:" + dimension.promptWidth + ",textWidth:" + dimension.textWidth + ",height:"
+					+ dimension.height);
+			prompt.setPreferredSize(new Dimension(dimension.promptWidth, dimension.height));
+			text.setPreferredSize(new Dimension(dimension.textWidth, dimension.height));
+			setPreferredSize(new Dimension(dimension.promptWidth + dimension.textWidth, dimension.height));
+		}
+
+		if (logger.isDebugEnabled()) {
+			prompt.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+			text.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		}
+
+		add(prompt);
+		add(text);
+	}
+
+	class PromptTextFieldDimension {
+		public int promptWidth;
+		public int textWidth;
+		public int height;
+
+		public PromptTextFieldDimension(Dimension parentSize, double promptWidthProportion, double textWidthProportion,
+				double heightProportion) {
+			Assert.notNull(parentSize, "Parent size must not be null");
+			Assert.isTrue(promptWidthProportion > 0 && promptWidthProportion <= 1,
+					"Prompt width proportion must be greater than 0 less than 1 or equal to 1");
+			Assert.isTrue(textWidthProportion > 0 && textWidthProportion <= 1,
+					"Text width proportion must be greater than 0 less than 1 or equal to 1");
+			Assert.isTrue(heightProportion > 0 && heightProportion <= 1,
+					"Height proportion must be greater than 0 less than 1 or equal to 1");
+
+			this.promptWidth = ((Double) (parentSize.width * promptWidthProportion)).intValue();
+			this.textWidth = ((Double) (parentSize.width * textWidthProportion)).intValue();
+			this.height = ((Double) (parentSize.height * heightProportion)).intValue();
+		}
+
+		public PromptTextFieldDimension(int promptWidth, int textWidth, int height) {
+			Assert.isTrue(promptWidth > 0, "Prompt width needs to be greater than 0");
+			Assert.isTrue(textWidth > 0, "Text width needs to be greater than 0");
+			Assert.isTrue(height > 0, "height needs to be greater than 0");
+
+			this.promptWidth = promptWidth;
+			this.textWidth = textWidth;
+			this.height = height;
+		}
+
+		@Override
+		public String toString() {
+			StringBuilder builder = new StringBuilder();
+			builder.append("PromptTextFieldDimension [promptWidth=");
+			builder.append(promptWidth);
+			builder.append(", textWidth=");
+			builder.append(textWidth);
+			builder.append(", height=");
+			builder.append(height);
+			builder.append("]");
+			return builder.toString();
+		}
 	}
 }

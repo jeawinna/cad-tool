@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 
 import javax.swing.BorderFactory;
-import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
@@ -13,6 +12,7 @@ import javax.swing.border.TitledBorder;
 
 import org.apache.log4j.Logger;
 
+import com.bplead.cad.layout.DefaultGroupLayout;
 import com.bplead.cad.util.PropertiesUtils;
 
 public class LoginFrame extends AbstractFrame {
@@ -101,7 +101,7 @@ public class LoginFrame extends AbstractFrame {
 		private final String REMINDER_LABEL_DISPLAY = "reminder";
 		private final String REMEBERME_DISPLAY = "remeberme";
 		private final double LABEL_PROPORTION = 0.1d;
-		private final double TEXT_PROPORTION = 0.6d;
+		private final double TEXT_PROPORTION = 0.8d;
 		private final double HEIGHT_PROPORTION = 0.1d;
 		private final double HGAP_PROPORTION = 0.02d;
 		private final double VGAP_PROPORTION = 0.05d;
@@ -145,10 +145,6 @@ public class LoginFrame extends AbstractFrame {
 
 		@Override
 		protected void initialize() {
-			// set box layout
-			GroupLayout layout = new GroupLayout(this);
-			setLayout(layout);
-
 			// set panel border to be title and etched type
 			setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(),
 					getResourceMap().getString(getResourceName(TITLE)), TitledBorder.DEFAULT_JUSTIFICATION,
@@ -164,7 +160,7 @@ public class LoginFrame extends AbstractFrame {
 			host.setEditable(isHostEditable());
 
 			PromptTextField user = new PromptTextField(getResourceMap().getString(getResourceName(USER_LABEL_DISPLAY)),
-					getCacheUser());
+					getCacheUser(), dimension);
 
 			PromptTextField pwd = new PromptTextField(
 					new JLabel(getResourceMap().getString(getResourceName(PWD_LABEL_DISPLAY))),
@@ -173,32 +169,15 @@ public class LoginFrame extends AbstractFrame {
 			JCheckBox remeberme = new JCheckBox(getResourceMap().getString(getResourceName(REMEBERME_DISPLAY)));
 			remeberme.setSelected(isRemeberme());
 
-			// ~ use group layout
+			// ~ performance hGap and vGap
 			hGap = ((Double) (getPreferredSize().width * HGAP_PROPORTION)).intValue();
-			GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
-			hGroup.addGap(hGap);
-			hGroup.addGroup(layout.createParallelGroup().addComponent(host.getPrompt()).addComponent(user.getPrompt())
-					.addComponent(pwd.getPrompt()));
-			hGroup.addGap(hGap);
-			hGroup.addGroup(layout.createParallelGroup().addComponent(reminder).addComponent(host.getText())
-					.addComponent(user.getText()).addComponent(pwd.getText()).addComponent(remeberme));
-			hGroup.addGap(hGap);
-			layout.setHorizontalGroup(hGroup);
-
 			vGap = ((Double) (getPreferredSize().height * VGAP_PROPORTION)).intValue();
-			GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
-			vGroup.addGap(vGap);
-			vGroup.addGroup(layout.createParallelGroup().addComponent(reminder));
-			vGroup.addGap(vGap);
-			vGroup.addGroup(layout.createParallelGroup().addComponent(host.getPrompt()).addComponent(host.getText()));
-			vGroup.addGap(vGap);
-			vGroup.addGroup(layout.createParallelGroup().addComponent(user.getPrompt()).addComponent(user.getText()));
-			vGroup.addGap(vGap);
-			vGroup.addGroup(layout.createParallelGroup().addComponent(pwd.getPrompt()).addComponent(pwd.getText()));
-			vGroup.addGap(vGap);
-			vGroup.addGroup(layout.createParallelGroup().addComponent(remeberme));
-			vGroup.addGap(vGap);
-			layout.setVerticalGroup(vGroup);
+			logger.debug("hGap:" + hGap + ",vGap:" + vGap);
+
+			// ~ use default group layout
+			DefaultGroupLayout layout = new DefaultGroupLayout(this, hGap, vGap);
+			layout.addComponent(reminder).addComponent(host).addComponent(user).addComponent(pwd)
+					.addComponent(remeberme).layout();
 		}
 	}
 }

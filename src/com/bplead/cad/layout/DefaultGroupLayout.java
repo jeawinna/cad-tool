@@ -20,6 +20,11 @@ public class DefaultGroupLayout extends GroupLayout {
 		container.setLayout(this);
 	}
 
+	public DefaultGroupLayout addComponent(JComponent component) {
+		components.add(component);
+		return this;
+	}
+
 	public void layout() {
 		if (components == null || components.isEmpty()) {
 			return;
@@ -42,10 +47,5 @@ public class DefaultGroupLayout extends GroupLayout {
 		hsGroup.addGap(hGap);
 		setHorizontalGroup(hsGroup);
 		setVerticalGroup(vsGroup);
-	}
-
-	public DefaultGroupLayout addComponent(JComponent component) {
-		components.add(component);
-		return this;
 	}
 }

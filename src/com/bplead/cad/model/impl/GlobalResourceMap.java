@@ -10,9 +10,13 @@ import org.apache.log4j.Logger;
 import com.bplead.cad.model.ResourceMap;
 import com.bplead.cad.util.Assert;
 
-public class GlobleResourceMap<T extends Window> implements ResourceMap<T> {
+public class GlobalResourceMap extends ResourceMap {
 
-	private static final Logger logger = Logger.getLogger(GlobleResourceMap.class);
+	private static final Logger logger = Logger.getLogger(GlobalResourceMap.class);
+
+	public GlobalResourceMap(Class<? extends Window> clazz) {
+		super(clazz);
+	}
 
 	@Override
 	public Icon getIcon(String name) {

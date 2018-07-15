@@ -7,21 +7,26 @@ import javax.swing.Icon;
 import com.bplead.cad.resource.ResourceBundle;
 import com.bplead.cad.util.Assert;
 
-public interface ResourceMap<T extends Window> {
+public abstract class ResourceMap {
 
 	public static final String ICON = ".icon";
 
 	public static final String RESOURCE = "resource.";
 
-	public Icon getIcon(String name);
+	private Class<? extends Window> clazz;
 
-	public int getInt(String name);
-
-	default String getResource(String name) {
-		Assert.hasText(name, "name is requeried");
-		ResourceBundle<T> bundle = new ResourceBundle<T>();
-		return bundle.readResource(name);
+	public ResourceMap(Class<? extends Window> clazz) {
+		Assert.notNull(clazz, "Class extends java.awt.Window required");
+		this.clazz = clazz;
 	}
 
-	public String getString(String name);
+	public abstract Icon getIcon(String name);
+
+	public abstract int getInt(String name);
+
+	protected String getResource(String name) {
+		return new ResourceBundle(clazz).readResource(name);
+	}
+
+	public abstract String getString(String name);
 }

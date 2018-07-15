@@ -63,7 +63,8 @@ public class LoginFrame extends AbstractFrame {
 		@Override
 		protected void initComponents() {
 			// set box layout
-			setLayout(new GroupLayout(this));
+			GroupLayout layout = new GroupLayout(this);
+			setLayout(layout);
 
 			// set panel border to be title and etched type
 			setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(),
@@ -75,28 +76,45 @@ public class LoginFrame extends AbstractFrame {
 
 			// ~ add components
 			JLabel reminder = new JLabel(getResourceMap().getString(getResourceName(REMINDER_LABEL_DISPLAY)));
-			add(reminder);
 
 			PromptTextField host = new PromptTextField(getResourceMap().getString(getResourceName(HOST_LABEL_DISPLAY)),
 					getHost(), dimension);
-//			host.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
 			host.setEditable(isHostEditable());
-			add(host);
 
 			PromptTextField user = new PromptTextField(getResourceMap().getString(getResourceName(USER_LABEL_DISPLAY)),
 					getCacheUser());
-//			user.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-			add(user);
 
-			PromptTextField password = new PromptTextField(
+			PromptTextField pwd = new PromptTextField(
 					new JLabel(getResourceMap().getString(getResourceName(PWD_LABEL_DISPLAY))),
 					new JPasswordField(getCachePwd()), dimension);
-//			password.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-			add(password);
 
 			JCheckBox remeberme = new JCheckBox(getResourceMap().getString(getResourceName(REMEBERME_DISPLAY)));
 			remeberme.setSelected(isRemeberme());
-			add(remeberme);
+
+			// ~ use group layout
+			GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
+			hGroup.addGap(5);
+			hGroup.addGroup(layout.createParallelGroup().addComponent(host.getPrompt()).addComponent(user.getPrompt())
+					.addComponent(pwd.getPrompt()));
+			hGroup.addGap(5);
+			hGroup.addGroup(layout.createParallelGroup().addComponent(reminder).addComponent(host.getText())
+					.addComponent(user.getText()).addComponent(pwd.getText()).addComponent(remeberme));
+			hGroup.addGap(5);
+			layout.setHorizontalGroup(hGroup);
+
+			GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
+			vGroup.addGap(10);
+			vGroup.addGroup(layout.createParallelGroup().addComponent(reminder));
+			vGroup.addGap(10);
+			vGroup.addGroup(layout.createParallelGroup().addComponent(host.getPrompt()).addComponent(host.getText()));
+			vGroup.addGap(10);
+			vGroup.addGroup(layout.createParallelGroup().addComponent(user.getPrompt()).addComponent(user.getText()));
+			vGroup.addGap(10);
+			vGroup.addGroup(layout.createParallelGroup().addComponent(pwd.getPrompt()).addComponent(pwd.getText()));
+			vGroup.addGap(10);
+			vGroup.addGroup(layout.createParallelGroup().addComponent(remeberme));
+			vGroup.addGap(10);
+			layout.setVerticalGroup(vGroup);
 		}
 
 		private boolean isRemeberme() {

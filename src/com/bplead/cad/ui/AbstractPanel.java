@@ -6,14 +6,12 @@ import java.awt.LayoutManager;
 
 import javax.swing.JPanel;
 
-import com.bplead.cad.MiddleGap;
 import com.bplead.cad.model.SelfAdaptionPanel;
 import com.bplead.cad.util.Assert;
 
 public abstract class AbstractPanel extends JPanel implements SelfAdaptionPanel {
 
 	private static final long serialVersionUID = 1508737322646907563L;
-	public MiddleGap gap;
 	private Container parent;
 	protected String PREFIX;
 	private LayoutManager layout = new FlowLayout(FlowLayout.CENTER);
@@ -27,23 +25,8 @@ public abstract class AbstractPanel extends JPanel implements SelfAdaptionPanel 
 		initComponents();
 	}
 
-	public AbstractPanel(Container parent, MiddleGap gap) {
-		Assert.notNull(parent, "Parent must not be null");
-		this.parent = parent;
-		this.gap = gap;
-		initComponents();
-	}
-
-	public MiddleGap getGap() {
-		return gap;
-	}
-
 	public Container getParent() {
 		return parent;
-	}
-
-	public void setGap(MiddleGap gap) {
-		this.gap = gap;
 	}
 
 	public void setParent(Container parent) {

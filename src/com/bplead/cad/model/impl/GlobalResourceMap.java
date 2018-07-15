@@ -36,6 +36,8 @@ public class GlobalResourceMap extends ResourceMap {
 
 	@Override
 	public String getString(String name) {
-		return getResource(name);
+		String value = getResource(name);
+		logger.debug("name:" + name + ",value:" + value);
+		return value;
 	}
 }

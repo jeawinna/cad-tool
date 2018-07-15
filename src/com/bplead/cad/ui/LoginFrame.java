@@ -1,6 +1,7 @@
 package com.bplead.cad.ui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 
 import javax.swing.BorderFactory;
@@ -22,7 +23,7 @@ public class LoginFrame extends AbstractFrame {
 
 	public static void main(String[] args) {
 		logger.info("begin to start...");
-		new LoginFrame().newInstance("Test");
+		new LoginFrame().newInstance(null);
 		logger.info("ready...");
 	}
 
@@ -152,6 +153,7 @@ public class LoginFrame extends AbstractFrame {
 
 			// ~ add components
 			JLabel reminder = new JLabel(getResourceMap().getString(getResourceName(REMINDER_LABEL_DISPLAY)));
+			reminder.setForeground(Color.RED);
 
 			dimension = new PromptTextField().new PromptTextFieldDimension(getPreferredSize(), LABEL_PROPORTION,
 					TEXT_PROPORTION, HEIGHT_PROPORTION);

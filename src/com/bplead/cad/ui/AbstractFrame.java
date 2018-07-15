@@ -14,6 +14,7 @@ import com.bplead.cad.model.SelfAdaptionComponent;
 import com.bplead.cad.model.StyleToolkit;
 import com.bplead.cad.model.impl.DefaultStyleToolkit;
 import com.bplead.cad.model.impl.GlobalResourceMap;
+import com.bplead.cad.util.StringUtils;
 
 public abstract class AbstractFrame extends JFrame implements SelfAdaptionComponent {
 
@@ -22,6 +23,7 @@ public abstract class AbstractFrame extends JFrame implements SelfAdaptionCompon
 	protected ResourceMap resourceMap;
 	protected StyleToolkit toolkit = new DefaultStyleToolkit();
 	private LayoutManager layout = new FlowLayout(FlowLayout.CENTER);
+	private String TITLE = "title";
 
 	public <T extends Window> AbstractFrame(Class<T> clazz) {
 		resourceMap = new GlobalResourceMap(clazz);
@@ -45,12 +47,12 @@ public abstract class AbstractFrame extends JFrame implements SelfAdaptionCompon
 		logger.info("initialize frame...");
 		// initialize frame
 		setVisible(true);
-		setTitle(title);
+		setTitle(StringUtils.isEmpty(title) ? getResourceMap().getString(TITLE) : title);
 		setLayout(layout);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		logger.info("do frame self adpaption...");
-		// ~ do frame self adaption
+		// do frame self adaption
 		doSelfAdaption();
 
 		// initialize custom content

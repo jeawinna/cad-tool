@@ -4,13 +4,15 @@ import java.awt.Window;
 
 import javax.swing.Icon;
 
+import org.apache.log4j.Logger;
+
 import com.bplead.cad.resource.ResourceBundle;
 import com.bplead.cad.util.Assert;
 
 public abstract class ResourceMap {
 
+	private static final Logger logger = Logger.getLogger(ResourceMap.class);
 	public static final String ICON = ".icon";
-
 	public static final String RESOURCE = "resource.";
 
 	private Class<? extends Window> clazz;
@@ -25,6 +27,7 @@ public abstract class ResourceMap {
 	public abstract int getInt(String name);
 
 	protected String getResource(String name) {
+		logger.debug("clazz:" + clazz + ",name:" + name);
 		return new ResourceBundle(clazz).readResource(name);
 	}
 

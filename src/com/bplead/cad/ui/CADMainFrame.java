@@ -24,7 +24,7 @@ public class CADMainFrame extends AbstractFrame {
 
 	@Override
 	public double getVerticalProportion() {
-		return 0.6;
+		return 0.9;
 	}
 
 	@Override
@@ -36,9 +36,9 @@ public class CADMainFrame extends AbstractFrame {
 		getContentPane().add(new ContainerPanel(this));
 
 		logger.info("initialize basic attribute panel...");
-//		getContentPane().add(new BasicAttributePanel(this), BorderLayout.CENTER);
+		getContentPane().add(new BasicAttributePanel(this));
 
 		logger.info("initialize detail attribute panel...");
-//		getContentPane().add(new BasicAttributePanel(this), BorderLayout.SOUTH);
+		getContentPane().add(new DetailAttributePanel(this));
 	}
 }

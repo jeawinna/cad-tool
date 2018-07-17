@@ -55,7 +55,7 @@ public class ContainerPanel extends AbstractPanel {
 
 	@Override
 	public double getVerticalProportion() {
-		return 0.2d;
+		return 0.1d;
 	}
 
 	@Override
@@ -118,7 +118,7 @@ public class ContainerPanel extends AbstractPanel {
 
 		private static final long serialVersionUID = -5690721799689305895L;
 		private final double BUTTON_PROPORTION = 0.3d;
-		private final double HEIGHT_PROPORTION = 0.2d;
+		private final double HEIGHT_PROPORTION = 0.3d;
 		private final double LABEL_PROPORTION = 0.15d;
 		private final double TEXT_PROPORTION = 0.65d;
 
@@ -133,12 +133,12 @@ public class ContainerPanel extends AbstractPanel {
 
 		@Override
 		public double getHorizontalProportion() {
-			return 0.45d;
+			return 0.462d;
 		}
 
 		@Override
 		public double getVerticalProportion() {
-			return 0.8d;
+			return 0.99d;
 		}
 
 		@Override

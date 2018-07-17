@@ -9,8 +9,8 @@ import org.apache.log4j.Logger;
 
 public class BasicAttributePanel extends AbstractPanel {
 
-	private static final long serialVersionUID = 5723039852386303330L;
 	private static final Logger logger = Logger.getLogger(BasicAttributePanel.class);
+	private static final long serialVersionUID = 5723039852386303330L;
 	private final String TITLE = "title";
 
 	public BasicAttributePanel(Container parent) {

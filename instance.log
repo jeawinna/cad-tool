@@ -1,0 +1,849 @@
+com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:53) 2018-07-17 22:07:50,514 DEBUG  - xml:/Users/Jeason/Documents/Workspace/cad-tool/bin/CAD_IO_SPEC.xml,clatt:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:53) 2018-07-17 22:09:09,042 DEBUG  - xml:/Users/Jeason/Documents/Workspace/cad-tool/bin/CAD_IO_SPEC.xml,clatt:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:53) 2018-07-17 22:09:56,960 DEBUG  - xml:/Users/Jeason/Documents/Workspace/cad-tool/bin/CAD_IO_SPEC.xml,clatt:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:09:57,024 DEBUG  - name:description,type:class java.lang.String,value:备注
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:09:57,025 DEBUG  - name:order,type:class java.lang.String,value:1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:09:57,026 DEBUG  - name:quantity,type:class java.lang.String,value:数量
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:09:57,028 DEBUG  - name:singleWeight,type:class java.lang.String,value:单重
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:09:57,029 DEBUG  - name:description,type:class java.lang.String,value:备注
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:09:57,030 DEBUG  - name:order,type:class java.lang.String,value:2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:09:57,030 DEBUG  - name:quantity,type:class java.lang.String,value:数量
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:09:57,031 DEBUG  - name:singleWeight,type:class java.lang.String,value:单重
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:09:57,032 DEBUG  - name:detail,type:java.util.List<com.bplead.cad.io.bean.CADLink>,value:[CADLink [quantity=null, description=null, singleWeight=null, order=null], CADLink [quantity=null, description=null, singleWeight=null, order=null]]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:09:57,033 DEBUG  - name:detailNum,type:class java.lang.String,value:详细图号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:09:57,034 DEBUG  - name:indexPage,type:class java.lang.String,value:第页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:09:57,035 DEBUG  - name:jdeNum,type:class java.lang.String,value:JDE项目号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:09:57,036 DEBUG  - name:material,type:class java.lang.String,value:材料
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:09:57,037 DEBUG  - name:name,type:class java.lang.String,value:名称
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:09:57,038 DEBUG  - name:number,type:class java.lang.String,value:图号代号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:09:57,040 DEBUG  - name:pageSize,type:class java.lang.String,value:共页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:09:57,040 DEBUG  - name:proportion,type:class java.lang.String,value:比例
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:09:57,040 DEBUG  - name:size,type:class java.lang.String,value:图幅
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:09:57,041 DEBUG  - name:weight,type:class java.lang.String,value:重量
+  com.bplead.cad.util.XmlUtils.main(XmlUtils.java:79) 2018-07-17 22:09:57,041 DEBUG  - CAD [detail=null, detailNum=null, indexPage=null, jdeNum=null, material=null, name=null, number=null, pageSize=null, proportion=null, size=null, weight=null]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:54) 2018-07-17 22:10:27,471 DEBUG  - xml:/Users/Jeason/Documents/Workspace/cad-tool/bin/CAD_IO_SPEC.xml,clatt:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:10:27,536 DEBUG  - name:description,type:class java.lang.String,value:备注
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:10:27,537 DEBUG  - name:order,type:class java.lang.String,value:1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:10:27,537 DEBUG  - name:quantity,type:class java.lang.String,value:数量
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:10:27,540 DEBUG  - name:singleWeight,type:class java.lang.String,value:单重
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:10:27,540 DEBUG  - name:description,type:class java.lang.String,value:备注
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:10:27,540 DEBUG  - name:order,type:class java.lang.String,value:2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:10:27,540 DEBUG  - name:quantity,type:class java.lang.String,value:数量
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:10:27,541 DEBUG  - name:singleWeight,type:class java.lang.String,value:单重
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:10:27,541 DEBUG  - name:detail,type:java.util.List<com.bplead.cad.io.bean.CADLink>,value:[CADLink [quantity=数量, description=备注, singleWeight=单重, order=2], CADLink [quantity=数量, description=备注, singleWeight=单重, order=2]]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:10:27,541 DEBUG  - name:detailNum,type:class java.lang.String,value:详细图号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:10:27,541 DEBUG  - name:indexPage,type:class java.lang.String,value:第页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:10:27,541 DEBUG  - name:jdeNum,type:class java.lang.String,value:JDE项目号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:10:27,541 DEBUG  - name:material,type:class java.lang.String,value:材料
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:10:27,542 DEBUG  - name:name,type:class java.lang.String,value:名称
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:10:27,542 DEBUG  - name:number,type:class java.lang.String,value:图号代号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:10:27,543 DEBUG  - name:pageSize,type:class java.lang.String,value:共页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:10:27,543 DEBUG  - name:proportion,type:class java.lang.String,value:比例
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:10:27,544 DEBUG  - name:size,type:class java.lang.String,value:图幅
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:10:27,544 DEBUG  - name:weight,type:class java.lang.String,value:重量
+  com.bplead.cad.util.XmlUtils.main(XmlUtils.java:80) 2018-07-17 22:10:27,544 DEBUG  - CAD [detail=[CADLink [quantity=数量, description=备注, singleWeight=单重, order=2], CADLink [quantity=数量, description=备注, singleWeight=单重, order=2]], detailNum=详细图号, indexPage=第页, jdeNum=JDE项目号, material=材料, name=名称, number=图号代号, pageSize=共页, proportion=比例, size=图幅, weight=重量]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:54) 2018-07-17 22:11:27,032 DEBUG  - xml:/Users/Jeason/Documents/Workspace/cad-tool/bin/CAD_IO_SPEC.xml,clatt:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:11:27,105 DEBUG  - name:description,type:class java.lang.String,value:备注1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:11:27,106 DEBUG  - name:order,type:class java.lang.String,value:1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:11:27,106 DEBUG  - name:quantity,type:class java.lang.String,value:数量1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:11:27,108 DEBUG  - name:singleWeight,type:class java.lang.String,value:单重1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:11:27,109 DEBUG  - name:description,type:class java.lang.String,value:备注2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:11:27,109 DEBUG  - name:order,type:class java.lang.String,value:2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:11:27,109 DEBUG  - name:quantity,type:class java.lang.String,value:数量2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:11:27,109 DEBUG  - name:singleWeight,type:class java.lang.String,value:单重2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:11:27,109 DEBUG  - name:detail,type:java.util.List<com.bplead.cad.io.bean.CADLink>,value:[CADLink [quantity=数量2, description=备注2, singleWeight=单重2, order=2], CADLink [quantity=数量2, description=备注2, singleWeight=单重2, order=2]]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:11:27,110 DEBUG  - name:detailNum,type:class java.lang.String,value:详细图号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:11:27,110 DEBUG  - name:indexPage,type:class java.lang.String,value:第页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:11:27,110 DEBUG  - name:jdeNum,type:class java.lang.String,value:JDE项目号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:11:27,110 DEBUG  - name:material,type:class java.lang.String,value:材料
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:11:27,110 DEBUG  - name:name,type:class java.lang.String,value:名称
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:11:27,110 DEBUG  - name:number,type:class java.lang.String,value:图号代号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:11:27,112 DEBUG  - name:pageSize,type:class java.lang.String,value:共页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:11:27,113 DEBUG  - name:proportion,type:class java.lang.String,value:比例
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:11:27,113 DEBUG  - name:size,type:class java.lang.String,value:图幅
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:39) 2018-07-17 22:11:27,113 DEBUG  - name:weight,type:class java.lang.String,value:重量
+  com.bplead.cad.util.XmlUtils.main(XmlUtils.java:80) 2018-07-17 22:11:27,113 DEBUG  - CAD [detail=[CADLink [quantity=数量2, description=备注2, singleWeight=单重2, order=2], CADLink [quantity=数量2, description=备注2, singleWeight=单重2, order=2]], detailNum=详细图号, indexPage=第页, jdeNum=JDE项目号, material=材料, name=名称, number=图号代号, pageSize=共页, proportion=比例, size=图幅, weight=重量]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 22:25:00,094 DEBUG  - xml:/Users/Jeason/Documents/Workspace/cad-tool/bin/CAD_IO_SPEC.xml,clatt:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:25:00,174 DEBUG  - name:description,type:class java.lang.String,value:备注1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:25:00,174 DEBUG  - name:order,type:class java.lang.String,value:1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:25:00,174 DEBUG  - name:quantity,type:class java.lang.String,value:数量1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:25:00,177 DEBUG  - name:singleWeight,type:class java.lang.String,value:单重1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:25:00,177 DEBUG  - name:description,type:class java.lang.String,value:备注2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:25:00,177 DEBUG  - name:order,type:class java.lang.String,value:2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:25:00,177 DEBUG  - name:quantity,type:class java.lang.String,value:数量2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:25:00,177 DEBUG  - name:singleWeight,type:class java.lang.String,value:单重2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:25:00,178 DEBUG  - name:detail,type:java.util.List<com.bplead.cad.io.bean.CADLink>,value:[CADLink [quantity=数量2, description=备注2, singleWeight=单重2, order=2], CADLink [quantity=数量2, description=备注2, singleWeight=单重2, order=2]]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:25:00,179 DEBUG  - name:detailNum,type:class java.lang.String,value:详细图号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:25:00,179 DEBUG  - name:indexPage,type:class java.lang.String,value:第页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:25:00,179 DEBUG  - name:jdeNum,type:class java.lang.String,value:JDE项目号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:25:00,180 DEBUG  - name:material,type:class java.lang.String,value:材料
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:25:00,180 DEBUG  - name:name,type:class java.lang.String,value:名称
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:25:00,180 DEBUG  - name:number,type:class java.lang.String,value:图号代号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:25:00,182 DEBUG  - name:pageSize,type:class java.lang.String,value:共页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:25:00,182 DEBUG  - name:proportion,type:class java.lang.String,value:比例
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:25:00,182 DEBUG  - name:size,type:class java.lang.String,value:图幅
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:25:00,182 DEBUG  - name:weight,type:class java.lang.String,value:重量
+  com.bplead.cad.util.XmlUtils.main(XmlUtils.java:97) 2018-07-17 22:25:00,182 DEBUG  - CAD [detail=null, detailNum=详细图号, indexPage=第页, jdeNum=JDE项目号, material=材料, name=名称, number=图号代号, pageSize=共页, proportion=比例, size=图幅, weight=重量]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 22:26:13,276 DEBUG  - xml:/Users/Jeason/Documents/Workspace/cad-tool/bin/CAD_IO_SPEC.xml,clatt:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:26:13,340 DEBUG  - name:description,type:class java.lang.String,value:备注1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:26:13,341 DEBUG  - name:order,type:class java.lang.String,value:1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:26:13,341 DEBUG  - name:quantity,type:class java.lang.String,value:数量1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:26:13,343 DEBUG  - name:singleWeight,type:class java.lang.String,value:单重1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:26:13,343 DEBUG  - name:description,type:class java.lang.String,value:备注2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:26:13,343 DEBUG  - name:order,type:class java.lang.String,value:2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:26:13,344 DEBUG  - name:quantity,type:class java.lang.String,value:数量2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:26:13,344 DEBUG  - name:singleWeight,type:class java.lang.String,value:单重2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:26:13,344 DEBUG  - name:detail,type:java.util.List<com.bplead.cad.io.bean.CADLink>,value:[CADLink [quantity=数量2, description=备注2, singleWeight=单重2, order=2], CADLink [quantity=数量2, description=备注2, singleWeight=单重2, order=2]]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:26:13,345 DEBUG  - name:detailNum,type:class java.lang.String,value:详细图号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:26:13,345 DEBUG  - name:indexPage,type:class java.lang.String,value:第页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:26:13,345 DEBUG  - name:jdeNum,type:class java.lang.String,value:JDE项目号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:26:13,346 DEBUG  - name:material,type:class java.lang.String,value:材料
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:26:13,346 DEBUG  - name:name,type:class java.lang.String,value:名称
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:26:13,346 DEBUG  - name:number,type:class java.lang.String,value:图号代号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:26:13,348 DEBUG  - name:pageSize,type:class java.lang.String,value:共页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:26:13,348 DEBUG  - name:proportion,type:class java.lang.String,value:比例
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:26:13,348 DEBUG  - name:size,type:class java.lang.String,value:图幅
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:26:13,348 DEBUG  - name:weight,type:class java.lang.String,value:重量
+  com.bplead.cad.util.XmlUtils.main(XmlUtils.java:97) 2018-07-17 22:26:13,349 DEBUG  - CAD [detail=null, detailNum=详细图号, indexPage=第页, jdeNum=JDE项目号, material=材料, name=名称, number=图号代号, pageSize=共页, proportion=比例, size=图幅, weight=重量]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:69) 2018-07-17 22:28:03,900 DEBUG  - xml:/Users/Jeason/Documents/Workspace/cad-tool/bin/CAD_IO_SPEC.xml,clatt:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:28:03,956 DEBUG  - name:description,type:class java.lang.String,value:备注1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:28:03,956 DEBUG  - name:order,type:class java.lang.String,value:1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:28:03,956 DEBUG  - name:quantity,type:class java.lang.String,value:数量1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:28:03,958 DEBUG  - name:singleWeight,type:class java.lang.String,value:单重1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:28:03,959 DEBUG  - name:description,type:class java.lang.String,value:备注2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:28:03,959 DEBUG  - name:order,type:class java.lang.String,value:2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:28:03,959 DEBUG  - name:quantity,type:class java.lang.String,value:数量2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:28:03,959 DEBUG  - name:singleWeight,type:class java.lang.String,value:单重2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:28:03,959 DEBUG  - name:detail,type:java.util.ArrayList<com.bplead.cad.io.bean.CADLink>,value:[CADLink [quantity=数量2, description=备注2, singleWeight=单重2, order=2], CADLink [quantity=数量2, description=备注2, singleWeight=单重2, order=2]]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:28:03,960 DEBUG  - name:detailNum,type:class java.lang.String,value:详细图号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:28:03,960 DEBUG  - name:indexPage,type:class java.lang.String,value:第页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:28:03,960 DEBUG  - name:jdeNum,type:class java.lang.String,value:JDE项目号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:28:03,960 DEBUG  - name:material,type:class java.lang.String,value:材料
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:28:03,960 DEBUG  - name:name,type:class java.lang.String,value:名称
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:28:03,960 DEBUG  - name:number,type:class java.lang.String,value:图号代号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:28:03,962 DEBUG  - name:pageSize,type:class java.lang.String,value:共页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:28:03,962 DEBUG  - name:proportion,type:class java.lang.String,value:比例
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:28:03,962 DEBUG  - name:size,type:class java.lang.String,value:图幅
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:42) 2018-07-17 22:28:03,962 DEBUG  - name:weight,type:class java.lang.String,value:重量
+  com.bplead.cad.util.XmlUtils.main(XmlUtils.java:96) 2018-07-17 22:28:03,962 DEBUG  - CAD [detail=[CADLink [quantity=数量2, description=备注2, singleWeight=单重2, order=2], CADLink [quantity=数量2, description=备注2, singleWeight=单重2, order=2]], detailNum=详细图号, indexPage=第页, jdeNum=JDE项目号, material=材料, name=名称, number=图号代号, pageSize=共页, proportion=比例, size=图幅, weight=重量]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:63) 2018-07-17 22:33:40,557 DEBUG  - xml:/Users/Jeason/Documents/Workspace/cad-tool/bin/CAD_IO_SPEC.xml,clatt:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.main(XmlUtils.java:26) 2018-07-17 22:33:40,636 DEBUG  - CAD [detail=null, detailNum=null, indexPage=null, jdeNum=null, material=null, name=null, number=null, pageSize=null, proportion=null, size=null, weight=null]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:63) 2018-07-17 22:34:02,552 DEBUG  - xml:/Users/Jeason/Documents/Workspace/cad-tool/bin/CAD_IO_SPEC.xml,clatt:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:48) 2018-07-17 22:34:02,621 DEBUG  - name:number,type:class java.lang.String,value:图号代号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:48) 2018-07-17 22:34:02,621 DEBUG  - name:name,type:class java.lang.String,value:名称
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:48) 2018-07-17 22:34:02,621 DEBUG  - name:jdeNum,type:class java.lang.String,value:JDE项目号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:48) 2018-07-17 22:34:02,621 DEBUG  - name:material,type:class java.lang.String,value:材料
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:48) 2018-07-17 22:34:02,623 DEBUG  - name:detailNum,type:class java.lang.String,value:详细图号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:48) 2018-07-17 22:34:02,624 DEBUG  - name:weight,type:class java.lang.String,value:重量
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:48) 2018-07-17 22:34:02,624 DEBUG  - name:pageSize,type:class java.lang.String,value:共页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:48) 2018-07-17 22:34:02,624 DEBUG  - name:indexPage,type:class java.lang.String,value:第页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:48) 2018-07-17 22:34:02,624 DEBUG  - name:proportion,type:class java.lang.String,value:比例
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:48) 2018-07-17 22:34:02,624 DEBUG  - name:size,type:class java.lang.String,value:图幅
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:48) 2018-07-17 22:34:02,625 DEBUG  - name:detail,type:java.util.ArrayList<com.bplead.cad.io.bean.CADLink>,value:[]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:48) 2018-07-17 22:34:02,626 DEBUG  - name:detail,type:java.util.ArrayList<com.bplead.cad.io.bean.CADLink>,value:[]
+  com.bplead.cad.util.XmlUtils.main(XmlUtils.java:26) 2018-07-17 22:34:02,626 DEBUG  - CAD [detail=[], detailNum=详细图号, indexPage=第页, jdeNum=JDE项目号, material=材料, name=名称, number=图号代号, pageSize=共页, proportion=比例, size=图幅, weight=重量]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:82) 2018-07-17 22:47:14,840 DEBUG  - xml:/Users/Jeason/Documents/Workspace/cad-tool/bin/CAD_IO_SPEC.xml,clatt:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:54) 2018-07-17 22:47:14,901 DEBUG  - name:number,type:class java.lang.String,value:图号代号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:54) 2018-07-17 22:47:14,903 DEBUG  - name:name,type:class java.lang.String,value:名称
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:54) 2018-07-17 22:47:14,903 DEBUG  - name:jdeNum,type:class java.lang.String,value:JDE项目号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:54) 2018-07-17 22:47:14,904 DEBUG  - name:material,type:class java.lang.String,value:材料
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:54) 2018-07-17 22:47:14,906 DEBUG  - name:detailNum,type:class java.lang.String,value:详细图号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:54) 2018-07-17 22:47:14,906 DEBUG  - name:weight,type:class java.lang.String,value:重量
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:54) 2018-07-17 22:47:14,907 DEBUG  - name:pageSize,type:class java.lang.String,value:共页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:54) 2018-07-17 22:47:14,907 DEBUG  - name:indexPage,type:class java.lang.String,value:第页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:54) 2018-07-17 22:47:14,908 DEBUG  - name:proportion,type:class java.lang.String,value:比例
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:54) 2018-07-17 22:47:14,908 DEBUG  - name:size,type:class java.lang.String,value:图幅
+  com.bplead.cad.util.XmlUtils.main(XmlUtils.java:27) 2018-07-17 22:47:14,910 DEBUG  - CAD [detail=null, detailNum=null, indexPage=null, jdeNum=null, material=null, name=null, number=null, pageSize=null, proportion=null, size=null, weight=null]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:82) 2018-07-17 22:48:08,464 DEBUG  - xml:/Users/Jeason/Documents/Workspace/cad-tool/bin/CAD_IO_SPEC.xml,clatt:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:54) 2018-07-17 22:48:08,522 DEBUG  - name:number,type:class java.lang.String,value:图号代号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:54) 2018-07-17 22:48:08,522 DEBUG  - name:name,type:class java.lang.String,value:名称
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:54) 2018-07-17 22:48:08,522 DEBUG  - name:jdeNum,type:class java.lang.String,value:JDE项目号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:54) 2018-07-17 22:48:08,522 DEBUG  - name:material,type:class java.lang.String,value:材料
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:54) 2018-07-17 22:48:08,524 DEBUG  - name:detailNum,type:class java.lang.String,value:详细图号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:54) 2018-07-17 22:48:08,524 DEBUG  - name:weight,type:class java.lang.String,value:重量
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:54) 2018-07-17 22:48:08,524 DEBUG  - name:pageSize,type:class java.lang.String,value:共页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:54) 2018-07-17 22:48:08,525 DEBUG  - name:indexPage,type:class java.lang.String,value:第页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:54) 2018-07-17 22:48:08,525 DEBUG  - name:proportion,type:class java.lang.String,value:比例
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:54) 2018-07-17 22:48:08,525 DEBUG  - name:size,type:class java.lang.String,value:图幅
+  com.bplead.cad.util.XmlUtils.main(XmlUtils.java:27) 2018-07-17 22:48:08,527 DEBUG  - CAD [detail=null, detailNum=详细图号, indexPage=第页, jdeNum=JDE项目号, material=材料, name=名称, number=图号代号, pageSize=共页, proportion=比例, size=图幅, weight=重量]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:83) 2018-07-17 22:49:26,635 DEBUG  - xml:/Users/Jeason/Documents/Workspace/cad-tool/bin/CAD_IO_SPEC.xml,clatt:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:49:26,703 DEBUG  - name:number,type:class java.lang.String,value:图号代号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:49:26,703 DEBUG  - name:name,type:class java.lang.String,value:名称
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:49:26,704 DEBUG  - name:jdeNum,type:class java.lang.String,value:JDE项目号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:49:26,704 DEBUG  - name:material,type:class java.lang.String,value:材料
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:49:26,706 DEBUG  - name:detailNum,type:class java.lang.String,value:详细图号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:49:26,706 DEBUG  - name:weight,type:class java.lang.String,value:重量
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:49:26,707 DEBUG  - name:pageSize,type:class java.lang.String,value:共页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:49:26,707 DEBUG  - name:indexPage,type:class java.lang.String,value:第页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:49:26,707 DEBUG  - name:proportion,type:class java.lang.String,value:比例
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:49:26,707 DEBUG  - name:size,type:class java.lang.String,value:图幅
+  com.bplead.cad.util.XmlUtils.main(XmlUtils.java:27) 2018-07-17 22:49:26,710 DEBUG  - CAD [detail=null, detailNum=详细图号, indexPage=第页, jdeNum=JDE项目号, material=材料, name=名称, number=图号代号, pageSize=共页, proportion=比例, size=图幅, weight=重量]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:84) 2018-07-17 22:51:19,682 DEBUG  - xml:/Users/Jeason/Documents/Workspace/cad-tool/bin/CAD_IO_SPEC.xml,clatt:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:56) 2018-07-17 22:51:19,740 DEBUG  - name:number,type:class java.lang.String,value:图号代号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:56) 2018-07-17 22:51:19,741 DEBUG  - name:name,type:class java.lang.String,value:名称
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:56) 2018-07-17 22:51:19,741 DEBUG  - name:jdeNum,type:class java.lang.String,value:JDE项目号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:56) 2018-07-17 22:51:19,741 DEBUG  - name:material,type:class java.lang.String,value:材料
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:56) 2018-07-17 22:51:19,743 DEBUG  - name:detailNum,type:class java.lang.String,value:详细图号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:56) 2018-07-17 22:51:19,743 DEBUG  - name:weight,type:class java.lang.String,value:重量
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:56) 2018-07-17 22:51:19,744 DEBUG  - name:pageSize,type:class java.lang.String,value:共页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:56) 2018-07-17 22:51:19,744 DEBUG  - name:indexPage,type:class java.lang.String,value:第页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:56) 2018-07-17 22:51:19,744 DEBUG  - name:proportion,type:class java.lang.String,value:比例
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:56) 2018-07-17 22:51:19,744 DEBUG  - name:size,type:class java.lang.String,value:图幅
+  com.bplead.cad.util.XmlUtils.main(XmlUtils.java:27) 2018-07-17 22:51:19,746 DEBUG  - CAD [detail=null, detailNum=详细图号, indexPage=第页, jdeNum=JDE项目号, material=材料, name=名称, number=图号代号, pageSize=共页, proportion=比例, size=图幅, weight=重量]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:84) 2018-07-17 22:51:41,920 DEBUG  - xml:/Users/Jeason/Documents/Workspace/cad-tool/bin/CAD_IO_SPEC.xml,clatt:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:56) 2018-07-17 22:51:41,978 DEBUG  - name:number,type:class java.lang.String,value:图号代号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:56) 2018-07-17 22:51:41,979 DEBUG  - name:name,type:class java.lang.String,value:名称
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:56) 2018-07-17 22:51:41,979 DEBUG  - name:jdeNum,type:class java.lang.String,value:JDE项目号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:56) 2018-07-17 22:51:41,979 DEBUG  - name:material,type:class java.lang.String,value:材料
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:56) 2018-07-17 22:51:41,981 DEBUG  - name:detailNum,type:class java.lang.String,value:详细图号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:56) 2018-07-17 22:51:41,981 DEBUG  - name:weight,type:class java.lang.String,value:重量
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:56) 2018-07-17 22:51:41,981 DEBUG  - name:pageSize,type:class java.lang.String,value:共页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:56) 2018-07-17 22:51:41,981 DEBUG  - name:indexPage,type:class java.lang.String,value:第页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:56) 2018-07-17 22:51:41,981 DEBUG  - name:proportion,type:class java.lang.String,value:比例
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:56) 2018-07-17 22:51:41,982 DEBUG  - name:size,type:class java.lang.String,value:图幅
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:56) 2018-07-17 22:51:41,984 DEBUG  - name:name,type:class java.lang.String,value:名称1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:52) 2018-07-17 22:51:41,986 DEBUG  - =====[class com.bplead.cad.io.bean.CADLink]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:56) 2018-07-17 22:51:41,986 DEBUG  - name:detail,type:java.util.ArrayList<com.bplead.cad.io.bean.CADLink>,value:[class com.bplead.cad.io.bean.CADLink]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:56) 2018-07-17 22:51:41,987 DEBUG  - name:name,type:class java.lang.String,value:名称2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:52) 2018-07-17 22:51:41,992 DEBUG  - =====[class com.bplead.cad.io.bean.CADLink, class com.bplead.cad.io.bean.CADLink]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:56) 2018-07-17 22:51:41,993 DEBUG  - name:detail,type:java.util.ArrayList<com.bplead.cad.io.bean.CADLink>,value:[class com.bplead.cad.io.bean.CADLink, class com.bplead.cad.io.bean.CADLink]
+  com.bplead.cad.util.XmlUtils.main(XmlUtils.java:27) 2018-07-17 22:51:41,994 DEBUG  - CAD [detail=[class com.bplead.cad.io.bean.CADLink, class com.bplead.cad.io.bean.CADLink], detailNum=详细图号, indexPage=第页, jdeNum=JDE项目号, material=材料, name=名称, number=图号代号, pageSize=共页, proportion=比例, size=图幅, weight=重量]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:84) 2018-07-17 22:53:26,619 DEBUG  - xml:/Users/Jeason/Documents/Workspace/cad-tool/bin/CAD_IO_SPEC.xml,clatt:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:53:26,681 DEBUG  - name:number,type:class java.lang.String,value:图号代号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:53:26,682 DEBUG  - name:name,type:class java.lang.String,value:名称
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:53:26,682 DEBUG  - name:jdeNum,type:class java.lang.String,value:JDE项目号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:53:26,682 DEBUG  - name:material,type:class java.lang.String,value:材料
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:53:26,684 DEBUG  - name:detailNum,type:class java.lang.String,value:详细图号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:53:26,684 DEBUG  - name:weight,type:class java.lang.String,value:重量
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:53:26,684 DEBUG  - name:pageSize,type:class java.lang.String,value:共页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:53:26,684 DEBUG  - name:indexPage,type:class java.lang.String,value:第页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:53:26,684 DEBUG  - name:proportion,type:class java.lang.String,value:比例
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:53:26,685 DEBUG  - name:size,type:class java.lang.String,value:图幅
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:53:26,687 DEBUG  - name:name,type:class java.lang.String,value:名称1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:53:26,689 DEBUG  - name:detail,type:java.util.ArrayList<com.bplead.cad.io.bean.CADLink>,value:[class com.bplead.cad.io.bean.CADLink]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:53:26,690 DEBUG  - name:name,type:class java.lang.String,value:名称2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:53:26,692 DEBUG  - name:detail,type:java.util.ArrayList<com.bplead.cad.io.bean.CADLink>,value:[class com.bplead.cad.io.bean.CADLink, class com.bplead.cad.io.bean.CADLink]
+  com.bplead.cad.util.XmlUtils.main(XmlUtils.java:27) 2018-07-17 22:53:26,692 DEBUG  - CAD [detail=[class com.bplead.cad.io.bean.CADLink, class com.bplead.cad.io.bean.CADLink], detailNum=详细图号, indexPage=第页, jdeNum=JDE项目号, material=材料, name=名称, number=图号代号, pageSize=共页, proportion=比例, size=图幅, weight=重量]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:84) 2018-07-17 22:54:00,088 DEBUG  - xml:/Users/Jeason/Documents/Workspace/cad-tool/bin/CAD_IO_SPEC.xml,clatt:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:54:00,150 DEBUG  - name:number,type:class java.lang.String,value:图号代号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:54:00,151 DEBUG  - name:name,type:class java.lang.String,value:名称
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:54:00,151 DEBUG  - name:jdeNum,type:class java.lang.String,value:JDE项目号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:54:00,151 DEBUG  - name:material,type:class java.lang.String,value:材料
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:54:00,154 DEBUG  - name:detailNum,type:class java.lang.String,value:详细图号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:54:00,154 DEBUG  - name:weight,type:class java.lang.String,value:重量
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:54:00,155 DEBUG  - name:pageSize,type:class java.lang.String,value:共页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:54:00,155 DEBUG  - name:indexPage,type:class java.lang.String,value:第页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:54:00,155 DEBUG  - name:proportion,type:class java.lang.String,value:比例
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:54:00,155 DEBUG  - name:size,type:class java.lang.String,value:图幅
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:54:00,156 DEBUG  - name:order,type:class java.lang.String,value:1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:54:00,158 DEBUG  - name:quantity,type:class java.lang.String,value:数量1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:54:00,158 DEBUG  - name:singleWeight,type:class java.lang.String,value:单重1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:54:00,159 DEBUG  - name:description,type:class java.lang.String,value:备注1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:54:00,159 DEBUG  - name:detail,type:java.util.ArrayList<com.bplead.cad.io.bean.CADLink>,value:[CADLink [quantity=数量1, description=备注1, singleWeight=单重1, order=1]]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:54:00,161 DEBUG  - name:order,type:class java.lang.String,value:2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:54:00,162 DEBUG  - name:quantity,type:class java.lang.String,value:数量2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:54:00,162 DEBUG  - name:singleWeight,type:class java.lang.String,value:单重2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:54:00,163 DEBUG  - name:description,type:class java.lang.String,value:备注2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 22:54:00,163 DEBUG  - name:detail,type:java.util.ArrayList<com.bplead.cad.io.bean.CADLink>,value:[CADLink [quantity=数量1, description=备注1, singleWeight=单重1, order=1], CADLink [quantity=数量2, description=备注2, singleWeight=单重2, order=2]]
+  com.bplead.cad.util.XmlUtils.main(XmlUtils.java:27) 2018-07-17 22:54:00,163 DEBUG  - CAD [detail=[CADLink [quantity=数量1, description=备注1, singleWeight=单重1, order=1], CADLink [quantity=数量2, description=备注2, singleWeight=单重2, order=2]], detailNum=详细图号, indexPage=第页, jdeNum=JDE项目号, material=材料, name=名称, number=图号代号, pageSize=共页, proportion=比例, size=图幅, weight=重量]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:85) 2018-07-17 22:56:12,039 DEBUG  - xml:/Users/Jeason/Documents/Workspace/cad-tool/bin/CAD_IO_SPEC.xml,clatt:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 22:56:12,098 DEBUG  - name:number,type:class java.lang.String,value:图号代号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 22:56:12,099 DEBUG  - name:name,type:class java.lang.String,value:名称
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 22:56:12,099 DEBUG  - name:jdeNum,type:class java.lang.String,value:JDE项目号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 22:56:12,099 DEBUG  - name:material,type:class java.lang.String,value:材料
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 22:56:12,101 DEBUG  - name:detailNum,type:class java.lang.String,value:详细图号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 22:56:12,101 DEBUG  - name:weight,type:class java.lang.String,value:重量
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 22:56:12,101 DEBUG  - name:pageSize,type:class java.lang.String,value:共页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 22:56:12,101 DEBUG  - name:indexPage,type:class java.lang.String,value:第页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 22:56:12,101 DEBUG  - name:proportion,type:class java.lang.String,value:比例
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 22:56:12,101 DEBUG  - name:size,type:class java.lang.String,value:图幅
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 22:56:12,103 DEBUG  - name:order,type:class java.lang.String,value:1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 22:56:12,105 DEBUG  - name:quantity,type:class java.lang.String,value:数量1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 22:56:12,105 DEBUG  - name:singleWeight,type:class java.lang.String,value:单重1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 22:56:12,106 DEBUG  - name:description,type:class java.lang.String,value:备注1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 22:56:12,106 DEBUG  - name:detail,type:java.util.ArrayList<com.bplead.cad.io.bean.CADLink>,value:[CADLink [quantity=数量1, description=备注1, singleWeight=单重1, order=1]]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 22:56:12,108 DEBUG  - name:order,type:class java.lang.String,value:2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 22:56:12,109 DEBUG  - name:quantity,type:class java.lang.String,value:数量2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 22:56:12,109 DEBUG  - name:singleWeight,type:class java.lang.String,value:单重2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 22:56:12,110 DEBUG  - name:description,type:class java.lang.String,value:备注2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 22:56:12,110 DEBUG  - name:detail,type:java.util.ArrayList<com.bplead.cad.io.bean.CADLink>,value:[CADLink [quantity=数量1, description=备注1, singleWeight=单重1, order=1], CADLink [quantity=数量2, description=备注2, singleWeight=单重2, order=2]]
+  com.bplead.cad.util.XmlUtils.main(XmlUtils.java:42) 2018-07-17 22:56:12,110 DEBUG  - CAD [detail=[CADLink [quantity=数量1, description=备注1, singleWeight=单重1, order=1], CADLink [quantity=数量2, description=备注2, singleWeight=单重2, order=2]], detailNum=详细图号, indexPage=第页, jdeNum=JDE项目号, material=材料, name=名称, number=图号代号, pageSize=共页, proportion=比例, size=图幅, weight=重量]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:84) 2018-07-17 23:00:16,766 DEBUG  - xml:/Users/Jeason/Documents/Workspace/cad-tool/bin/CAD_IO_SPEC.xml,clatt:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:00:16,815 DEBUG  - name:number,type:class java.lang.String,value:图号代号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:00:16,816 DEBUG  - name:name,type:class java.lang.String,value:名称
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:00:16,816 DEBUG  - name:jdeNum,type:class java.lang.String,value:JDE项目号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:00:16,816 DEBUG  - name:material,type:class java.lang.String,value:材料
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:00:16,818 DEBUG  - name:detailNum,type:class java.lang.String,value:详细图号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:00:16,818 DEBUG  - name:weight,type:class java.lang.String,value:重量
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:00:16,818 DEBUG  - name:pageSize,type:class java.lang.String,value:共页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:00:16,818 DEBUG  - name:indexPage,type:class java.lang.String,value:第页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:00:16,818 DEBUG  - name:proportion,type:class java.lang.String,value:比例
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:00:16,818 DEBUG  - name:size,type:class java.lang.String,value:图幅
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:00:16,819 DEBUG  - name:order,type:class java.lang.String,value:1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:00:16,820 DEBUG  - name:quantity,type:class java.lang.String,value:数量1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:00:16,821 DEBUG  - name:singleWeight,type:class java.lang.String,value:单重1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:00:16,821 DEBUG  - name:description,type:class java.lang.String,value:备注1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:00:16,821 DEBUG  - name:detail,type:java.util.ArrayList<com.bplead.cad.io.bean.CADLink>,value:[CADLink [quantity=数量1, description=备注1, singleWeight=单重1, order=1]]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:00:16,822 DEBUG  - name:order,type:class java.lang.String,value:2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:00:16,823 DEBUG  - name:quantity,type:class java.lang.String,value:数量2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:00:16,824 DEBUG  - name:singleWeight,type:class java.lang.String,value:单重2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:00:16,824 DEBUG  - name:description,type:class java.lang.String,value:备注2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:00:16,824 DEBUG  - name:detail,type:java.util.ArrayList<com.bplead.cad.io.bean.CADLink>,value:[CADLink [quantity=数量1, description=备注1, singleWeight=单重1, order=1], CADLink [quantity=数量2, description=备注2, singleWeight=单重2, order=2]]
+  com.bplead.cad.util.XmlUtils.main(XmlUtils.java:42) 2018-07-17 23:00:16,825 DEBUG  - CAD [detail=[CADLink [quantity=数量1, description=备注1, singleWeight=单重1, order=1], CADLink [quantity=数量2, description=备注2, singleWeight=单重2, order=2]], detailNum=详细图号, indexPage=第页, jdeNum=JDE项目号, material=材料, name=名称, number=图号代号, pageSize=共页, proportion=比例, size=图幅, weight=重量]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:100) 2018-07-17 23:07:19,561 DEBUG  - xml:/Users/Jeason/Documents/Workspace/cad-tool/bin/CAD_IO_SPEC.xml,clatt:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:07:19,628 DEBUG  - name:number,type:class java.lang.String,value:图号代号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:07:19,628 DEBUG  - name:name,type:class java.lang.String,value:名称
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:07:19,628 DEBUG  - name:jdeNum,type:class java.lang.String,value:JDE项目号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:07:19,629 DEBUG  - name:material,type:class java.lang.String,value:材料
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:07:19,633 DEBUG  - name:detailNum,type:class java.lang.String,value:详细图号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:07:19,633 DEBUG  - name:weight,type:class java.lang.String,value:重量
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:07:19,633 DEBUG  - name:pageSize,type:class java.lang.String,value:共页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:07:19,633 DEBUG  - name:indexPage,type:class java.lang.String,value:第页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:07:19,634 DEBUG  - name:proportion,type:class java.lang.String,value:比例
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:07:19,634 DEBUG  - name:size,type:class java.lang.String,value:图幅
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:07:19,635 DEBUG  - name:order,type:class java.lang.String,value:1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:07:19,636 DEBUG  - name:quantity,type:class java.lang.String,value:数量1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:07:19,637 DEBUG  - name:singleWeight,type:class java.lang.String,value:单重1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:07:19,637 DEBUG  - name:description,type:class java.lang.String,value:备注1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:07:19,637 DEBUG  - name:detail,type:java.util.ArrayList<com.bplead.cad.io.bean.CADLink>,value:[CADLink [quantity=数量1, description=备注1, singleWeight=单重1, order=1]]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:07:19,639 DEBUG  - name:order,type:class java.lang.String,value:2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:07:19,640 DEBUG  - name:quantity,type:class java.lang.String,value:数量2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:07:19,640 DEBUG  - name:singleWeight,type:class java.lang.String,value:单重2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:07:19,641 DEBUG  - name:description,type:class java.lang.String,value:备注2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:70) 2018-07-17 23:07:19,641 DEBUG  - name:detail,type:java.util.ArrayList<com.bplead.cad.io.bean.CADLink>,value:[CADLink [quantity=数量1, description=备注1, singleWeight=单重1, order=1], CADLink [quantity=数量2, description=备注2, singleWeight=单重2, order=2]]
+  com.bplead.cad.util.XmlUtils.main(XmlUtils.java:42) 2018-07-17 23:07:19,641 DEBUG  - CAD [detail=[CADLink [quantity=数量1, description=备注1, singleWeight=单重1, order=1], CADLink [quantity=数量2, description=备注2, singleWeight=单重2, order=2]], detailNum=详细图号, indexPage=第页, jdeNum=JDE项目号, material=材料, name=名称, number=图号代号, pageSize=共页, proportion=比例, size=图幅, weight=重量]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:103) 2018-07-17 23:09:11,747 DEBUG  - xml:/Users/Jeason/Documents/Workspace/cad-tool/bin/CAD_IO_SPEC.xml,clatt:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:09:11,812 DEBUG  - field name:number,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.number
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:09:11,812 DEBUG  - name:number,type:class java.lang.String,value:图号代号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:09:11,812 DEBUG  - field name:name,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.name
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:09:11,813 DEBUG  - name:name,type:class java.lang.String,value:名称
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:09:11,815 DEBUG  - field name:jdeNum,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.jdeNum
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:09:11,815 DEBUG  - name:jdeNum,type:class java.lang.String,value:JDE项目号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:09:11,815 DEBUG  - field name:material,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.material
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:09:11,815 DEBUG  - name:material,type:class java.lang.String,value:材料
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:09:11,816 DEBUG  - field name:detailNum,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.detailNum
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:09:11,816 DEBUG  - name:detailNum,type:class java.lang.String,value:详细图号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:09:11,816 DEBUG  - field name:weight,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.weight
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:09:11,816 DEBUG  - name:weight,type:class java.lang.String,value:重量
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:09:11,816 DEBUG  - field name:pageSize,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.pageSize
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:09:11,816 DEBUG  - name:pageSize,type:class java.lang.String,value:共页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:09:11,817 DEBUG  - field name:indexPage,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.indexPage
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:09:11,818 DEBUG  - name:indexPage,type:class java.lang.String,value:第页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:09:11,818 DEBUG  - field name:proportion,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.proportion
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:09:11,819 DEBUG  - name:proportion,type:class java.lang.String,value:比例
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:09:11,819 DEBUG  - field name:size,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.size
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:09:11,819 DEBUG  - name:size,type:class java.lang.String,value:图幅
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:09:11,819 DEBUG  - field name:detail,actual field:private java.util.ArrayList com.bplead.cad.io.bean.CAD.detail
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:09:11,820 DEBUG  - field name:order,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.order
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:09:11,820 DEBUG  - name:order,type:class java.lang.String,value:1
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:91) 2018-07-17 23:09:11,821 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:09:11,821 DEBUG  - field name:number,actual field:null
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:91) 2018-07-17 23:09:11,822 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:09:11,823 DEBUG  - field name:name,actual field:null
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:91) 2018-07-17 23:09:11,823 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:09:11,823 DEBUG  - field name:jdeNum,actual field:null
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:09:11,824 DEBUG  - field name:quantity,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.quantity
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:09:11,824 DEBUG  - name:quantity,type:class java.lang.String,value:数量1
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:91) 2018-07-17 23:09:11,824 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:09:11,824 DEBUG  - field name:material,actual field:null
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:09:11,825 DEBUG  - field name:singleWeight,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.singleWeight
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:09:11,825 DEBUG  - name:singleWeight,type:class java.lang.String,value:单重1
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:91) 2018-07-17 23:09:11,825 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:09:11,825 DEBUG  - field name:weight,actual field:null
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:09:11,826 DEBUG  - field name:description,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.description
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:09:11,826 DEBUG  - name:description,type:class java.lang.String,value:备注1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:09:11,827 DEBUG  - name:detail,type:java.util.ArrayList<com.bplead.cad.io.bean.CADLink>,value:[CADLink [quantity=数量1, description=备注1, singleWeight=单重1, order=1]]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:09:11,827 DEBUG  - field name:detail,actual field:private java.util.ArrayList com.bplead.cad.io.bean.CAD.detail
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:09:11,827 DEBUG  - field name:order,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.order
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:09:11,827 DEBUG  - name:order,type:class java.lang.String,value:2
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:91) 2018-07-17 23:09:11,827 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:09:11,827 DEBUG  - field name:number,actual field:null
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:91) 2018-07-17 23:09:11,828 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:09:11,828 DEBUG  - field name:name,actual field:null
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:91) 2018-07-17 23:09:11,828 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:09:11,828 DEBUG  - field name:jdeNum,actual field:null
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:09:11,829 DEBUG  - field name:quantity,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.quantity
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:09:11,829 DEBUG  - name:quantity,type:class java.lang.String,value:数量2
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:91) 2018-07-17 23:09:11,829 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:09:11,829 DEBUG  - field name:material,actual field:null
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:09:11,830 DEBUG  - field name:singleWeight,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.singleWeight
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:09:11,830 DEBUG  - name:singleWeight,type:class java.lang.String,value:单重2
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:91) 2018-07-17 23:09:11,830 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:09:11,830 DEBUG  - field name:weight,actual field:null
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:09:11,830 DEBUG  - field name:description,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.description
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:09:11,831 DEBUG  - name:description,type:class java.lang.String,value:备注2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:09:11,831 DEBUG  - name:detail,type:java.util.ArrayList<com.bplead.cad.io.bean.CADLink>,value:[CADLink [quantity=数量1, description=备注1, singleWeight=单重1, order=1], CADLink [quantity=数量2, description=备注2, singleWeight=单重2, order=2]]
+  com.bplead.cad.util.XmlUtils.main(XmlUtils.java:42) 2018-07-17 23:09:11,831 DEBUG  - CAD [detail=[CADLink [quantity=数量1, description=备注1, singleWeight=单重1, order=1], CADLink [quantity=数量2, description=备注2, singleWeight=单重2, order=2]], detailNum=详细图号, indexPage=第页, jdeNum=JDE项目号, material=材料, name=名称, number=图号代号, pageSize=共页, proportion=比例, size=图幅, weight=重量]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:107) 2018-07-17 23:11:24,541 DEBUG  - xml:/Users/Jeason/Documents/Workspace/cad-tool/bin/CAD_IO_SPEC.xml,clatt:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:11:24,607 DEBUG  - field name:number,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.number
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:11:24,608 DEBUG  - name:number,type:class java.lang.String,value:图号代号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:11:24,608 DEBUG  - field name:name,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.name
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:11:24,608 DEBUG  - name:name,type:class java.lang.String,value:名称
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:11:24,610 DEBUG  - field name:jdeNum,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.jdeNum
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:11:24,610 DEBUG  - name:jdeNum,type:class java.lang.String,value:JDE项目号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:11:24,610 DEBUG  - field name:material,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.material
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:11:24,610 DEBUG  - name:material,type:class java.lang.String,value:材料
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:11:24,611 DEBUG  - field name:detailNum,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.detailNum
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:11:24,611 DEBUG  - name:detailNum,type:class java.lang.String,value:详细图号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:11:24,611 DEBUG  - field name:weight,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.weight
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:11:24,611 DEBUG  - name:weight,type:class java.lang.String,value:重量
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:11:24,611 DEBUG  - field name:pageSize,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.pageSize
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:11:24,611 DEBUG  - name:pageSize,type:class java.lang.String,value:共页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:11:24,612 DEBUG  - field name:indexPage,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.indexPage
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:11:24,613 DEBUG  - name:indexPage,type:class java.lang.String,value:第页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:11:24,614 DEBUG  - field name:proportion,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.proportion
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:11:24,614 DEBUG  - name:proportion,type:class java.lang.String,value:比例
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:11:24,614 DEBUG  - field name:size,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.size
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:11:24,614 DEBUG  - name:size,type:class java.lang.String,value:图幅
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:11:24,614 DEBUG  - field name:detail,actual field:private java.util.ArrayList com.bplead.cad.io.bean.CAD.detail
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:11:24,615 DEBUG  - field name:order,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.order
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:11:24,616 DEBUG  - name:order,type:class java.lang.String,value:1
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:97) 2018-07-17 23:11:24,617 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:11:24,617 DEBUG  - field name:number,actual field:null
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:97) 2018-07-17 23:11:24,618 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:11:24,618 DEBUG  - field name:name,actual field:null
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:97) 2018-07-17 23:11:24,620 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:11:24,620 DEBUG  - field name:jdeNum,actual field:null
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:11:24,623 DEBUG  - field name:quantity,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.quantity
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:11:24,623 DEBUG  - name:quantity,type:class java.lang.String,value:数量1
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:97) 2018-07-17 23:11:24,624 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:11:24,624 DEBUG  - field name:material,actual field:null
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:11:24,624 DEBUG  - field name:singleWeight,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.singleWeight
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:11:24,624 DEBUG  - name:singleWeight,type:class java.lang.String,value:单重1
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:97) 2018-07-17 23:11:24,625 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:11:24,625 DEBUG  - field name:weight,actual field:null
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:11:24,626 DEBUG  - field name:description,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.description
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:11:24,626 DEBUG  - name:description,type:class java.lang.String,value:备注1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:11:24,626 DEBUG  - name:detail,type:java.util.ArrayList<com.bplead.cad.io.bean.CADLink>,value:[CADLink [quantity=数量1, description=备注1, singleWeight=单重1, order=1]]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:11:24,627 DEBUG  - field name:detail,actual field:private java.util.ArrayList com.bplead.cad.io.bean.CAD.detail
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:11:24,627 DEBUG  - field name:order,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.order
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:11:24,627 DEBUG  - name:order,type:class java.lang.String,value:2
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:97) 2018-07-17 23:11:24,629 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:11:24,629 DEBUG  - field name:number,actual field:null
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:97) 2018-07-17 23:11:24,630 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:11:24,630 DEBUG  - field name:name,actual field:null
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:97) 2018-07-17 23:11:24,630 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:11:24,631 DEBUG  - field name:jdeNum,actual field:null
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:11:24,631 DEBUG  - field name:quantity,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.quantity
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:11:24,631 DEBUG  - name:quantity,type:class java.lang.String,value:数量2
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:97) 2018-07-17 23:11:24,631 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:11:24,631 DEBUG  - field name:material,actual field:null
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:11:24,632 DEBUG  - field name:singleWeight,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.singleWeight
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:11:24,632 DEBUG  - name:singleWeight,type:class java.lang.String,value:单重2
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:97) 2018-07-17 23:11:24,632 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:11:24,632 DEBUG  - field name:weight,actual field:null
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:11:24,632 DEBUG  - field name:description,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.description
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:11:24,633 DEBUG  - name:description,type:class java.lang.String,value:备注2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:11:24,633 DEBUG  - name:detail,type:java.util.ArrayList<com.bplead.cad.io.bean.CADLink>,value:[CADLink [quantity=数量1, description=备注1, singleWeight=单重1, order=1], CADLink [quantity=数量2, description=备注2, singleWeight=单重2, order=2]]
+  com.bplead.cad.util.XmlUtils.main(XmlUtils.java:42) 2018-07-17 23:11:24,633 DEBUG  - CAD [detail=[CADLink [quantity=数量1, description=备注1, singleWeight=单重1, order=1], CADLink [quantity=数量2, description=备注2, singleWeight=单重2, order=2]], detailNum=详细图号, indexPage=第页, jdeNum=JDE项目号, material=材料, name=名称, number=图号代号, pageSize=共页, proportion=比例, size=图幅, weight=重量]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:104) 2018-07-17 23:14:14,068 DEBUG  - xml:/Users/Jeason/Documents/Workspace/cad-tool/bin/CAD_IO_SPEC.xml,clatt:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:14:14,133 DEBUG  - field name:number,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.number
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:14:14,133 DEBUG  - name:number,type:class java.lang.String,value:图号代号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:14:14,133 DEBUG  - field name:name,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.name
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:14:14,133 DEBUG  - name:name,type:class java.lang.String,value:名称
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:14:14,135 DEBUG  - field name:jdeNum,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.jdeNum
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:14:14,136 DEBUG  - name:jdeNum,type:class java.lang.String,value:JDE项目号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:14:14,136 DEBUG  - field name:material,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.material
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:14:14,136 DEBUG  - name:material,type:class java.lang.String,value:材料
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:14:14,136 DEBUG  - field name:detailNum,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.detailNum
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:14:14,136 DEBUG  - name:detailNum,type:class java.lang.String,value:详细图号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:14:14,136 DEBUG  - field name:weight,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.weight
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:14:14,137 DEBUG  - name:weight,type:class java.lang.String,value:重量
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:14:14,137 DEBUG  - field name:pageSize,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.pageSize
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:14:14,137 DEBUG  - name:pageSize,type:class java.lang.String,value:共页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:14:14,137 DEBUG  - field name:indexPage,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.indexPage
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:14:14,139 DEBUG  - name:indexPage,type:class java.lang.String,value:第页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:14:14,139 DEBUG  - field name:proportion,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.proportion
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:14:14,139 DEBUG  - name:proportion,type:class java.lang.String,value:比例
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:14:14,139 DEBUG  - field name:size,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.size
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:14:14,139 DEBUG  - name:size,type:class java.lang.String,value:图幅
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:14:14,139 DEBUG  - field name:detail,actual field:private java.util.ArrayList com.bplead.cad.io.bean.CAD.detail
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:14:14,140 DEBUG  - field name:order,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.order
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:14:14,140 DEBUG  - name:order,type:class java.lang.String,value:1
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:14:14,141 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:number
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:94) 2018-07-17 23:14:14,141 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:14:14,141 DEBUG  - field name:number,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.number
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:14:14,141 DEBUG  - name:number,type:class java.lang.String,value:图号代号1
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:14:14,141 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:name
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:94) 2018-07-17 23:14:14,141 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:14:14,142 DEBUG  - field name:name,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.name
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:14:14,142 DEBUG  - name:name,type:class java.lang.String,value:名称1
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:14:14,142 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:jdeNum
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:94) 2018-07-17 23:14:14,142 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:14:14,142 DEBUG  - field name:jdeNum,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.jdeNum
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:14:14,142 DEBUG  - name:jdeNum,type:class java.lang.String,value:JDE项目号1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:14:14,143 DEBUG  - field name:quantity,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.quantity
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:14:14,143 DEBUG  - name:quantity,type:class java.lang.String,value:数量1
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:14:14,143 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:material
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:94) 2018-07-17 23:14:14,143 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:14:14,143 DEBUG  - field name:material,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.material
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:14:14,143 DEBUG  - name:material,type:class java.lang.String,value:材料1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:14:14,144 DEBUG  - field name:singleWeight,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.singleWeight
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:14:14,144 DEBUG  - name:singleWeight,type:class java.lang.String,value:单重1
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:14:14,144 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:weight
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:94) 2018-07-17 23:14:14,144 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:14:14,144 DEBUG  - field name:weight,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.weight
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:14:14,145 DEBUG  - name:weight,type:class java.lang.String,value:总重1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:14:14,145 DEBUG  - field name:description,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.description
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:14:14,145 DEBUG  - name:description,type:class java.lang.String,value:备注1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:14:14,145 DEBUG  - name:detail,type:java.util.ArrayList<com.bplead.cad.io.bean.CADLink>,value:[CADLink [quantity=数量1, description=备注1, singleWeight=单重1, order=1]]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:14:14,145 DEBUG  - field name:detail,actual field:private java.util.ArrayList com.bplead.cad.io.bean.CAD.detail
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:14:14,146 DEBUG  - field name:order,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.order
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:14:14,146 DEBUG  - name:order,type:class java.lang.String,value:2
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:14:14,146 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:number
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:94) 2018-07-17 23:14:14,146 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:14:14,147 DEBUG  - field name:number,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.number
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:14:14,147 DEBUG  - name:number,type:class java.lang.String,value:图号代号2
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:14:14,147 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:name
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:94) 2018-07-17 23:14:14,147 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:14:14,147 DEBUG  - field name:name,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.name
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:14:14,147 DEBUG  - name:name,type:class java.lang.String,value:名称2
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:14:14,148 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:jdeNum
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:94) 2018-07-17 23:14:14,148 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:14:14,148 DEBUG  - field name:jdeNum,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.jdeNum
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:14:14,148 DEBUG  - name:jdeNum,type:class java.lang.String,value:JDE项目号2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:14:14,148 DEBUG  - field name:quantity,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.quantity
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:14:14,148 DEBUG  - name:quantity,type:class java.lang.String,value:数量2
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:14:14,149 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:material
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:94) 2018-07-17 23:14:14,149 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:14:14,149 DEBUG  - field name:material,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.material
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:14:14,149 DEBUG  - name:material,type:class java.lang.String,value:材料2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:14:14,149 DEBUG  - field name:singleWeight,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.singleWeight
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:14:14,149 DEBUG  - name:singleWeight,type:class java.lang.String,value:单重2
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:14:14,150 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:weight
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:94) 2018-07-17 23:14:14,150 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:14:14,150 DEBUG  - field name:weight,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.weight
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:14:14,150 DEBUG  - name:weight,type:class java.lang.String,value:总重2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:14:14,150 DEBUG  - field name:description,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.description
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:14:14,150 DEBUG  - name:description,type:class java.lang.String,value:备注2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:14:14,150 DEBUG  - name:detail,type:java.util.ArrayList<com.bplead.cad.io.bean.CADLink>,value:[CADLink [quantity=数量1, description=备注1, singleWeight=单重1, order=1], CADLink [quantity=数量2, description=备注2, singleWeight=单重2, order=2]]
+  com.bplead.cad.util.XmlUtils.main(XmlUtils.java:42) 2018-07-17 23:14:14,151 DEBUG  - CAD [detail=[CADLink [quantity=数量1, description=备注1, singleWeight=单重1, order=1], CADLink [quantity=数量2, description=备注2, singleWeight=单重2, order=2]], detailNum=详细图号, indexPage=第页, jdeNum=JDE项目号, material=材料, name=名称, number=图号代号, pageSize=共页, proportion=比例, size=图幅, weight=重量]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:109) 2018-07-17 23:15:46,183 DEBUG  - xml:/Users/Jeason/Documents/Workspace/cad-tool/bin/CAD_IO_SPEC.xml,clatt:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:15:46,245 DEBUG  - field name:number,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.number
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:15:46,246 DEBUG  - name:number,type:class java.lang.String,value:图号代号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:15:46,246 DEBUG  - field name:name,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.name
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:15:46,246 DEBUG  - name:name,type:class java.lang.String,value:名称
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:15:46,248 DEBUG  - field name:jdeNum,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.jdeNum
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:15:46,249 DEBUG  - name:jdeNum,type:class java.lang.String,value:JDE项目号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:15:46,249 DEBUG  - field name:material,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.material
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:15:46,249 DEBUG  - name:material,type:class java.lang.String,value:材料
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:15:46,249 DEBUG  - field name:detailNum,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.detailNum
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:15:46,249 DEBUG  - name:detailNum,type:class java.lang.String,value:详细图号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:15:46,249 DEBUG  - field name:weight,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.weight
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:15:46,249 DEBUG  - name:weight,type:class java.lang.String,value:重量
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:15:46,250 DEBUG  - field name:pageSize,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.pageSize
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:15:46,250 DEBUG  - name:pageSize,type:class java.lang.String,value:共页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:15:46,250 DEBUG  - field name:indexPage,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.indexPage
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:15:46,251 DEBUG  - name:indexPage,type:class java.lang.String,value:第页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:15:46,251 DEBUG  - field name:proportion,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.proportion
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:15:46,251 DEBUG  - name:proportion,type:class java.lang.String,value:比例
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:15:46,252 DEBUG  - field name:size,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.size
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:15:46,252 DEBUG  - name:size,type:class java.lang.String,value:图幅
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:15:46,252 DEBUG  - field name:detail,actual field:private java.util.ArrayList com.bplead.cad.io.bean.CAD.detail
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:15:46,253 DEBUG  - field name:order,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.order
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:15:46,253 DEBUG  - name:order,type:class java.lang.String,value:1
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:15:46,253 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:number
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:94) 2018-07-17 23:15:46,254 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:15:46,254 DEBUG  - field name:number,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.number
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:15:46,254 DEBUG  - name:number,type:class java.lang.String,value:图号代号1
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:15:46,254 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:name
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:94) 2018-07-17 23:15:46,254 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:15:46,254 DEBUG  - field name:name,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.name
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:15:46,254 DEBUG  - name:name,type:class java.lang.String,value:名称1
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:15:46,255 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:jdeNum
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:94) 2018-07-17 23:15:46,255 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:15:46,255 DEBUG  - field name:jdeNum,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.jdeNum
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:15:46,255 DEBUG  - name:jdeNum,type:class java.lang.String,value:JDE项目号1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:15:46,255 DEBUG  - field name:quantity,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.quantity
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:15:46,256 DEBUG  - name:quantity,type:class java.lang.String,value:数量1
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:15:46,256 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:material
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:94) 2018-07-17 23:15:46,256 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:15:46,256 DEBUG  - field name:material,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.material
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:15:46,256 DEBUG  - name:material,type:class java.lang.String,value:材料1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:15:46,257 DEBUG  - field name:singleWeight,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.singleWeight
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:15:46,257 DEBUG  - name:singleWeight,type:class java.lang.String,value:单重1
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:15:46,257 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:weight
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:94) 2018-07-17 23:15:46,257 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:15:46,257 DEBUG  - field name:weight,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.weight
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:15:46,258 DEBUG  - name:weight,type:class java.lang.String,value:总重1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:15:46,258 DEBUG  - field name:description,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.description
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:15:46,258 DEBUG  - name:description,type:class java.lang.String,value:备注1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:15:46,258 DEBUG  - name:detail,type:java.util.ArrayList<com.bplead.cad.io.bean.CADLink>,value:[CADLink [quantity=数量1, description=备注1, singleWeight=单重1, order=1]]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:15:46,258 DEBUG  - field name:detail,actual field:private java.util.ArrayList com.bplead.cad.io.bean.CAD.detail
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:15:46,259 DEBUG  - field name:order,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.order
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:15:46,259 DEBUG  - name:order,type:class java.lang.String,value:2
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:15:46,259 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:number
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:94) 2018-07-17 23:15:46,259 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:15:46,259 DEBUG  - field name:number,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.number
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:15:46,259 DEBUG  - name:number,type:class java.lang.String,value:图号代号2
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:15:46,259 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:name
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:94) 2018-07-17 23:15:46,260 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:15:46,260 DEBUG  - field name:name,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.name
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:15:46,260 DEBUG  - name:name,type:class java.lang.String,value:名称2
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:15:46,260 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:jdeNum
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:94) 2018-07-17 23:15:46,261 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:15:46,261 DEBUG  - field name:jdeNum,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.jdeNum
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:15:46,261 DEBUG  - name:jdeNum,type:class java.lang.String,value:JDE项目号2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:15:46,261 DEBUG  - field name:quantity,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.quantity
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:15:46,261 DEBUG  - name:quantity,type:class java.lang.String,value:数量2
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:15:46,262 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:material
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:94) 2018-07-17 23:15:46,262 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:15:46,262 DEBUG  - field name:material,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.material
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:15:46,262 DEBUG  - name:material,type:class java.lang.String,value:材料2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:15:46,263 DEBUG  - field name:singleWeight,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.singleWeight
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:15:46,263 DEBUG  - name:singleWeight,type:class java.lang.String,value:单重2
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:15:46,263 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:weight
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:94) 2018-07-17 23:15:46,263 DEBUG  - superClass:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:15:46,263 DEBUG  - field name:weight,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.weight
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:15:46,263 DEBUG  - name:weight,type:class java.lang.String,value:总重2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:15:46,264 DEBUG  - field name:description,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.description
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:15:46,264 DEBUG  - name:description,type:class java.lang.String,value:备注2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:15:46,264 DEBUG  - name:detail,type:java.util.ArrayList<com.bplead.cad.io.bean.CADLink>,value:[CADLink [quantity=数量1, description=备注1, singleWeight=单重1, order=1], CADLink [quantity=数量2, description=备注2, singleWeight=单重2, order=2]]
+  com.bplead.cad.util.XmlUtils.main(XmlUtils.java:42) 2018-07-17 23:15:46,264 DEBUG  - CAD [detail=[CADLink [quantity=数量1, description=备注1, singleWeight=单重1, order=1], CADLink [quantity=数量2, description=备注2, singleWeight=单重2, order=2]], detailNum=详细图号, indexPage=第页, jdeNum=JDE项目号, material=材料, name=名称, number=图号代号, pageSize=共页, proportion=比例, size=图幅, weight=重量]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:106) 2018-07-17 23:17:26,925 DEBUG  - xml:/Users/Jeason/Documents/Workspace/cad-tool/bin/CAD_IO_SPEC.xml,clatt:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:17:26,992 DEBUG  - field name:number,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.number
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:17:26,992 DEBUG  - name:number,type:class java.lang.String,value:图号代号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:17:26,993 DEBUG  - field name:name,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.name
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:17:26,993 DEBUG  - name:name,type:class java.lang.String,value:名称
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:17:26,995 DEBUG  - field name:jdeNum,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.jdeNum
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:17:26,995 DEBUG  - name:jdeNum,type:class java.lang.String,value:JDE项目号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:17:26,995 DEBUG  - field name:material,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.material
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:17:26,995 DEBUG  - name:material,type:class java.lang.String,value:材料
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:17:26,996 DEBUG  - field name:detailNum,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.detailNum
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:17:26,996 DEBUG  - name:detailNum,type:class java.lang.String,value:详细图号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:17:26,996 DEBUG  - field name:weight,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.weight
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:17:26,996 DEBUG  - name:weight,type:class java.lang.String,value:重量
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:17:26,996 DEBUG  - field name:pageSize,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.pageSize
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:17:26,996 DEBUG  - name:pageSize,type:class java.lang.String,value:共页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:17:26,996 DEBUG  - field name:indexPage,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.indexPage
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:17:26,998 DEBUG  - name:indexPage,type:class java.lang.String,value:第页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:17:26,998 DEBUG  - field name:proportion,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.proportion
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:17:26,998 DEBUG  - name:proportion,type:class java.lang.String,value:比例
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:17:26,998 DEBUG  - field name:size,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.size
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:17:26,998 DEBUG  - name:size,type:class java.lang.String,value:图幅
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:17:26,999 DEBUG  - field name:detail,actual field:private java.util.ArrayList com.bplead.cad.io.bean.CAD.detail
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:17:27,000 DEBUG  - field name:order,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.order
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:17:27,001 DEBUG  - name:order,type:class java.lang.String,value:1
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:17:27,001 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:number
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:96) 2018-07-17 23:17:27,001 DEBUG  - Loop superClass:class com.bplead.cad.io.bean.CAD field...
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:17:27,001 DEBUG  - field name:number,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.number
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:17:27,001 DEBUG  - name:number,type:class java.lang.String,value:图号代号1
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:17:27,001 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:name
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:96) 2018-07-17 23:17:27,002 DEBUG  - Loop superClass:class com.bplead.cad.io.bean.CAD field...
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:17:27,002 DEBUG  - field name:name,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.name
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:17:27,002 DEBUG  - name:name,type:class java.lang.String,value:名称1
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:17:27,002 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:jdeNum
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:96) 2018-07-17 23:17:27,002 DEBUG  - Loop superClass:class com.bplead.cad.io.bean.CAD field...
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:17:27,002 DEBUG  - field name:jdeNum,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.jdeNum
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:17:27,003 DEBUG  - name:jdeNum,type:class java.lang.String,value:JDE项目号1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:17:27,003 DEBUG  - field name:quantity,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.quantity
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:17:27,003 DEBUG  - name:quantity,type:class java.lang.String,value:数量1
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:17:27,003 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:material
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:96) 2018-07-17 23:17:27,003 DEBUG  - Loop superClass:class com.bplead.cad.io.bean.CAD field...
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:17:27,004 DEBUG  - field name:material,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.material
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:17:27,004 DEBUG  - name:material,type:class java.lang.String,value:材料1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:17:27,004 DEBUG  - field name:singleWeight,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.singleWeight
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:17:27,004 DEBUG  - name:singleWeight,type:class java.lang.String,value:单重1
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:17:27,004 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:weight
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:96) 2018-07-17 23:17:27,005 DEBUG  - Loop superClass:class com.bplead.cad.io.bean.CAD field...
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:17:27,005 DEBUG  - field name:weight,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.weight
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:17:27,005 DEBUG  - name:weight,type:class java.lang.String,value:总重1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:17:27,005 DEBUG  - field name:description,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.description
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:17:27,005 DEBUG  - name:description,type:class java.lang.String,value:备注1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:17:27,006 DEBUG  - name:detail,type:java.util.ArrayList<com.bplead.cad.io.bean.CADLink>,value:[CADLink [quantity=数量1, description=备注1, singleWeight=单重1, order=1]]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:17:27,006 DEBUG  - field name:detail,actual field:private java.util.ArrayList com.bplead.cad.io.bean.CAD.detail
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:17:27,006 DEBUG  - field name:order,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.order
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:17:27,006 DEBUG  - name:order,type:class java.lang.String,value:2
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:17:27,007 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:number
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:96) 2018-07-17 23:17:27,007 DEBUG  - Loop superClass:class com.bplead.cad.io.bean.CAD field...
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:17:27,007 DEBUG  - field name:number,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.number
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:17:27,007 DEBUG  - name:number,type:class java.lang.String,value:图号代号2
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:17:27,007 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:name
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:96) 2018-07-17 23:17:27,007 DEBUG  - Loop superClass:class com.bplead.cad.io.bean.CAD field...
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:17:27,008 DEBUG  - field name:name,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.name
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:17:27,008 DEBUG  - name:name,type:class java.lang.String,value:名称2
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:17:27,008 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:jdeNum
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:96) 2018-07-17 23:17:27,008 DEBUG  - Loop superClass:class com.bplead.cad.io.bean.CAD field...
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:17:27,008 DEBUG  - field name:jdeNum,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.jdeNum
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:17:27,008 DEBUG  - name:jdeNum,type:class java.lang.String,value:JDE项目号2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:17:27,009 DEBUG  - field name:quantity,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.quantity
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:17:27,009 DEBUG  - name:quantity,type:class java.lang.String,value:数量2
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:17:27,009 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:material
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:96) 2018-07-17 23:17:27,009 DEBUG  - Loop superClass:class com.bplead.cad.io.bean.CAD field...
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:17:27,009 DEBUG  - field name:material,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.material
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:17:27,009 DEBUG  - name:material,type:class java.lang.String,value:材料2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:17:27,009 DEBUG  - field name:singleWeight,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.singleWeight
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:17:27,009 DEBUG  - name:singleWeight,type:class java.lang.String,value:单重2
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:17:27,010 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:weight
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:96) 2018-07-17 23:17:27,010 DEBUG  - Loop superClass:class com.bplead.cad.io.bean.CAD field...
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:17:27,010 DEBUG  - field name:weight,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.weight
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:17:27,010 DEBUG  - name:weight,type:class java.lang.String,value:总重2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:17:27,010 DEBUG  - field name:description,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.description
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:17:27,010 DEBUG  - name:description,type:class java.lang.String,value:备注2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:17:27,010 DEBUG  - name:detail,type:java.util.ArrayList<com.bplead.cad.io.bean.CADLink>,value:[CADLink [quantity=数量1, description=备注1, singleWeight=单重1, order=1], CADLink [quantity=数量2, description=备注2, singleWeight=单重2, order=2]]
+  com.bplead.cad.util.XmlUtils.main(XmlUtils.java:42) 2018-07-17 23:17:27,011 DEBUG  - CAD [detail=[CADLink [quantity=数量1, description=备注1, singleWeight=单重1, order=1], CADLink [quantity=数量2, description=备注2, singleWeight=单重2, order=2]], detailNum=详细图号, indexPage=第页, jdeNum=JDE项目号, material=材料, name=名称, number=图号代号, pageSize=共页, proportion=比例, size=图幅, weight=重量]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:106) 2018-07-17 23:19:07,290 DEBUG  - xml:/Users/Jeason/Documents/Workspace/cad-tool/bin/CAD_IO_SPEC.xml,clatt:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:19:07,356 DEBUG  - field name:number,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.number
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:19:07,357 DEBUG  - name:number,type:class java.lang.String,value:图号代号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:19:07,357 DEBUG  - field name:name,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.name
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:19:07,357 DEBUG  - name:name,type:class java.lang.String,value:名称
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:19:07,359 DEBUG  - field name:jdeNum,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.jdeNum
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:19:07,359 DEBUG  - name:jdeNum,type:class java.lang.String,value:JDE项目号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:19:07,359 DEBUG  - field name:material,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.material
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:19:07,359 DEBUG  - name:material,type:class java.lang.String,value:材料
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:19:07,360 DEBUG  - field name:detailNum,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.detailNum
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:19:07,360 DEBUG  - name:detailNum,type:class java.lang.String,value:详细图号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:19:07,360 DEBUG  - field name:weight,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.weight
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:19:07,360 DEBUG  - name:weight,type:class java.lang.String,value:重量
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:19:07,360 DEBUG  - field name:pageSize,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.pageSize
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:19:07,360 DEBUG  - name:pageSize,type:class java.lang.String,value:共页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:19:07,360 DEBUG  - field name:indexPage,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.indexPage
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:19:07,362 DEBUG  - name:indexPage,type:class java.lang.String,value:第页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:19:07,362 DEBUG  - field name:proportion,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.proportion
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:19:07,362 DEBUG  - name:proportion,type:class java.lang.String,value:比例
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:19:07,362 DEBUG  - field name:size,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.size
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:19:07,362 DEBUG  - name:size,type:class java.lang.String,value:图幅
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:19:07,363 DEBUG  - field name:detail,actual field:private java.util.ArrayList com.bplead.cad.io.bean.CAD.detail
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:19:07,364 DEBUG  - field name:order,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.order
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:19:07,364 DEBUG  - name:order,type:class java.lang.String,value:1
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:19:07,364 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:number
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:96) 2018-07-17 23:19:07,364 DEBUG  - Loop superClass:class com.bplead.cad.io.bean.CAD field...
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:19:07,364 DEBUG  - field name:number,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.number
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:19:07,364 DEBUG  - name:number,type:class java.lang.String,value:图号代号1
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:19:07,365 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:name
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:96) 2018-07-17 23:19:07,365 DEBUG  - Loop superClass:class com.bplead.cad.io.bean.CAD field...
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:19:07,365 DEBUG  - field name:name,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.name
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:19:07,365 DEBUG  - name:name,type:class java.lang.String,value:名称1
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:19:07,365 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:jdeNum
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:96) 2018-07-17 23:19:07,365 DEBUG  - Loop superClass:class com.bplead.cad.io.bean.CAD field...
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:19:07,366 DEBUG  - field name:jdeNum,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.jdeNum
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:19:07,366 DEBUG  - name:jdeNum,type:class java.lang.String,value:JDE项目号1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:19:07,366 DEBUG  - field name:quantity,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.quantity
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:19:07,366 DEBUG  - name:quantity,type:class java.lang.String,value:数量1
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:19:07,366 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:material
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:96) 2018-07-17 23:19:07,366 DEBUG  - Loop superClass:class com.bplead.cad.io.bean.CAD field...
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:19:07,367 DEBUG  - field name:material,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.material
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:19:07,367 DEBUG  - name:material,type:class java.lang.String,value:材料1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:19:07,367 DEBUG  - field name:singleWeight,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.singleWeight
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:19:07,367 DEBUG  - name:singleWeight,type:class java.lang.String,value:单重1
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:19:07,367 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:weight
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:96) 2018-07-17 23:19:07,368 DEBUG  - Loop superClass:class com.bplead.cad.io.bean.CAD field...
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:19:07,368 DEBUG  - field name:weight,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.weight
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:19:07,368 DEBUG  - name:weight,type:class java.lang.String,value:总重1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:19:07,368 DEBUG  - field name:description,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.description
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:19:07,368 DEBUG  - name:description,type:class java.lang.String,value:备注1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:19:07,368 DEBUG  - name:detail,type:java.util.ArrayList<com.bplead.cad.io.bean.CADLink>,value:[CADLink [quantity=数量1, description=备注1, singleWeight=单重1, order=1]]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:19:07,369 DEBUG  - field name:detail,actual field:private java.util.ArrayList com.bplead.cad.io.bean.CAD.detail
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:19:07,369 DEBUG  - field name:order,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.order
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:19:07,369 DEBUG  - name:order,type:class java.lang.String,value:2
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:19:07,369 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:number
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:96) 2018-07-17 23:19:07,369 DEBUG  - Loop superClass:class com.bplead.cad.io.bean.CAD field...
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:19:07,369 DEBUG  - field name:number,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.number
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:19:07,370 DEBUG  - name:number,type:class java.lang.String,value:图号代号2
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:19:07,370 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:name
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:96) 2018-07-17 23:19:07,370 DEBUG  - Loop superClass:class com.bplead.cad.io.bean.CAD field...
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:19:07,370 DEBUG  - field name:name,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.name
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:19:07,370 DEBUG  - name:name,type:class java.lang.String,value:名称2
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:19:07,371 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:jdeNum
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:96) 2018-07-17 23:19:07,371 DEBUG  - Loop superClass:class com.bplead.cad.io.bean.CAD field...
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:19:07,371 DEBUG  - field name:jdeNum,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.jdeNum
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:19:07,371 DEBUG  - name:jdeNum,type:class java.lang.String,value:JDE项目号2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:19:07,371 DEBUG  - field name:quantity,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.quantity
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:19:07,371 DEBUG  - name:quantity,type:class java.lang.String,value:数量2
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:19:07,371 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:material
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:96) 2018-07-17 23:19:07,372 DEBUG  - Loop superClass:class com.bplead.cad.io.bean.CAD field...
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:19:07,372 DEBUG  - field name:material,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.material
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:19:07,372 DEBUG  - name:material,type:class java.lang.String,value:材料2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:19:07,372 DEBUG  - field name:singleWeight,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.singleWeight
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:19:07,372 DEBUG  - name:singleWeight,type:class java.lang.String,value:单重2
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:19:07,373 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:weight
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:96) 2018-07-17 23:19:07,373 DEBUG  - Loop superClass:class com.bplead.cad.io.bean.CAD field...
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:19:07,373 DEBUG  - field name:weight,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.weight
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:19:07,373 DEBUG  - name:weight,type:class java.lang.String,value:总重2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:19:07,373 DEBUG  - field name:description,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.description
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:19:07,373 DEBUG  - name:description,type:class java.lang.String,value:备注2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:19:07,373 DEBUG  - name:detail,type:java.util.ArrayList<com.bplead.cad.io.bean.CADLink>,value:[CADLink [quantity=数量1, description=备注1, singleWeight=单重1, order=1], CADLink [quantity=数量2, description=备注2, singleWeight=单重2, order=2]]
+  com.bplead.cad.util.XmlUtils.main(XmlUtils.java:42) 2018-07-17 23:19:07,374 DEBUG  - 图号代号1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:106) 2018-07-17 23:21:15,803 DEBUG  - xml:/Users/Jeason/Documents/Workspace/cad-tool/bin/CAD_IO_SPEC.xml,clatt:class com.bplead.cad.io.bean.CAD
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:21:15,864 DEBUG  - field name:number,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.number
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:21:15,864 DEBUG  - name:number,type:class java.lang.String,value:图号代号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:21:15,864 DEBUG  - field name:name,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.name
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:21:15,864 DEBUG  - name:name,type:class java.lang.String,value:名称
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:21:15,866 DEBUG  - field name:jdeNum,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.jdeNum
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:21:15,867 DEBUG  - name:jdeNum,type:class java.lang.String,value:JDE项目号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:21:15,867 DEBUG  - field name:material,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.material
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:21:15,867 DEBUG  - name:material,type:class java.lang.String,value:材料
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:21:15,867 DEBUG  - field name:detailNum,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.detailNum
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:21:15,867 DEBUG  - name:detailNum,type:class java.lang.String,value:详细图号
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:21:15,867 DEBUG  - field name:weight,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.weight
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:21:15,867 DEBUG  - name:weight,type:class java.lang.String,value:重量
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:21:15,868 DEBUG  - field name:pageSize,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.pageSize
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:21:15,868 DEBUG  - name:pageSize,type:class java.lang.String,value:共页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:21:15,868 DEBUG  - field name:indexPage,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.indexPage
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:21:15,869 DEBUG  - name:indexPage,type:class java.lang.String,value:第页
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:21:15,869 DEBUG  - field name:proportion,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.proportion
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:21:15,870 DEBUG  - name:proportion,type:class java.lang.String,value:比例
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:21:15,870 DEBUG  - field name:size,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.size
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:21:15,870 DEBUG  - name:size,type:class java.lang.String,value:图幅
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:21:15,870 DEBUG  - field name:detail,actual field:private java.util.ArrayList com.bplead.cad.io.bean.CAD.detail
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:21:15,871 DEBUG  - field name:order,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.order
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:21:15,871 DEBUG  - name:order,type:class java.lang.String,value:1
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:21:15,872 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:number
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:96) 2018-07-17 23:21:15,872 DEBUG  - Loop superClass:class com.bplead.cad.io.bean.CAD field...
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:21:15,872 DEBUG  - field name:number,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.number
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:21:15,872 DEBUG  - name:number,type:class java.lang.String,value:图号代号1
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:21:15,872 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:name
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:96) 2018-07-17 23:21:15,872 DEBUG  - Loop superClass:class com.bplead.cad.io.bean.CAD field...
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:21:15,872 DEBUG  - field name:name,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.name
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:21:15,873 DEBUG  - name:name,type:class java.lang.String,value:名称1
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:21:15,873 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:jdeNum
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:96) 2018-07-17 23:21:15,873 DEBUG  - Loop superClass:class com.bplead.cad.io.bean.CAD field...
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:21:15,873 DEBUG  - field name:jdeNum,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.jdeNum
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:21:15,873 DEBUG  - name:jdeNum,type:class java.lang.String,value:JDE项目号1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:21:15,873 DEBUG  - field name:quantity,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.quantity
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:21:15,874 DEBUG  - name:quantity,type:class java.lang.String,value:数量1
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:21:15,874 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:material
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:96) 2018-07-17 23:21:15,874 DEBUG  - Loop superClass:class com.bplead.cad.io.bean.CAD field...
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:21:15,874 DEBUG  - field name:material,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.material
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:21:15,874 DEBUG  - name:material,type:class java.lang.String,value:材料1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:21:15,874 DEBUG  - field name:singleWeight,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.singleWeight
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:21:15,875 DEBUG  - name:singleWeight,type:class java.lang.String,value:单重1
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:21:15,875 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:weight
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:96) 2018-07-17 23:21:15,875 DEBUG  - Loop superClass:class com.bplead.cad.io.bean.CAD field...
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:21:15,875 DEBUG  - field name:weight,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.weight
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:21:15,875 DEBUG  - name:weight,type:class java.lang.String,value:总重1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:21:15,876 DEBUG  - field name:description,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.description
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:21:15,876 DEBUG  - name:description,type:class java.lang.String,value:备注1
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:21:15,876 DEBUG  - name:detail,type:java.util.ArrayList<com.bplead.cad.io.bean.CADLink>,value:[CADLink [quantity=数量1, number=图号代号1, name=名称1, weight=总重1, jdeNum=JDE项目号1, description=备注1, singleWeight=单重1, order=1]]
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:21:15,876 DEBUG  - field name:detail,actual field:private java.util.ArrayList com.bplead.cad.io.bean.CAD.detail
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:21:15,876 DEBUG  - field name:order,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.order
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:21:15,877 DEBUG  - name:order,type:class java.lang.String,value:2
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:21:15,877 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:number
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:96) 2018-07-17 23:21:15,877 DEBUG  - Loop superClass:class com.bplead.cad.io.bean.CAD field...
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:21:15,877 DEBUG  - field name:number,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.number
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:21:15,877 DEBUG  - name:number,type:class java.lang.String,value:图号代号2
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:21:15,877 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:name
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:96) 2018-07-17 23:21:15,878 DEBUG  - Loop superClass:class com.bplead.cad.io.bean.CAD field...
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:21:15,878 DEBUG  - field name:name,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.name
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:21:15,878 DEBUG  - name:name,type:class java.lang.String,value:名称2
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:21:15,878 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:jdeNum
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:96) 2018-07-17 23:21:15,878 DEBUG  - Loop superClass:class com.bplead.cad.io.bean.CAD field...
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:21:15,878 DEBUG  - field name:jdeNum,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.jdeNum
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:21:15,879 DEBUG  - name:jdeNum,type:class java.lang.String,value:JDE项目号2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:21:15,879 DEBUG  - field name:quantity,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.quantity
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:21:15,879 DEBUG  - name:quantity,type:class java.lang.String,value:数量2
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:21:15,879 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:material
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:96) 2018-07-17 23:21:15,879 DEBUG  - Loop superClass:class com.bplead.cad.io.bean.CAD field...
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:21:15,879 DEBUG  - field name:material,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.material
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:21:15,879 DEBUG  - name:material,type:class java.lang.String,value:材料2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:21:15,880 DEBUG  - field name:singleWeight,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.singleWeight
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:21:15,880 DEBUG  - name:singleWeight,type:class java.lang.String,value:单重2
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:88) 2018-07-17 23:21:15,880 WARN   - Class:class com.bplead.cad.io.bean.CADLink found no field named:weight
+  com.bplead.cad.util.XmlUtils.findField(XmlUtils.java:96) 2018-07-17 23:21:15,880 DEBUG  - Loop superClass:class com.bplead.cad.io.bean.CAD field...
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:21:15,880 DEBUG  - field name:weight,actual field:private java.lang.String com.bplead.cad.io.bean.CAD.weight
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:21:15,880 DEBUG  - name:weight,type:class java.lang.String,value:总重2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:55) 2018-07-17 23:21:15,880 DEBUG  - field name:description,actual field:private java.lang.String com.bplead.cad.io.bean.CADLink.description
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:21:15,880 DEBUG  - name:description,type:class java.lang.String,value:备注2
+  com.bplead.cad.util.XmlUtils.parse(XmlUtils.java:71) 2018-07-17 23:21:15,881 DEBUG  - name:detail,type:java.util.ArrayList<com.bplead.cad.io.bean.CADLink>,value:[CADLink [quantity=数量1, number=图号代号1, name=名称1, weight=总重1, jdeNum=JDE项目号1, description=备注1, singleWeight=单重1, order=1], CADLink [quantity=数量2, number=图号代号2, name=名称2, weight=总重2, jdeNum=JDE项目号2, description=备注2, singleWeight=单重2, order=2]]
+  com.bplead.cad.util.XmlUtils.main(XmlUtils.java:42) 2018-07-17 23:21:15,881 DEBUG  - CAD [detail=[CADLink [quantity=数量1, number=图号代号1, name=名称1, weight=总重1, jdeNum=JDE项目号1, description=备注1, singleWeight=单重1, order=1], CADLink [quantity=数量2, number=图号代号2, name=名称2, weight=总重2, jdeNum=JDE项目号2, description=备注2, singleWeight=单重2, order=2]], detailNum=详细图号, indexPage=第页, jdeNum=JDE项目号, material=材料, name=名称, number=图号代号, pageSize=共页, proportion=比例, size=图幅, weight=重量]
+  

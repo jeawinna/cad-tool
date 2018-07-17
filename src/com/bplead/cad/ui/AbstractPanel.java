@@ -19,8 +19,8 @@ import com.bplead.cad.util.Assert;
 
 public abstract class AbstractPanel extends JPanel implements SelfAdaptionPanel, ResourceMapContainer {
 
-	private static final long serialVersionUID = 1508737322646907563L;
 	private static final Logger logger = Logger.getLogger(AbstractPanel.class);
+	private static final long serialVersionUID = 1508737322646907563L;
 	private LayoutManager layout = new FlowLayout(FlowLayout.CENTER);
 	protected Container parent;
 	protected String PREFIX;
@@ -62,6 +62,8 @@ public abstract class AbstractPanel extends JPanel implements SelfAdaptionPanel,
 		initialize();
 	}
 
+	protected abstract void initialize();
+
 	protected ResourceMap initWindowResourceMap(Container container) {
 		if (container instanceof Window) {
 			Window window = (Window) container;
@@ -70,8 +72,6 @@ public abstract class AbstractPanel extends JPanel implements SelfAdaptionPanel,
 		}
 		return initWindowResourceMap(container.getParent());
 	}
-
-	protected abstract void initialize();
 
 	public void setParent(Container parent) {
 		this.parent = parent;

@@ -7,6 +7,8 @@ import java.util.List;
 import javax.swing.GroupLayout;
 import javax.swing.JComponent;
 
+import com.bplead.cad.util.Assert;
+
 public class DefaultGroupLayout extends GroupLayout {
 
 	private List<JComponent> components = new ArrayList<JComponent>();
@@ -21,7 +23,12 @@ public class DefaultGroupLayout extends GroupLayout {
 	}
 
 	public DefaultGroupLayout addComponent(JComponent component) {
-		components.add(component);
+		this.components.add(component);
+		return this;
+	}
+
+	public DefaultGroupLayout addComponent(List<? extends JComponent> components) {
+		this.components.addAll(components);
 		return this;
 	}
 
@@ -35,17 +42,25 @@ public class DefaultGroupLayout extends GroupLayout {
 		hsGroup.addGap(hGap);
 		vsGroup.addGap(vGap);
 		ParallelGroup hpGroup = createParallelGroup();
-		for (int i = 0; i < components.size(); i++) {
+		for (JComponent component : components) {
 			// auto layout horizontal
-			hpGroup.addComponent(components.get(i));
+			hpGroup.addComponent(component);
 
 			// auto layout vertical
-			vsGroup.addGroup(createParallelGroup().addComponent(components.get(i)));
+			vsGroup.addGroup(createParallelGroup().addComponent(component));
 			vsGroup.addGap(vGap);
 		}
 		hsGroup.addGroup(hpGroup);
 		hsGroup.addGap(hGap);
 		setHorizontalGroup(hsGroup);
 		setVerticalGroup(vsGroup);
+	}
+
+	public void layout(int perRow) {
+		Assert.isTrue(perRow > 0, "Per line must greater than 0");
+		if (components == null || components.isEmpty()) {
+			return;
+		}
+		// TODO
 	}
 }

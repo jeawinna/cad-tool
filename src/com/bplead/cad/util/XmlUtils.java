@@ -59,7 +59,7 @@ public class XmlUtils {
 	}
 
 	public static void main(String[] args) {
-		File xml = new File(XmlUtils.class.getResource("/CAD_IO_SPEC.xml").getPath());
+		File xml = new File(XmlUtils.class.getResource(PropertiesUtils.readProperty("cad.xml.repository")).getPath());
 		logger.debug(XmlUtils.parse(xml, CAD.class));
 	}
 
@@ -69,6 +69,7 @@ public class XmlUtils {
 			return null;
 		}
 
+		// ~ reflect to convert *.xml file to JavaBean
 		List<Element> elements = (List<Element>) element.elements();
 		for (Element subElement : elements) {
 			try {

@@ -9,13 +9,17 @@ import com.bplead.cad.util.PropertiesUtils;
 
 public class ResourceBundle {
 
-	private Logger logger = Logger.getLogger(ResourceBundle.class);
-
-	private final String RESOURCE = "instance.resource";
-
-	private Properties properties = new Properties();
-
 	private Class<?> clazz;
+	private Logger logger = Logger.getLogger(ResourceBundle.class);
+	private Properties properties = new Properties();
+	private String repository;
+	private final String RESOURCE = "instance.resource";
+	private String standard;
+	private final String STANDARD_RESOURCE = "standard.resource";
+	{
+		repository = PropertiesUtils.readProperty(RESOURCE);
+		standard = PropertiesUtils.readProperty(STANDARD_RESOURCE);
+	}
 
 	public ResourceBundle(Class<?> clazz) {
 		this.clazz = clazz;
@@ -24,9 +28,9 @@ public class ResourceBundle {
 
 	private void initResource() {
 		try {
-			String resource = PropertiesUtils.readProperty(RESOURCE) + clazz.getSimpleName() + ".properties";
+			String resource = repository + (clazz == null ? standard : (clazz.getSimpleName() + ".properties"));
 			logger.debug("resource:" + resource);
-			properties.load(PropertiesUtils.class.getClassLoader().getResourceAsStream(resource));
+			properties.load(ResourceBundle.class.getClassLoader().getResourceAsStream(resource));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

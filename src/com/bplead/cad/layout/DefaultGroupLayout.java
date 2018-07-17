@@ -9,9 +9,9 @@ import javax.swing.JComponent;
 
 public class DefaultGroupLayout extends GroupLayout {
 
+	private List<JComponent> components = new ArrayList<JComponent>();
 	private int hGap;
-	private int vGap;
-	private List<JComponent> components = new ArrayList<JComponent>();;
+	private int vGap;;
 
 	public DefaultGroupLayout(Container container, int hGap, int vGap) {
 		super(container);

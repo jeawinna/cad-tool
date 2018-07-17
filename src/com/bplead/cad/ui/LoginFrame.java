@@ -27,8 +27,8 @@ public class LoginFrame extends AbstractFrame {
 		logger.info("ready...");
 	}
 
-	private final String HOST_URL = "host.url";
 	private final String HOST_EDITABLE = "host.editable";
+	private final String HOST_URL = "host.url";
 
 	public LoginFrame() {
 		super(LoginFrame.class);
@@ -47,16 +47,10 @@ public class LoginFrame extends AbstractFrame {
 	@Override
 	public void initialize() {
 		logger.info("initialize server content...");
-		// initialize server content
 		add(new ServerPanel(this), BorderLayout.CENTER);
 
 		logger.info("initialize option content...");
-		// initialize option content
 		add(new OptionPanel(this), BorderLayout.SOUTH);
-
-		// validate the whole frame
-		logger.info("initialize validate...");
-		validate();
 
 		logger.info("initialize completed...");
 	}
@@ -64,8 +58,8 @@ public class LoginFrame extends AbstractFrame {
 	class OptionPanel extends AbstractPanel {
 
 		private static final long serialVersionUID = 2106959274498664555L;
-		private final String LOGIN_BUTTON_DISPLAY = "login";
 		private final String CANCEL_BUTTON_DISPLAY = "cancel";
+		private final String LOGIN_BUTTON_DISPLAY = "login";
 
 		public OptionPanel(Container parent) {
 			super(parent);
@@ -95,33 +89,23 @@ public class LoginFrame extends AbstractFrame {
 	class ServerPanel extends AbstractPanel {
 
 		private static final long serialVersionUID = -5325225997433722990L;
-		private final String TITLE = "title";
-		private final String HOST_LABEL_DISPLAY = "host";
-		private final String USER_LABEL_DISPLAY = "user";
-		private final String PWD_LABEL_DISPLAY = "password";
-		private final String REMINDER_LABEL_DISPLAY = "reminder";
-		private final String REMEBERME_DISPLAY = "remeberme";
-		private final double LABEL_PROPORTION = 0.1d;
-		private final double TEXT_PROPORTION = 0.8d;
-		private final double HEIGHT_PROPORTION = 0.1d;
-		private final double HGAP_PROPORTION = 0.02d;
-		private final double VGAP_PROPORTION = 0.05d;
-		private int hGap;
-		private int vGap;
 		private PromptTextField.PromptTextFieldDimension dimension;
+		private final double HEIGHT_PROPORTION = 0.1d;
+		private int hGap;
+		private final double HGAP_PROPORTION = 0.02d;
+		private final String HOST_LABEL_DISPLAY = "host";
+		private final double LABEL_PROPORTION = 0.1d;
+		private final String PWD_LABEL_DISPLAY = "password";
+		private final String REMEBERME_DISPLAY = "remeberme";
+		private final String REMINDER_LABEL_DISPLAY = "reminder";
+		private final double TEXT_PROPORTION = 0.8d;
+		private final String TITLE = "title";
+		private final String USER_LABEL_DISPLAY = "user";
+		private int vGap;
+		private final double VGAP_PROPORTION = 0.05d;
 
 		public ServerPanel(Container parent) {
 			super(parent);
-		}
-
-		@Override
-		public double getHorizontalProportion() {
-			return 0.9d;
-		}
-
-		@Override
-		public double getVerticalProportion() {
-			return 0.7d;
 		}
 
 		private String getCachePwd() {
@@ -132,16 +116,18 @@ public class LoginFrame extends AbstractFrame {
 			return "20095000";
 		}
 
+		@Override
+		public double getHorizontalProportion() {
+			return 0.9d;
+		}
+
 		private String getHost() {
 			return PropertiesUtils.readProperty(HOST_URL);
 		}
 
-		private boolean isHostEditable() {
-			return Boolean.parseBoolean(PropertiesUtils.readProperty(HOST_EDITABLE));
-		}
-
-		private boolean isRemeberme() {
-			return true;
+		@Override
+		public double getVerticalProportion() {
+			return 0.7d;
 		}
 
 		@Override
@@ -180,6 +166,14 @@ public class LoginFrame extends AbstractFrame {
 			DefaultGroupLayout layout = new DefaultGroupLayout(this, hGap, vGap);
 			layout.addComponent(reminder).addComponent(host).addComponent(user).addComponent(pwd)
 					.addComponent(remeberme).layout();
+		}
+
+		private boolean isHostEditable() {
+			return Boolean.parseBoolean(PropertiesUtils.readProperty(HOST_EDITABLE));
+		}
+
+		private boolean isRemeberme() {
+			return true;
 		}
 	}
 }

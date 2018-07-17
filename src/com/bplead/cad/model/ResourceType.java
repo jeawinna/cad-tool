@@ -2,7 +2,7 @@ package com.bplead.cad.model;
 
 public enum ResourceType {
 
-	TITLE("title"), TEXT("text"), SHORTDESCRIPTION("shortDescription");
+	SHORTDESCRIPTION("shortDescription"), TEXT("text"), TITLE("title");
 
 	String type;
 

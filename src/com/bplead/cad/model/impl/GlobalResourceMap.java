@@ -14,6 +14,10 @@ public class GlobalResourceMap extends ResourceMap {
 
 	private static final Logger logger = Logger.getLogger(GlobalResourceMap.class);
 
+	public GlobalResourceMap() {
+
+	}
+
 	public GlobalResourceMap(Class<? extends Window> clazz) {
 		super(clazz);
 	}
@@ -23,7 +27,7 @@ public class GlobalResourceMap extends ResourceMap {
 		String icon = getResource(name);
 		logger.debug("name:" + name + ",icon:" + icon);
 		Assert.hasText(icon, "can not find name[" + name + "] configuration");
-		return new ImageIcon(icon);
+		return new ImageIcon(getClass().getResource(icon));
 	}
 
 	@Override

@@ -3,7 +3,7 @@ package com.bplead.cad.jni;
 public class CaxaIntegrationIfc {
 
 	public CaxaIntegrationIfc() {
-		
+
 	}
 
 	public native int connect();

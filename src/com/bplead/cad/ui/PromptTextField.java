@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 
 import org.apache.log4j.Logger;
 
+import com.bplead.cad.model.MiddleAlignGap;
 import com.bplead.cad.util.Assert;
 
 public class PromptTextField extends JComponent {
@@ -19,10 +20,11 @@ public class PromptTextField extends JComponent {
 	private static final Logger logger = Logger.getLogger(PromptTextField.class);
 
 	private static final long serialVersionUID = -6696586333097590589L;
+	private PromptTextFieldDimension dimension;
+	private MiddleAlignGap gap = new MiddleAlignGap(5, 5);
+	private LayoutManager layout = new FlowLayout(FlowLayout.LEFT, gap.hGap, gap.vGap);
 	private JLabel prompt;
 	private JTextField text;
-	private PromptTextFieldDimension dimension;
-	private LayoutManager layout = new FlowLayout(FlowLayout.LEFT);
 
 	public PromptTextField() {
 
@@ -67,6 +69,28 @@ public class PromptTextField extends JComponent {
 		return text;
 	}
 
+	private void initialize() {
+		setLayout(layout);
+
+		if (dimension != null) {
+			logger.debug("promptWidth:" + dimension.promptWidth + ",textWidth:" + dimension.textWidth + ",height:"
+					+ dimension.height);
+			prompt.setPreferredSize(new Dimension(dimension.promptWidth, dimension.height));
+			text.setPreferredSize(new Dimension(dimension.textWidth, dimension.height));
+			setPreferredSize(new Dimension(dimension.promptWidth + dimension.textWidth + gap.hGap * 3,
+					dimension.height + gap.vGap * 2));
+		}
+
+		if (logger.isDebugEnabled()) {
+			prompt.setBorder(BorderFactory.createLineBorder(Color.RED));
+			text.setBorder(BorderFactory.createLineBorder(Color.RED));
+			setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		}
+
+		add(prompt);
+		add(text);
+	}
+
 	public boolean isEditable() {
 		return text.isEditable();
 	}
@@ -79,6 +103,10 @@ public class PromptTextField extends JComponent {
 		text.setEditable(editable);
 	}
 
+	public void setGap(MiddleAlignGap gap) {
+		this.gap = gap;
+	}
+
 	public void setPrompt(JLabel prompt) {
 		this.prompt = prompt;
 	}
@@ -87,30 +115,10 @@ public class PromptTextField extends JComponent {
 		this.text = text;
 	}
 
-	private void initialize() {
-		setLayout(layout);
-
-		if (dimension != null) {
-			logger.debug("promptWidth:" + dimension.promptWidth + ",textWidth:" + dimension.textWidth + ",height:"
-					+ dimension.height);
-			prompt.setPreferredSize(new Dimension(dimension.promptWidth, dimension.height));
-			text.setPreferredSize(new Dimension(dimension.textWidth, dimension.height));
-			setPreferredSize(new Dimension(dimension.promptWidth + dimension.textWidth, dimension.height));
-		}
-
-		if (logger.isDebugEnabled()) {
-			prompt.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-			text.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		}
-
-		add(prompt);
-		add(text);
-	}
-
 	class PromptTextFieldDimension {
+		public int height;
 		public int promptWidth;
 		public int textWidth;
-		public int height;
 
 		public PromptTextFieldDimension(Dimension parentSize, double promptWidthProportion, double textWidthProportion,
 				double heightProportion) {

@@ -11,11 +11,15 @@ import com.bplead.cad.util.Assert;
 
 public abstract class ResourceMap {
 
-	private static final Logger logger = Logger.getLogger(ResourceMap.class);
 	public static final String ICON = ".icon";
+	private static final Logger logger = Logger.getLogger(ResourceMap.class);
 	public static final String RESOURCE = "resource.";
 
 	private Class<? extends Window> clazz;
+
+	public ResourceMap() {
+
+	}
 
 	public ResourceMap(Class<? extends Window> clazz) {
 		Assert.notNull(clazz, "Class extends java.awt.Window required");

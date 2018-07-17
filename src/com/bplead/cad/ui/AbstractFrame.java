@@ -10,20 +10,21 @@ import javax.swing.JFrame;
 import org.apache.log4j.Logger;
 
 import com.bplead.cad.model.ResourceMap;
+import com.bplead.cad.model.ResourceMapContainer;
 import com.bplead.cad.model.SelfAdaptionComponent;
 import com.bplead.cad.model.StyleToolkit;
 import com.bplead.cad.model.impl.DefaultStyleToolkit;
 import com.bplead.cad.model.impl.GlobalResourceMap;
 import com.bplead.cad.util.StringUtils;
 
-public abstract class AbstractFrame extends JFrame implements SelfAdaptionComponent {
+public abstract class AbstractFrame extends JFrame implements SelfAdaptionComponent, ResourceMapContainer {
 
-	private static final long serialVersionUID = 8333297262635054463L;
 	private static final Logger logger = Logger.getLogger(AbstractFrame.class);
-	protected ResourceMap resourceMap;
-	protected StyleToolkit toolkit = new DefaultStyleToolkit();
+	private static final long serialVersionUID = 8333297262635054463L;
 	private LayoutManager layout = new FlowLayout(FlowLayout.CENTER);
+	protected ResourceMap resourceMap;
 	private String TITLE = "title";
+	protected StyleToolkit toolkit = new DefaultStyleToolkit();
 
 	public <T extends Window> AbstractFrame(Class<T> clazz) {
 		resourceMap = new GlobalResourceMap(clazz);
@@ -37,6 +38,7 @@ public abstract class AbstractFrame extends JFrame implements SelfAdaptionCompon
 		doSelfAdaption(rec, this);
 	}
 
+	@Override
 	public ResourceMap getResourceMap() {
 		return resourceMap;
 	}
@@ -45,18 +47,20 @@ public abstract class AbstractFrame extends JFrame implements SelfAdaptionCompon
 
 	public void newInstance(String title) {
 		logger.info("initialize frame...");
-		// initialize frame
+		// ~ initialize frame
 		setVisible(true);
 		setTitle(StringUtils.isEmpty(title) ? getResourceMap().getString(TITLE) : title);
 		setLayout(layout);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		logger.info("do frame self adpaption...");
-		// do frame self adaption
 		doSelfAdaption();
 
-		// initialize custom content
+		logger.info("initialize custom content...");
 		initialize();
+
+		logger.info("validate the whole frame...");
+		validate();
 	}
 
 	public void setResourceMap(ResourceMap resourceMap) {

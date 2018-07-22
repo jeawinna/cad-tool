@@ -55,7 +55,7 @@ public class OptionPanel extends AbstractPanel {
 	protected void initialize() {
 		setLayout(layout);
 
-		logger.info("add options");
+		logger.info("add options...");
 		// ~ add options
 		for (Option option : options) {
 			add(option);

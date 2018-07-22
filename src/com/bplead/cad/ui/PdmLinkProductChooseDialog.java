@@ -35,11 +35,11 @@ public class PdmLinkProductChooseDialog extends AbstractDialog implements Action
 
 	@Override
 	protected void initialize() {
-		logger.info("initialize preferences content...");
+		logger.info("initialize pdm content...");
 		add(PdmLinkProductsPanel.newInstance(this));
 
 		logger.info("initialize option content...");
-		Option confirm = Option.newInstance(Option.CONFIRM_BUTTON_DISPLAY, null, this);
+		Option confirm = Option.newInstance(Option.CONFIRM_BUTTON, null, this);
 		add(OptionPanel.newInstance(this, Arrays.asList(confirm, Option.newCancelOption(this))));
 
 		logger.info("initialize completed...");

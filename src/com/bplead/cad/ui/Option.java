@@ -15,7 +15,8 @@ import com.bplead.cad.util.StringUtils;
 
 public class Option extends JButton implements ResourceMapper {
 
-	public static final String CONFIRM_BUTTON_DISPLAY = "confirm";
+	public static final String CONFIRM_BUTTON = "confirm";
+	public static final String BROWSE_BUTTON = "browse";
 	private static final String PREFIX = Option.class.getSimpleName().toLowerCase();
 	protected static ResourceMap resourceMap = new ComponentResourceMap(PREFIX, Option.class);
 	private static final long serialVersionUID = -7593230479709858017L;
@@ -29,6 +30,8 @@ public class Option extends JButton implements ResourceMapper {
 	}
 
 	public static Option newInstance(String name, String icon, ActionListener action) {
+		Assert.isTrue(StringUtils.isEmpty(name) || StringUtils.isEmpty(icon),
+				"Option name or icon must not be all null");
 		return newInstance(name, icon, action, null);
 	}
 

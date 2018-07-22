@@ -43,7 +43,7 @@ public class PreferencesDialog extends AbstractDialog {
 		add(PreferencesPanel.newInstance(this));
 
 		logger.info("initialize option content...");
-		Option confirm = Option.newInstance(Option.CONFIRM_BUTTON_DISPLAY, null, new ConfirmActionListener());
+		Option confirm = Option.newInstance(Option.CONFIRM_BUTTON, null, new ConfirmActionListener());
 		add(OptionPanel.newInstance(this, Arrays.asList(confirm, Option.newCancelOption(this))));
 
 		logger.info("initialize completed...");

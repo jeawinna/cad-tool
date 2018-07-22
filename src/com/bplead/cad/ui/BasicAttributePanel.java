@@ -39,8 +39,8 @@ public class BasicAttributePanel extends AbstractPanel {
 		// ~ reflect String type fields and convert to PromptTextField type
 		List<PromptTextField> texts = new ArrayList<PromptTextField>();
 		String value = "";
-		PromptTextFieldDimension dimension = new PromptTextField().new PromptTextFieldDimension(getPreferredSize(),
-				LABEL_PROPORTION, TEXT_PROPORTION, HEIGHT_PROPORTION);
+		PromptTextFieldDimension dimension = PromptTextField.newDimension(getPreferredSize(), LABEL_PROPORTION,
+				TEXT_PROPORTION, HEIGHT_PROPORTION);
 		Field[] fields = CAD.class.getDeclaredFields();
 		for (Field field : fields) {
 			field.setAccessible(true);
@@ -56,7 +56,8 @@ public class BasicAttributePanel extends AbstractPanel {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			PromptTextField text = new PromptTextField(getResourceMap().getString(field.getName()), value, dimension);
+			PromptTextField text = PromptTextField.newInstance(getResourceMap().getString(field.getName()), value,
+					dimension);
 			texts.add(text);
 		}
 		return texts;

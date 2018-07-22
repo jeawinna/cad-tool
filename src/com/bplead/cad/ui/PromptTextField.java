@@ -9,6 +9,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import org.apache.log4j.Logger;
 
@@ -20,37 +21,45 @@ public class PromptTextField extends JComponent {
 	private static final Logger logger = Logger.getLogger(PromptTextField.class);
 
 	private static final long serialVersionUID = -6696586333097590589L;
+
+	public static PromptTextField newInstance(JLabel prompt, JTextField text) {
+		return newInstance(prompt, text, null);
+	}
+
+	public static PromptTextField newInstance(JLabel prompt, JTextField text, PromptTextFieldDimension dimension) {
+		return new PromptTextField(prompt, text, dimension);
+	}
+
+	public static PromptTextField newInstance(String prompt, String text) {
+		return newInstance(new JLabel(prompt), new JTextField(text));
+	}
+
+	public static PromptTextField newInstance(String prompt, String text, PromptTextFieldDimension dimension) {
+		return newInstance(new JLabel(prompt), new JTextField(text), dimension);
+	}
+
+	public static PromptTextFieldDimension newDimension(Dimension parentSize, double promptWidthProportion,
+			double textWidthProportion, double heightProportion) {
+		return new PromptTextFieldDimension(parentSize, promptWidthProportion, textWidthProportion, heightProportion);
+	}
+
 	private PromptTextFieldDimension dimension;
 	private MiddleAlignGap gap = new MiddleAlignGap(5, 5);
+	private int labelAligment = SwingConstants.RIGHT;
 	private LayoutManager layout = new FlowLayout(FlowLayout.LEFT, gap.hGap, gap.vGap);
 	private JLabel prompt;
 	private JTextField text;
 
-	public PromptTextField() {
-
-	}
-
-	public PromptTextField(JLabel prompt, JTextField text) {
-		this(prompt, text, null);
-	}
-
-	public PromptTextField(JLabel prompt, JTextField text, PromptTextFieldDimension dimension) {
+	private PromptTextField(JLabel prompt, JTextField text, PromptTextFieldDimension dimension) {
 		Assert.notNull(prompt, "Prompt can not be null");
 		Assert.notNull(text, "Prompt can not be null");
 		logger.debug("prompt:" + prompt + ",text:" + text + ",dimension:" + dimension);
+
 		this.prompt = prompt;
 		this.text = text;
 		this.dimension = dimension;
 
 		initialize();
-	}
-
-	public PromptTextField(String prompt, String text) {
-		this(new JLabel(prompt), new JTextField(text));
-	}
-
-	public PromptTextField(String prompt, String text, PromptTextFieldDimension dimension) {
-		this(new JLabel(prompt), new JTextField(text), dimension);
 	}
 
 	public PromptTextFieldDimension getDimension() {
@@ -69,7 +78,7 @@ public class PromptTextField extends JComponent {
 		return text;
 	}
 
-	private void initialize() {
+	private PromptTextField initialize() {
 		setLayout(layout);
 
 		if (dimension != null) {
@@ -77,8 +86,6 @@ public class PromptTextField extends JComponent {
 					+ dimension.height);
 			prompt.setPreferredSize(new Dimension(dimension.promptWidth, dimension.height));
 			text.setPreferredSize(new Dimension(dimension.textWidth, dimension.height));
-			setPreferredSize(new Dimension(dimension.promptWidth + dimension.textWidth + gap.hGap * 3,
-					dimension.height + gap.vGap * 2));
 		}
 
 		if (logger.isDebugEnabled()) {
@@ -86,9 +93,12 @@ public class PromptTextField extends JComponent {
 			text.setBorder(BorderFactory.createLineBorder(Color.RED));
 			setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		}
+		prompt.setHorizontalAlignment(labelAligment);
 
 		add(prompt);
 		add(text);
+
+		return this;
 	}
 
 	public boolean isEditable() {
@@ -107,6 +117,10 @@ public class PromptTextField extends JComponent {
 		this.gap = gap;
 	}
 
+	public void setLabelAligment(int labelAligment) {
+		prompt.setHorizontalAlignment(labelAligment);
+	}
+
 	public void setPrompt(JLabel prompt) {
 		this.prompt = prompt;
 	}
@@ -115,7 +129,7 @@ public class PromptTextField extends JComponent {
 		this.text = text;
 	}
 
-	class PromptTextFieldDimension {
+	static class PromptTextFieldDimension {
 		public int height;
 		public int promptWidth;
 		public int textWidth;

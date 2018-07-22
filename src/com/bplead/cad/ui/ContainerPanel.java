@@ -29,6 +29,7 @@ public class ContainerPanel extends AbstractPanel {
 	private static final String PDM_PROMPT = "pdm.prompt";
 	private static final String PDM_TITLE = "pdm.title";
 	private static final long serialVersionUID = 1442969218942586007L;
+
 	public static ContainerPanel newInstance(Container parent) {
 		ContainerPanel panel = initialize(ContainerPanel.class);
 		panel.initialize(parent);
@@ -115,11 +116,13 @@ public class ContainerPanel extends AbstractPanel {
 	abstract static class SimpleButtonSetPanel extends AbstractPanel implements ActionListener {
 
 		private static final long serialVersionUID = -5690721799689305895L;
+
 		public static SimpleButtonSetPanel newInstance(Container parent) {
 			SimpleButtonSetPanel panel = initialize(SimpleButtonSetPanel.class);
 			panel.initialize(parent);
 			return panel;
 		}
+
 		private final double BUTTON_PROPORTION = 0.3d;
 		private final double HEIGHT_PROPORTION = 0.3d;
 		private final double LABEL_PROPORTION = 0.15d;
@@ -151,9 +154,9 @@ public class ContainerPanel extends AbstractPanel {
 			setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), setTitle(),
 					TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, toolkit.getFont()));
 
-			PromptTextFieldDimension dimension = new PromptTextField().new PromptTextFieldDimension(getPreferredSize(),
-					LABEL_PROPORTION, TEXT_PROPORTION, HEIGHT_PROPORTION);
-			PromptTextField text = new PromptTextField(setPrompt(), setText(), dimension);
+			PromptTextFieldDimension dimension = PromptTextField.newDimension(getPreferredSize(), LABEL_PROPORTION,
+					TEXT_PROPORTION, HEIGHT_PROPORTION);
+			PromptTextField text = PromptTextField.newInstance(setPrompt(), setText(), dimension);
 			add(text);
 
 			add(OptionPanel.newInstance(this,

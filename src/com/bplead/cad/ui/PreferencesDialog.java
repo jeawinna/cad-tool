@@ -97,7 +97,7 @@ public class PreferencesDialog extends AbstractDialog {
 		private final String DEFAULT_FOLDER = "default.folder";
 		private final String DEFAULT_PDM = "default.pdm";
 		private final double HEIGHT_PROPORTION = 0.08d;
-		private final double LABEL_PROPORTION = 0.2d;
+		private final double LABEL_PROPORTION = 0.18d;
 		private final String OPEN = "open";
 		private final double TEXT_PROPORTION = 0.55d;
 		private final String TITLE = "title";
@@ -149,33 +149,34 @@ public class PreferencesDialog extends AbstractDialog {
 					TitledBorder.DEFAULT_POSITION, toolkit.getFont()));
 
 			// ~ add components
-			PromptTextFieldDimension dimension = new PromptTextField().new PromptTextFieldDimension(getPreferredSize(),
-					LABEL_PROPORTION, TEXT_PROPORTION, HEIGHT_PROPORTION);
-			PromptTextField url = new PromptTextField(getResourceMap().getString((WINDCHILL_URL)), getWnctUrl(),
+			PromptTextFieldDimension dimension = PromptTextField.newDimension(getPreferredSize(), LABEL_PROPORTION,
+					TEXT_PROPORTION, HEIGHT_PROPORTION);
+			PromptTextField url = PromptTextField.newInstance(getResourceMap().getString((WINDCHILL_URL)), getWnctUrl(),
 					dimension);
 			add(url);
 
-			PromptTextField exe = new PromptTextField(getResourceMap().getString((CAXA_EXE)), getCaxaExe(), dimension);
+			PromptTextField exe = PromptTextField.newInstance(getResourceMap().getString((CAXA_EXE)), getCaxaExe(),
+					dimension);
 			add(exe);
 			JButton openExe = new JButton(getResourceMap().getString((OPEN)));
 			openExe.addActionListener(new FindCaxaExeActionListener());
 			add(openExe);
 
-			PromptTextField cache = new PromptTextField(getResourceMap().getString((CAXA_CACHE)), getCaxaCache(),
-					dimension);
+			PromptTextField cache = PromptTextField.newInstance(getResourceMap().getString((CAXA_CACHE)),
+					getCaxaCache(), dimension);
 			add(cache);
 			JButton openCache = new JButton(getResourceMap().getString((OPEN)));
 			openCache.addActionListener(new FindCaxaCacheActionListener());
 			add(openCache);
 
-			PromptTextField pdm = new PromptTextField(getResourceMap().getString((DEFAULT_PDM)), getDefaultPdm(),
-					dimension);
+			PromptTextField pdm = PromptTextField.newInstance(getResourceMap().getString((DEFAULT_PDM)),
+					getDefaultPdm(), dimension);
 			add(pdm);
 			JButton openPdm = new JButton(getResourceMap().getString((OPEN)));
 			openPdm.addActionListener(new FindDefaultPdmActionListenner());
 			add(openPdm);
 
-			PromptTextField folder = new PromptTextField(getResourceMap().getString((DEFAULT_FOLDER)),
+			PromptTextField folder = PromptTextField.newInstance(getResourceMap().getString((DEFAULT_FOLDER)),
 					getDefaultFolder(), dimension);
 			add(folder);
 			JButton openFolder = new JButton(getResourceMap().getString((OPEN)));

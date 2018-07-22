@@ -10,6 +10,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
+import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
 import org.apache.log4j.Logger;
@@ -120,17 +121,21 @@ public class LoginFrame extends AbstractFrame implements ActionListener {
 			JLabel reminder = new JLabel(getResourceMap().getString(REMINDER_LABEL_DISPLAY));
 			reminder.setForeground(Color.RED);
 
-			dimension = new PromptTextField().new PromptTextFieldDimension(getPreferredSize(), LABEL_PROPORTION,
-					TEXT_PROPORTION, HEIGHT_PROPORTION);
-			PromptTextField host = new PromptTextField(getResourceMap().getString(HOST_LABEL_DISPLAY), getHost(),
-					dimension);
+			dimension = PromptTextField.newDimension(getPreferredSize(), LABEL_PROPORTION, TEXT_PROPORTION,
+					HEIGHT_PROPORTION);
+			PromptTextField host = PromptTextField.newInstance(getResourceMap().getString(HOST_LABEL_DISPLAY),
+					getHost(), dimension);
+			host.setLabelAligment(SwingConstants.LEFT);
 			host.setEditable(isHostEditable());
 
-			PromptTextField user = new PromptTextField(getResourceMap().getString(USER_LABEL_DISPLAY), getCacheUser(),
-					dimension);
+			PromptTextField user = PromptTextField.newInstance((getResourceMap().getString(USER_LABEL_DISPLAY)),
+					getCacheUser(), dimension);
+			user.setLabelAligment(SwingConstants.LEFT);
 
-			PromptTextField pwd = new PromptTextField(new JLabel(getResourceMap().getString(PWD_LABEL_DISPLAY)),
-					new JPasswordField(getCachePwd()), dimension);
+			PromptTextField pwd = PromptTextField.newInstance(
+					(new JLabel(getResourceMap().getString(PWD_LABEL_DISPLAY))), new JPasswordField(getCachePwd()),
+					dimension);
+			pwd.setLabelAligment(SwingConstants.LEFT);
 
 			JCheckBox remeberme = new JCheckBox(getResourceMap().getString(REMEBERME_DISPLAY));
 			remeberme.setSelected(isRemeberme());

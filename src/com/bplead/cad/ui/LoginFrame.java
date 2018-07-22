@@ -2,9 +2,11 @@ package com.bplead.cad.ui;
 
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
@@ -15,7 +17,7 @@ import org.apache.log4j.Logger;
 import com.bplead.cad.layout.DefaultGroupLayout;
 import com.bplead.cad.util.PropertiesUtils;
 
-public class LoginFrame extends AbstractFrame {
+public class LoginFrame extends AbstractFrame implements ActionListener {
 
 	private static final Logger logger = Logger.getLogger(LoginFrame.class);
 	private static final long serialVersionUID = -8688157705470416228L;
@@ -26,11 +28,17 @@ public class LoginFrame extends AbstractFrame {
 		logger.info("ready...");
 	}
 
-	private final String HOST_EDITABLE = "host.editable";
-	private final String HOST_URL = "host.url";
+	private final static String HOST_EDITABLE = "host.editable";
+	private final static String HOST_URL = "host.url";
+	private final String LOGIN_BUTTON_DISPLAY = "login";
 
 	public LoginFrame() {
 		super(LoginFrame.class);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+
 	}
 
 	@Override
@@ -46,46 +54,16 @@ public class LoginFrame extends AbstractFrame {
 	@Override
 	public void initialize() {
 		logger.info("initialize server content...");
-		add(new ServerPanel(this));
+		add(ServerPanel.newInstance(this));
 
 		logger.info("initialize option content...");
-		add(new OptionPanel(this));
+		Option login = Option.newInstance(LOGIN_BUTTON_DISPLAY, null, this);
+		add(OptionPanel.newInstance(this, Arrays.asList(login, Option.newCancelOption(this))));
 
 		logger.info("initialize completed...");
 	}
 
-	class OptionPanel extends AbstractPanel {
-
-		private static final long serialVersionUID = 2106959274498664555L;
-		private final String CANCEL_BUTTON_DISPLAY = "cancel";
-		private final String LOGIN_BUTTON_DISPLAY = "login";
-
-		public OptionPanel(Container parent) {
-			super(parent);
-		}
-
-		@Override
-		public double getHorizontalProportion() {
-			return 0.9d;
-		}
-
-		@Override
-		public double getVerticalProportion() {
-			return 0.2d;
-		}
-
-		@Override
-		protected void initialize() {
-			// ~ add buttons
-			JButton login = new JButton(getResourceMap().getString(getResourceName(LOGIN_BUTTON_DISPLAY)));
-			add(login);
-
-			JButton cancel = new JButton(getResourceMap().getString(getResourceName(CANCEL_BUTTON_DISPLAY)));
-			add(cancel);
-		}
-	}
-
-	class ServerPanel extends AbstractPanel {
+	static class ServerPanel extends AbstractPanel {
 
 		private static final long serialVersionUID = -5325225997433722990L;
 		private PromptTextField.PromptTextFieldDimension dimension;
@@ -103,8 +81,10 @@ public class LoginFrame extends AbstractFrame {
 		private int vGap;
 		private final double VGAP_PROPORTION = 0d;
 
-		public ServerPanel(Container parent) {
-			super(parent);
+		public static ServerPanel newInstance(Container parent) {
+			ServerPanel panel = initialize(ServerPanel.class);
+			panel.initialize(parent);
+			return panel;
 		}
 
 		private String getCachePwd() {
@@ -133,27 +113,26 @@ public class LoginFrame extends AbstractFrame {
 		protected void initialize() {
 			// set panel border to be title and etched type
 			setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(),
-					getResourceMap().getString(getResourceName(TITLE)), TitledBorder.DEFAULT_JUSTIFICATION,
+					getResourceMap().getString(TITLE), TitledBorder.DEFAULT_JUSTIFICATION,
 					TitledBorder.DEFAULT_POSITION, toolkit.getFont()));
 
 			// ~ add components
-			JLabel reminder = new JLabel(getResourceMap().getString(getResourceName(REMINDER_LABEL_DISPLAY)));
+			JLabel reminder = new JLabel(getResourceMap().getString(REMINDER_LABEL_DISPLAY));
 			reminder.setForeground(Color.RED);
 
 			dimension = new PromptTextField().new PromptTextFieldDimension(getPreferredSize(), LABEL_PROPORTION,
 					TEXT_PROPORTION, HEIGHT_PROPORTION);
-			PromptTextField host = new PromptTextField(getResourceMap().getString(getResourceName(HOST_LABEL_DISPLAY)),
-					getHost(), dimension);
+			PromptTextField host = new PromptTextField(getResourceMap().getString(HOST_LABEL_DISPLAY), getHost(),
+					dimension);
 			host.setEditable(isHostEditable());
 
-			PromptTextField user = new PromptTextField(getResourceMap().getString(getResourceName(USER_LABEL_DISPLAY)),
-					getCacheUser(), dimension);
+			PromptTextField user = new PromptTextField(getResourceMap().getString(USER_LABEL_DISPLAY), getCacheUser(),
+					dimension);
 
-			PromptTextField pwd = new PromptTextField(
-					new JLabel(getResourceMap().getString(getResourceName(PWD_LABEL_DISPLAY))),
+			PromptTextField pwd = new PromptTextField(new JLabel(getResourceMap().getString(PWD_LABEL_DISPLAY)),
 					new JPasswordField(getCachePwd()), dimension);
 
-			JCheckBox remeberme = new JCheckBox(getResourceMap().getString(getResourceName(REMEBERME_DISPLAY)));
+			JCheckBox remeberme = new JCheckBox(getResourceMap().getString(REMEBERME_DISPLAY));
 			remeberme.setSelected(isRemeberme());
 
 			// ~ performance hGap and vGap

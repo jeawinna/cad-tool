@@ -1,7 +1,5 @@
 package com.bplead.cad.model;
 
-import java.awt.Window;
-
 import javax.swing.Icon;
 
 import org.apache.log4j.Logger;
@@ -13,15 +11,15 @@ public abstract class ResourceMap {
 
 	public static final String ICON = ".icon";
 	private static final Logger logger = Logger.getLogger(ResourceMap.class);
-	public static final String RESOURCE = "resource.";
+	protected static final String SEPERATOR = ".";
 
-	private Class<? extends Window> clazz;
+	private Class<?> clazz;
 
 	public ResourceMap() {
 
 	}
 
-	public ResourceMap(Class<? extends Window> clazz) {
+	public ResourceMap(Class<?> clazz) {
 		Assert.notNull(clazz, "Class extends java.awt.Window required");
 		this.clazz = clazz;
 	}

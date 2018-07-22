@@ -9,14 +9,14 @@ import javax.swing.JDialog;
 import org.apache.log4j.Logger;
 
 import com.bplead.cad.model.ResourceMap;
-import com.bplead.cad.model.ResourceMapContainer;
+import com.bplead.cad.model.ResourceMapper;
 import com.bplead.cad.model.SelfAdaptionComponent;
 import com.bplead.cad.model.StyleToolkit;
 import com.bplead.cad.model.impl.DefaultStyleToolkit;
 import com.bplead.cad.model.impl.GlobalResourceMap;
 import com.bplead.cad.util.StringUtils;
 
-public abstract class AbstractDialog extends JDialog implements SelfAdaptionComponent, ResourceMapContainer {
+public abstract class AbstractDialog extends JDialog implements SelfAdaptionComponent, ResourceMapper {
 
 	private static final Logger logger = Logger.getLogger(AbstractDialog.class);
 	private static final long serialVersionUID = -4286037044183123449L;

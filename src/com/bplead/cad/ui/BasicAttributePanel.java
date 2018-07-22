@@ -18,19 +18,22 @@ public class BasicAttributePanel extends AbstractPanel {
 
 	private static final Logger logger = Logger.getLogger(BasicAttributePanel.class);
 	private static final long serialVersionUID = 5723039852386303330L;
+
+	public static BasicAttributePanel newInstance(Container parent, CAD cad) {
+		BasicAttributePanel panel = initialize(BasicAttributePanel.class);
+		panel.setCad(cad);
+		panel.initialize(parent);
+		return panel;
+	}
+
 	private CAD cad;
 	private final double HEIGHT_PROPORTION = 0.1d;
 	private final double HGAP_PROPORTION = 0.005d;
 	private final double LABEL_PROPORTION = 0.08d;
 	private final double TEXT_PROPORTION = 0.2d;
 	private final String TITLE = "title";
-	private final double VGAP_PROPORTION = 0.02d;
 
-	public BasicAttributePanel(Container parent, CAD cad) {
-		super(parent);
-		this.cad = cad;
-		initializeTexts();
-	}
+	private final double VGAP_PROPORTION = 0.02d;
 
 	private List<PromptTextField> conver2Texts() {
 		// ~ reflect String type fields and convert to PromptTextField type
@@ -53,11 +56,14 @@ public class BasicAttributePanel extends AbstractPanel {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			PromptTextField text = new PromptTextField(getResourceMap().getString(getResourceName(field.getName())),
-					value, dimension);
+			PromptTextField text = new PromptTextField(getResourceMap().getString(field.getName()), value, dimension);
 			texts.add(text);
 		}
 		return texts;
+	}
+
+	public CAD getCad() {
+		return cad;
 	}
 
 	@Override
@@ -74,12 +80,10 @@ public class BasicAttributePanel extends AbstractPanel {
 	protected void initialize() {
 		logger.info("initialize content...");
 		// ~ initialize content
-		setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(),
-				getResourceMap().getString(getResourceName(TITLE)), TitledBorder.DEFAULT_JUSTIFICATION,
-				TitledBorder.DEFAULT_POSITION, toolkit.getFont()));
-	}
+		setBorder(
+				BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), getResourceMap().getString(TITLE),
+						TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, toolkit.getFont()));
 
-	private void initializeTexts() {
 		logger.info("convert to PromptTextField...");
 		List<PromptTextField> texts = conver2Texts();
 
@@ -91,5 +95,9 @@ public class BasicAttributePanel extends AbstractPanel {
 		logger.info("use default group layout...");
 		DefaultGroupLayout layout = new DefaultGroupLayout(this, hGap, vGap);
 		layout.addComponent(texts).layout(3);
+	}
+
+	public void setCad(CAD cad) {
+		this.cad = cad;
 	}
 }

@@ -10,14 +10,14 @@ import javax.swing.JFrame;
 import org.apache.log4j.Logger;
 
 import com.bplead.cad.model.ResourceMap;
-import com.bplead.cad.model.ResourceMapContainer;
+import com.bplead.cad.model.ResourceMapper;
 import com.bplead.cad.model.SelfAdaptionComponent;
 import com.bplead.cad.model.StyleToolkit;
 import com.bplead.cad.model.impl.DefaultStyleToolkit;
 import com.bplead.cad.model.impl.GlobalResourceMap;
 import com.bplead.cad.util.StringUtils;
 
-public abstract class AbstractFrame extends JFrame implements SelfAdaptionComponent, ResourceMapContainer {
+public abstract class AbstractFrame extends JFrame implements SelfAdaptionComponent, ResourceMapper {
 
 	private static final Logger logger = Logger.getLogger(AbstractFrame.class);
 	private static final long serialVersionUID = 8333297262635054463L;

@@ -9,10 +9,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Arrays;
 
 import javax.swing.BorderFactory;
-import javax.swing.Icon;
-import javax.swing.JButton;
 import javax.swing.border.TitledBorder;
 
 import org.apache.log4j.Logger;
@@ -21,17 +20,19 @@ import com.bplead.cad.ui.PromptTextField.PromptTextFieldDimension;
 
 public class ContainerPanel extends AbstractPanel {
 
-	private static final Logger logger = Logger.getLogger(ContainerPanel.class);
-	private static final long serialVersionUID = 1442969218942586007L;
-	private final String FOLDER_BUTTON_ICON = "folder.search.icon";
-	private final String FOLDER_PROMPT = "folder.prompt";
-	private final String FOLDER_TITLE = "folder.title";
-	private final String PDM_BUTTON_ICON = "pdm.search.icon";
-	private final String PDM_PROMPT = "pdm.prompt";
-	private final String PDM_TITLE = "pdm.title";
+	private static final String BUTTON_ICON = "folder.search.icon";
+	private static final String FOLDER_PROMPT = "folder.prompt";
 
-	public ContainerPanel(Container parent) {
-		super(parent);
+	private static final String FOLDER_TITLE = "folder.title";
+
+	private static final Logger logger = Logger.getLogger(ContainerPanel.class);
+	private static final String PDM_PROMPT = "pdm.prompt";
+	private static final String PDM_TITLE = "pdm.title";
+	private static final long serialVersionUID = 1442969218942586007L;
+	public static ContainerPanel newInstance(Container parent) {
+		ContainerPanel panel = initialize(ContainerPanel.class);
+		panel.initialize(parent);
+		return panel;
 	}
 
 	private int getHGap() {
@@ -61,10 +62,10 @@ public class ContainerPanel extends AbstractPanel {
 	@Override
 	protected void initialize() {
 		logger.info("initialize PDMLinkProduct panel...");
-		add(new PDMLinkProductPanel(this));
+		add(PDMLinkProductPanel.newInstance(this));
 
 		logger.info("initialize SubFolder panel...");
-		add(new SubFolderPanel(this));
+		add(SubFolderPanel.newInstance((this)));
 
 		// set flow layout horizontal gap
 		FlowLayout layout = (FlowLayout) getLayout();
@@ -75,22 +76,19 @@ public class ContainerPanel extends AbstractPanel {
 		}
 	}
 
-	class PDMLinkProductPanel extends SimpleButtonSetPanel {
+	static class PDMLinkProductPanel extends SimpleButtonSetPanel {
 
 		private static final long serialVersionUID = 5788762488066451045L;
 
-		public PDMLinkProductPanel(Container parent) {
-			super(parent);
+		public static PDMLinkProductPanel newInstance(Container parent) {
+			PDMLinkProductPanel panel = initialize(PDMLinkProductPanel.class);
+			panel.initialize(parent);
+			return panel;
 		}
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			logger.debug("open pdmlinkproduct dialog performed");
-		}
-
-		@Override
-		protected Icon setButtonIcon() {
-			return getResourceMap().getIcon(getResourceName(PDM_BUTTON_ICON));
 		}
 
 		@Override
@@ -100,7 +98,7 @@ public class ContainerPanel extends AbstractPanel {
 
 		@Override
 		protected String setPrompt() {
-			return getResourceMap().getString(getResourceName(PDM_PROMPT));
+			return getResourceMap().getString(PDM_PROMPT);
 		}
 
 		@Override
@@ -110,21 +108,23 @@ public class ContainerPanel extends AbstractPanel {
 
 		@Override
 		protected String setTitle() {
-			return getResourceMap().getString(getResourceName(PDM_TITLE));
+			return getResourceMap().getString(PDM_TITLE);
 		}
 	}
 
-	abstract class SimpleButtonSetPanel extends AbstractPanel implements ActionListener {
+	abstract static class SimpleButtonSetPanel extends AbstractPanel implements ActionListener {
 
 		private static final long serialVersionUID = -5690721799689305895L;
+		public static SimpleButtonSetPanel newInstance(Container parent) {
+			SimpleButtonSetPanel panel = initialize(SimpleButtonSetPanel.class);
+			panel.initialize(parent);
+			return panel;
+		}
 		private final double BUTTON_PROPORTION = 0.3d;
 		private final double HEIGHT_PROPORTION = 0.3d;
 		private final double LABEL_PROPORTION = 0.15d;
-		private final double TEXT_PROPORTION = 0.65d;
 
-		public SimpleButtonSetPanel(Container parent) {
-			super(parent);
-		}
+		private final double TEXT_PROPORTION = 0.65d;
 
 		private Dimension getButtonPrerredSize() {
 			BigDecimal width = new BigDecimal(getPreferredSize().height).multiply(new BigDecimal(BUTTON_PROPORTION));
@@ -156,14 +156,9 @@ public class ContainerPanel extends AbstractPanel {
 			PromptTextField text = new PromptTextField(setPrompt(), setText(), dimension);
 			add(text);
 
-			JButton open = new JButton(setButtonIcon());
-			open.setIcon(setButtonIcon());
-			open.setPreferredSize(getButtonPrerredSize());
-			open.addActionListener(this);
-			add(open);
+			add(OptionPanel.newInstance(this,
+					Arrays.asList(Option.newInstance(null, BUTTON_ICON, this, getButtonPrerredSize()))));
 		}
-
-		protected abstract Icon setButtonIcon();
 
 		protected abstract String setButtonText();
 
@@ -174,22 +169,19 @@ public class ContainerPanel extends AbstractPanel {
 		protected abstract String setTitle();
 	}
 
-	class SubFolderPanel extends SimpleButtonSetPanel {
+	static class SubFolderPanel extends SimpleButtonSetPanel {
 
 		private static final long serialVersionUID = 5788762488066451045L;
 
-		public SubFolderPanel(Container parent) {
-			super(parent);
+		public static SubFolderPanel newInstance(Container parent) {
+			SubFolderPanel panel = initialize(SubFolderPanel.class);
+			panel.initialize(parent);
+			return panel;
 		}
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			logger.debug("open subfolder dialog performed");
-		}
-
-		@Override
-		protected Icon setButtonIcon() {
-			return getResourceMap().getIcon(getResourceName(FOLDER_BUTTON_ICON));
 		}
 
 		@Override
@@ -199,7 +191,7 @@ public class ContainerPanel extends AbstractPanel {
 
 		@Override
 		protected String setPrompt() {
-			return getResourceMap().getString(getResourceName(FOLDER_PROMPT));
+			return getResourceMap().getString(FOLDER_PROMPT);
 		}
 
 		@Override
@@ -209,7 +201,7 @@ public class ContainerPanel extends AbstractPanel {
 
 		@Override
 		protected String setTitle() {
-			return getResourceMap().getString(getResourceName(FOLDER_TITLE));
+			return getResourceMap().getString(FOLDER_TITLE);
 		}
 	}
 }

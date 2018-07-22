@@ -20,6 +20,14 @@ public class DetailAttributePanel extends AbstractPanel {
 
 	private static final Logger logger = Logger.getLogger(DetailAttributePanel.class);
 	private static final long serialVersionUID = -206359105088128179L;
+
+	public static DetailAttributePanel newInstance(Container parent, CAD cad) {
+		DetailAttributePanel panel = initialize(DetailAttributePanel.class);
+		panel.setCad(cad);
+		panel.initialize(parent);
+		return panel;
+	}
+
 	private CAD cad;
 	private String[][] datas;
 	private String[] names;
@@ -28,10 +36,8 @@ public class DetailAttributePanel extends AbstractPanel {
 
 	private final String TITLE = "title";
 
-	public DetailAttributePanel(Container parent, CAD cad) {
-		super(parent);
-		this.cad = cad;
-		initializeTable();
+	public CAD getCad() {
+		return cad;
 	}
 
 	@Override
@@ -48,20 +54,21 @@ public class DetailAttributePanel extends AbstractPanel {
 	protected void initialize() {
 		logger.info("initialize content...");
 		// ~ initialize content
-		setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(),
-				getResourceMap().getString(getResourceName(TITLE)), TitledBorder.DEFAULT_JUSTIFICATION,
-				TitledBorder.DEFAULT_POSITION, toolkit.getFont()));
-	}
+		setBorder(
+				BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), getResourceMap().getString(TITLE),
+						TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, toolkit.getFont()));
 
-	private void initializeTable() {
 		logger.info("initialize detail table...");
 		initTableData(cad.getDetail());
 		JTable table = new JTable(datas, names);
+
 		Dimension dimension = getPreferredSize();
 		int width = (int) (dimension.width * TABLE_WIDTH_PROPORTION);
 		int height = (int) (dimension.height * TABLE_HEIGTH_PROPORTION);
+
 		JScrollPane sp = new JScrollPane(table);
 		sp.setPreferredSize(new Dimension(width, height));
+
 		add(sp);
 	}
 
@@ -72,7 +79,7 @@ public class DetailAttributePanel extends AbstractPanel {
 		for (int i = 0; i < fields.length; i++) {
 			Field field = fields[i];
 			field.setAccessible(true);
-			String name = getResourceMap().getString(getResourceName(field.getName()));
+			String name = getResourceMap().getString(field.getName());
 			Assert.hasText(name, "Table column name[" + field.getName() + "] must not be null");
 			names[i] = name;
 			if (links == null || links.isEmpty()) {
@@ -90,5 +97,9 @@ public class DetailAttributePanel extends AbstractPanel {
 				datas[j][i] = String.valueOf(value);
 			}
 		}
+	}
+
+	public void setCad(CAD cad) {
+		this.cad = cad;
 	}
 }

@@ -54,12 +54,12 @@ public class CADMainFrame extends AbstractFrame {
 		setJMenuBar(toolkit.getStandardMenuBar());
 
 		logger.info("initialize container panel...");
-		getContentPane().add(new ContainerPanel(this));
+		getContentPane().add(ContainerPanel.newInstance(this));
 
 		logger.info("initialize basic attribute panel...");
-		getContentPane().add(new BasicAttributePanel(this, cad));
+		getContentPane().add(BasicAttributePanel.newInstance(this, cad));
 
 		logger.info("initialize detail attribute panel...");
-		getContentPane().add(new DetailAttributePanel(this, cad));
+		getContentPane().add(DetailAttributePanel.newInstance(this, cad));
 	}
 }

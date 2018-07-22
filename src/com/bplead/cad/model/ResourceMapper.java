@@ -1,6 +1,6 @@
 package com.bplead.cad.model;
 
-public interface ResourceMapContainer {
+public interface ResourceMapper {
 
 	public ResourceMap getResourceMap();
 

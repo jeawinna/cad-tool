@@ -102,7 +102,7 @@ public class LoginFrame extends AbstractFrame {
 		private final String TITLE = "title";
 		private final String USER_LABEL_DISPLAY = "user";
 		private int vGap;
-		private final double VGAP_PROPORTION = 0.05d;
+		private final double VGAP_PROPORTION = 0d;
 
 		public ServerPanel(Container parent) {
 			super(parent);

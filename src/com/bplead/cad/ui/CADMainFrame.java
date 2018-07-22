@@ -1,6 +1,13 @@
 package com.bplead.cad.ui;
 
+import java.io.File;
+
 import org.apache.log4j.Logger;
+
+import com.bplead.cad.io.bean.CAD;
+import com.bplead.cad.util.Assert;
+import com.bplead.cad.util.PropertiesUtils;
+import com.bplead.cad.util.XmlUtils;
 
 public class CADMainFrame extends AbstractFrame {
 
@@ -12,6 +19,10 @@ public class CADMainFrame extends AbstractFrame {
 		new CADMainFrame().newInstance(null);
 		logger.info("ready...");
 	}
+
+	private CAD cad;
+
+	private final String CAD_REPOSITORY = "cad.xml.repository";
 
 	public CADMainFrame() {
 		super(CADMainFrame.class);
@@ -27,8 +38,18 @@ public class CADMainFrame extends AbstractFrame {
 		return 0.9;
 	}
 
+	private void initCAD() {
+		File xml = new File(XmlUtils.class.getResource(PropertiesUtils.readProperty(CAD_REPOSITORY)).getPath());
+		this.cad = XmlUtils.parse(xml, CAD.class);
+		logger.debug("cad:" + cad);
+	}
+
 	@Override
 	protected void initialize() {
+		logger.info("initialize CAD...");
+		initCAD();
+		Assert.notNull(cad, "CAD initialize failed.Please check the " + PropertiesUtils.readProperty(CAD_REPOSITORY));
+
 		logger.info("initialize menu bar...");
 		setJMenuBar(toolkit.getStandardMenuBar());
 
@@ -36,9 +57,9 @@ public class CADMainFrame extends AbstractFrame {
 		getContentPane().add(new ContainerPanel(this));
 
 		logger.info("initialize basic attribute panel...");
-		getContentPane().add(new BasicAttributePanel(this));
+		getContentPane().add(new BasicAttributePanel(this, cad));
 
 		logger.info("initialize detail attribute panel...");
-		getContentPane().add(new DetailAttributePanel(this));
+		getContentPane().add(new DetailAttributePanel(this, cad));
 	}
 }

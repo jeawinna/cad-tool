@@ -24,6 +24,7 @@ public class DefaultGroupLayout extends GroupLayout {
 		this.hGap = hGap;
 		this.vGap = vGap;
 		container.setLayout(this);
+		
 	}
 
 	public DefaultGroupLayout addComponent(JComponent component) {

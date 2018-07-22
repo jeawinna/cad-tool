@@ -74,6 +74,9 @@ public class XmlUtils {
 		for (Element subElement : elements) {
 			try {
 				Field field = findField(object.getClass(), subElement.getName());
+				if (field == null) {
+					continue;
+				}
 				logger.debug("field name:" + subElement.getName() + ",actual field:" + field);
 				String name = field.getName();
 				Type type = field.getGenericType();

@@ -10,6 +10,7 @@ import javax.swing.BorderFactory;
 
 import org.apache.log4j.Logger;
 
+import com.bplead.cad.model.MiddleAlignGap;
 import com.bplead.cad.util.Assert;
 
 public class OptionPanel extends AbstractPanel {
@@ -23,11 +24,13 @@ public class OptionPanel extends AbstractPanel {
 
 		OptionPanel panel = initialize(OptionPanel.class);
 		panel.setOptions(options);
+		panel.setDoSelfAdaption(false);
 		panel.initialize(parent);
 		return panel;
 	}
 
-	private LayoutManager layout = new FlowLayout(FlowLayout.LEFT);
+	private MiddleAlignGap gap = new MiddleAlignGap(2, 2);
+	private LayoutManager layout = new FlowLayout(FlowLayout.LEFT, gap.hGap, gap.vGap);
 	private List<Option> options;
 
 	public OptionPanel() {
@@ -36,7 +39,7 @@ public class OptionPanel extends AbstractPanel {
 
 	@Override
 	public double getHorizontalProportion() {
-		return 0.08d;
+		return 0d;
 	}
 
 	public List<Option> getOptions() {
@@ -45,7 +48,7 @@ public class OptionPanel extends AbstractPanel {
 
 	@Override
 	public double getVerticalProportion() {
-		return 0.4d;
+		return 0d;
 	}
 
 	@Override
@@ -61,6 +64,10 @@ public class OptionPanel extends AbstractPanel {
 		if (logger.isDebugEnabled()) {
 			setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		}
+	}
+
+	public void setGap(MiddleAlignGap gap) {
+		this.gap = gap;
 	}
 
 	public void setOptions(List<Option> options) {

@@ -1,13 +1,16 @@
 package com.bplead.cad.ui;
 
 import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 import javax.swing.BorderFactory;
 import javax.swing.border.TitledBorder;
 
 import org.apache.log4j.Logger;
 
-public class PdmLinkProductChooseDialog extends AbstractDialog {
+public class PdmLinkProductChooseDialog extends AbstractDialog implements ActionListener {
 
 	private static final Logger logger = Logger.getLogger(PdmLinkProductChooseDialog.class);
 	private static final long serialVersionUID = 39269794179304687L;
@@ -34,6 +37,12 @@ public class PdmLinkProductChooseDialog extends AbstractDialog {
 	protected void initialize() {
 		logger.info("initialize preferences content...");
 		add(PdmLinkProductsPanel.newInstance(this));
+
+		logger.info("initialize option content...");
+		Option confirm = Option.newInstance(Option.CONFIRM_BUTTON_DISPLAY, null, this);
+		add(OptionPanel.newInstance(this, Arrays.asList(confirm, Option.newCancelOption(this))));
+
+		logger.info("initialize completed...");
 	}
 
 	static class PdmLinkProductsPanel extends AbstractPanel {
@@ -65,5 +74,10 @@ public class PdmLinkProductChooseDialog extends AbstractDialog {
 					TitledBorder.DEFAULT_POSITION, toolkit.getFont()));
 
 		}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+
 	}
 }

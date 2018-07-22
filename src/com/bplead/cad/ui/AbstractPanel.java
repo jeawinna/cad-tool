@@ -33,6 +33,8 @@ public abstract class AbstractPanel extends JPanel implements SelfAdaptionPanel,
 		return panel;
 	}
 
+	private boolean doSelfAdaption = true;
+
 	private LayoutManager layout = new FlowLayout(FlowLayout.CENTER);
 	protected Container parent;
 	protected String PREFIX;
@@ -66,9 +68,11 @@ public abstract class AbstractPanel extends JPanel implements SelfAdaptionPanel,
 		logger.info("initialize panel...");
 		setLayout(layout);
 
-		logger.info("do panel self adpaption...");
-		// ~ do panel self adaption
-		doSelfAdaption(parent.getPreferredSize(), this);
+		if (doSelfAdaption) {
+			logger.info("do panel self adpaption...");
+			// ~ do panel self adaption
+			doSelfAdaption(parent.getPreferredSize(), this);
+		}
 
 		logger.info("initialize custom content...");
 		initialize();
@@ -90,6 +94,10 @@ public abstract class AbstractPanel extends JPanel implements SelfAdaptionPanel,
 			return new GlobalResourceMap(PREFIX, window.getClass());
 		}
 		return initWindowResourceMap(container.getParent());
+	}
+
+	public void setDoSelfAdaption(boolean doSelfAdaption) {
+		this.doSelfAdaption = doSelfAdaption;
 	}
 
 	public void setParent(Container parent) {

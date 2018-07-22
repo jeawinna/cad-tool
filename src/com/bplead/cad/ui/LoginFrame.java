@@ -1,6 +1,5 @@
 package com.bplead.cad.ui;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 
@@ -47,10 +46,10 @@ public class LoginFrame extends AbstractFrame {
 	@Override
 	public void initialize() {
 		logger.info("initialize server content...");
-		add(new ServerPanel(this), BorderLayout.CENTER);
+		add(new ServerPanel(this));
 
 		logger.info("initialize option content...");
-		add(new OptionPanel(this), BorderLayout.SOUTH);
+		add(new OptionPanel(this));
 
 		logger.info("initialize completed...");
 	}

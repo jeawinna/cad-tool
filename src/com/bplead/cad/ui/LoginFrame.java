@@ -162,6 +162,7 @@ public class LoginFrame extends AbstractFrame {
 			vGap = ((Double) (getPreferredSize().height * VGAP_PROPORTION)).intValue();
 			logger.debug("hGap:" + hGap + ",vGap:" + vGap);
 
+			logger.info("use default group layout...");
 			// ~ use default group layout
 			DefaultGroupLayout layout = new DefaultGroupLayout(this, hGap, vGap);
 			layout.addComponent(reminder).addComponent(host).addComponent(user).addComponent(pwd)

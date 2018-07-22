@@ -1,8 +1,12 @@
 package com.bplead.cad.layout;
 
 import java.awt.Container;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.GroupLayout;
 import javax.swing.JComponent;
@@ -33,20 +37,16 @@ public class DefaultGroupLayout extends GroupLayout {
 	}
 
 	public void layout() {
-		if (components == null || components.isEmpty()) {
-			return;
-		}
+		Assert.notNull(components, "Layout components is required");
 
-		GroupLayout.SequentialGroup hsGroup = createSequentialGroup();
-		GroupLayout.SequentialGroup vsGroup = createSequentialGroup();
-		hsGroup.addGap(hGap);
-		vsGroup.addGap(vGap);
+		GroupLayout.SequentialGroup hsGroup = createSequentialGroup().addGap(hGap);
+		GroupLayout.SequentialGroup vsGroup = createSequentialGroup().addGap(vGap);
 		ParallelGroup hpGroup = createParallelGroup();
 		for (JComponent component : components) {
-			// auto layout horizontal
+			// add to horizontal group
 			hpGroup.addComponent(component);
 
-			// auto layout vertical
+			// add to vertical group
 			vsGroup.addGroup(createParallelGroup().addComponent(component));
 			vsGroup.addGap(vGap);
 		}
@@ -56,11 +56,49 @@ public class DefaultGroupLayout extends GroupLayout {
 		setVerticalGroup(vsGroup);
 	}
 
-	public void layout(int perRow) {
-		Assert.isTrue(perRow > 0, "Per line must greater than 0");
-		if (components == null || components.isEmpty()) {
-			return;
+	public void layout(int quantityOfPerRow) {
+		Assert.isTrue(quantityOfPerRow > 0, "The quantity of per row must greater than 0");
+		Assert.notNull(components, "Layout components is required");
+
+		// ~ handle horizontal and vertical group layout
+		int quantityOfRow = new BigDecimal(components.size()).divide(new BigDecimal(quantityOfPerRow), RoundingMode.UP)
+				.intValue();
+		GroupLayout.SequentialGroup hsGroup = createSequentialGroup().addGap(hGap);
+		GroupLayout.SequentialGroup vsGroup = createSequentialGroup().addGap(vGap);
+		Map<Integer, ParallelGroup> map = new HashMap<Integer, ParallelGroup>();
+		for (int i = 0; i < quantityOfPerRow; i++) {
+			ParallelGroup hpGroup = null;
+			for (int j = 0; j < quantityOfRow; j++) {
+				int index = j * quantityOfPerRow + i;
+				if (index >= components.size()) {
+					break;
+				}
+
+				// ~ add to horizontal group
+				JComponent component = components.get(index);
+				if (hpGroup == null) {
+					hpGroup = createParallelGroup();
+				}
+				hpGroup.addComponent(component);
+
+				// ~ add to verticals group
+				ParallelGroup vpGroup = map.get(j);
+				if (vpGroup == null) {
+					vpGroup = createParallelGroup();
+					vsGroup.addGroup(vpGroup);
+					vsGroup.addGap(vGap);
+					map.put(j, vpGroup);
+				}
+				vpGroup.addComponent(component);
+			}
+
+			if (hpGroup == null) {
+				break;
+			}
+			hsGroup.addGroup(hpGroup);
+			hsGroup.addGap(hGap);
 		}
-		// TODO
+		setHorizontalGroup(hsGroup);
+		setVerticalGroup(vsGroup);
 	}
 }

@@ -3,11 +3,16 @@ package com.bplead.cad.io.bean;
 import java.io.File;
 import java.util.ArrayList;
 
+import org.apache.log4j.Logger;
+
 import com.bplead.cad.util.XmlUtils;
 
 public class CAD {
 
+	private static final Logger logger = Logger.getLogger(CAD.class);
+
 	public static CAD newInstance(File xml) {
+		logger.info("initialize CAD...");
 		return XmlUtils.parse(xml, CAD.class);
 	}
 

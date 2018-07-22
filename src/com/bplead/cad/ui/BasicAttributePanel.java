@@ -24,11 +24,11 @@ public class BasicAttributePanel extends AbstractPanel {
 	private CAD cad;
 	private final String CAD_REPOSITORY = "cad.xml.repository";
 	private final double HEIGHT_PROPORTION = 0.1d;
-	private final double HGAP_PROPORTION = 0.02d;
-	private final double LABEL_PROPORTION = 0.1d;
-	private final double TEXT_PROPORTION = 0.4d;
+	private final double HGAP_PROPORTION = 0.005d;
+	private final double LABEL_PROPORTION = 0.08d;
+	private final double TEXT_PROPORTION = 0.2d;
 	private final String TITLE = "title";
-	private final double VGAP_PROPORTION = 0.05d;
+	private final double VGAP_PROPORTION = 0.02d;
 
 	public BasicAttributePanel(Container parent) {
 		super(parent);
@@ -92,12 +92,14 @@ public class BasicAttributePanel extends AbstractPanel {
 		logger.info("convert to PromptTextField...");
 		List<PromptTextField> texts = conver2Texts();
 
-		// ~ use default group layout
+		// ~ performance hGap and vGap
 		int hGap = ((Double) (getPreferredSize().width * HGAP_PROPORTION)).intValue();
 		int vGap = ((Double) (getPreferredSize().height * VGAP_PROPORTION)).intValue();
 		logger.debug("hGap:" + hGap + ",vGap:" + vGap);
 
+		logger.info("use default group layout...");
+		// ~ use default group layout
 		DefaultGroupLayout layout = new DefaultGroupLayout(this, hGap, vGap);
-		layout.addComponent(texts).layout();
+		layout.addComponent(texts).layout(3);
 	}
 }

@@ -12,6 +12,7 @@ import javax.swing.border.TitledBorder;
 
 import org.apache.log4j.Logger;
 
+import com.bplead.cad.bean.SimplePdmLinkProduct;
 import com.bplead.cad.bean.client.CaxaTemporary;
 import com.bplead.cad.bean.client.DefaultContainer;
 import com.bplead.cad.bean.client.Preference;
@@ -23,6 +24,7 @@ import priv.lee.cad.ui.AbstractPanel;
 import priv.lee.cad.ui.Option;
 import priv.lee.cad.ui.OptionPanel;
 import priv.lee.cad.ui.PromptTextField;
+import priv.lee.cad.util.Assert;
 import priv.lee.cad.util.StringUtils;
 import priv.lee.cad.util.XmlUtils;
 
@@ -105,12 +107,14 @@ public class PreferencesDialog extends AbstractDialog {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			new PdmLinkProductChooseDialog(this).activate();
+			new FolderChooseDialog(this, preferencePanel.getProduct()).activate();
 		}
 
 		@Override
 		public void call(Object object) {
+			Assert.notNull(object, "Callback object is required");
 
+			preferencePanel.folder.getText().setText(object.toString());
 		}
 	}
 
@@ -123,7 +127,13 @@ public class PreferencesDialog extends AbstractDialog {
 
 		@Override
 		public void call(Object object) {
+			Assert.notNull(object, "Callback object is required");
+			Assert.isInstanceOf(SimplePdmLinkProduct.class, object,
+					"Callback object must be a SimplePdmLinkProduct type");
 
+			SimplePdmLinkProduct product = (SimplePdmLinkProduct) object;
+			preferencePanel.setProduct(product);
+			preferencePanel.pdm.getText().setText(product.getName());
 		}
 	}
 
@@ -141,6 +151,7 @@ public class PreferencesDialog extends AbstractDialog {
 		private final double LABEL_PROPORTION = 0.18d;
 		private final String OPEN = "open";
 		public PromptTextField pdm;
+		private SimplePdmLinkProduct product;
 		private final double TEXT_PROPORTION = 0.55d;
 		private final String TITLE = "title";
 		public PromptTextField url;
@@ -170,6 +181,10 @@ public class PreferencesDialog extends AbstractDialog {
 		@Override
 		public double getHorizontalProportion() {
 			return 0.95d;
+		}
+
+		public SimplePdmLinkProduct getProduct() {
+			return product;
 		}
 
 		@Override
@@ -219,7 +234,7 @@ public class PreferencesDialog extends AbstractDialog {
 					dimension);
 			add(folder);
 			JButton openFolder = new JButton(getResourceMap().getString((OPEN)));
-			openPdm.addActionListener(new FindDefaultFolderActionListenner());
+			openFolder.addActionListener(new FindDefaultFolderActionListenner());
 			add(openFolder);
 		}
 
@@ -229,6 +244,10 @@ public class PreferencesDialog extends AbstractDialog {
 
 		private boolean isPreferenceContainerNull() {
 			return preference == null || preference.getContainer() == null;
+		}
+
+		public void setProduct(SimplePdmLinkProduct product) {
+			this.product = product;
 		}
 	}
 }

@@ -30,6 +30,7 @@ public class ContainerPanel extends AbstractPanel {
 	private static final String PDM_PROMPT = "pdm.prompt";
 	private static final String PDM_TITLE = "pdm.title";
 	private static final long serialVersionUID = 1442969218942586007L;
+	private SimplePdmLinkProduct product;
 
 	@Override
 	public double getHorizontalProportion() {
@@ -50,10 +51,9 @@ public class ContainerPanel extends AbstractPanel {
 		add(new SubFolderPanel());
 	}
 
-	static class PDMLinkProductPanel extends SimpleButtonSetPanel {
+	class PDMLinkProductPanel extends SimpleButtonSetPanel {
 
 		private static final long serialVersionUID = 5788762488066451045L;
-		private SimplePdmLinkProduct product;
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -66,7 +66,7 @@ public class ContainerPanel extends AbstractPanel {
 			Assert.isInstanceOf(SimplePdmLinkProduct.class, object,
 					"Callback object must be a SimplePdmLinkProduct type");
 
-			this.product = (SimplePdmLinkProduct) object;
+			product = (SimplePdmLinkProduct) object;
 			text.getText().setText(product.getName());
 		}
 
@@ -146,18 +146,20 @@ public class ContainerPanel extends AbstractPanel {
 		protected abstract String setTitle();
 	}
 
-	static class SubFolderPanel extends SimpleButtonSetPanel {
+	class SubFolderPanel extends SimpleButtonSetPanel {
 
 		private static final long serialVersionUID = 5788762488066451045L;
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			new PdmLinkProductChooseDialog(this).activate();
+			new FolderChooseDialog(this, product).activate();
 		}
 
 		@Override
 		public void call(Object object) {
+			Assert.notNull(object, "Callback object is required");
 
+			text.getText().setText(object.toString());
 		}
 
 		@Override

@@ -1,5 +1,6 @@
 package com.bplead.cad.ui;
 
+import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.LayoutManager;
 import java.awt.Window;
@@ -42,18 +43,19 @@ public class SearchForDownloadDialog extends AbstractDialog implements ActionLis
 
 	@Override
 	public void initialize() {
+		logger.info("initialize " + getClass() + " layout...");
 		setLayout(layout);
 
-		logger.info("initialize search conditions content...");
+		logger.info("initialize " + SearchConditionsPanel.class + " content...");
 		add(new SearchConditionsPanel());
 
-		logger.info("initialize search result content...");
+		logger.info("initialize " + SearchResultPanel.class + " content...");
 		add(new SearchResultPanel());
 
-		logger.info("initialize download setting content...");
+		logger.info("initialize " + DownloadSettingPanel.class + " content...");
 		add(new DownloadSettingPanel());
 
-		logger.info("initialize completed...");
+		logger.info("initialize " + getClass() + "  completed...");
 	}
 
 	@Override
@@ -98,7 +100,12 @@ public class SearchForDownloadDialog extends AbstractDialog implements ActionLis
 			logger.info("initialize browser option...");
 			Option browse = new Option(Option.BROWSE_BUTTON, null, this);
 			Option confirm = new Option(Option.CONFIRM_BUTTON, null, this);
-			add(new OptionPanel(Arrays.asList(browse, confirm, Option.newCancelOption((Window) getParent()))));
+
+			Container parent = getParent();
+			while (!(parent instanceof Window)) {
+				parent = parent.getParent();
+			}
+			add(new OptionPanel(Arrays.asList(browse, confirm, Option.newCancelOption((Window) parent))));
 		}
 	}
 

@@ -1,5 +1,7 @@
 package com.bplead.cad.model;
 
+import java.awt.Component;
+
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -22,6 +24,23 @@ public class CustomStyleToolkit extends DefaultStyleToolkit {
 
 		file.addSeparator();
 		file.add(preferences);
+
+		JMenu option = menuBar.getMenu(1);
+		for (int i = 0; i < option.getMenuComponentCount(); i++) {
+			Component component = option.getMenuComponent(i);
+			if (component instanceof JMenuItem) {
+				JMenuItem menuItem = (JMenuItem) component;
+				if (menuItem.getText().equals(resourceMap.getString(CHECK_IN_MENU_ITEM))) {
+					menuItem.addActionListener(new CADMainFrame().new CheckinActionListenner());
+					continue;
+				}
+
+				if (menuItem.getText().equals(resourceMap.getString(CHECK_OUT_MENU_ITEM))) {
+					menuItem.addActionListener(new CADMainFrame().new CheckoutActionListenner());
+					continue;
+				}
+			}
+		}
 		return menuBar;
 	}
 }

@@ -20,20 +20,12 @@ public class CADMainFrame extends AbstractFrame {
 
 	private static final Logger logger = Logger.getLogger(CADMainFrame.class);
 	private static final long serialVersionUID = -1719424691262349744L;
-
-	public static void main(String[] args) {
-		logger.info("begin to start...");
-		new CADMainFrame().activate();
-		logger.info("ready...");
-	}
-
 	private CAD cad;
 	private final String CAD_REPOSITORY = "cad.xml.repository";
 	private StyleToolkit toolkit = new CustomStyleToolkit();
 
 	public CADMainFrame() {
 		super(CADMainFrame.class);
-
 		setToolkit(toolkit);
 	}
 
@@ -57,6 +49,7 @@ public class CADMainFrame extends AbstractFrame {
 	public void initialize() {
 		logger.info("initialize " + getClass() + " CAD...");
 		initCAD();
+
 		Assert.notNull(cad, "CAD initialize failed.Please check the " + PropertiesUtils.readProperty(CAD_REPOSITORY));
 
 		logger.info("initialize " + getClass() + " menu bar...");
@@ -70,6 +63,27 @@ public class CADMainFrame extends AbstractFrame {
 
 		logger.info("initialize " + getClass() + " detail attribute panel...");
 		getContentPane().add(new DetailAttributePanel(cad));
+	}
+
+	public class CheckinActionListenner implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			logger.debug("*************************");
+		}
+	}
+
+	public class CheckoutActionListenner implements ActionListener, Callback {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			new SearchForDownloadDialog(this).activate();
+		}
+
+		@Override
+		public void call(Object object) {
+
+		}
 	}
 
 	public class PrefencesActionListener implements ActionListener, Callback {

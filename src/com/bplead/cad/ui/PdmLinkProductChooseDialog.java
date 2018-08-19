@@ -1,14 +1,20 @@
 package com.bplead.cad.ui;
 
-import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
 
 import javax.swing.BorderFactory;
+import javax.swing.JScrollPane;
 import javax.swing.border.TitledBorder;
 
 import org.apache.log4j.Logger;
+
+import priv.lee.cad.ui.AbstractDialog;
+import priv.lee.cad.ui.AbstractPanel;
+import priv.lee.cad.ui.Option;
+import priv.lee.cad.ui.OptionPanel;
 
 public class PdmLinkProductChooseDialog extends AbstractDialog implements ActionListener {
 
@@ -16,16 +22,25 @@ public class PdmLinkProductChooseDialog extends AbstractDialog implements Action
 	private static final long serialVersionUID = 39269794179304687L;
 
 	public static void main(String[] args) {
-		new PdmLinkProductChooseDialog().newInstance(null);
+		new PdmLinkProductChooseDialog().activate();
 	}
+
+	private PdmLinkProductTable table;
+	private double TABLE_HEIGTH_PROPORTION = 0.9d;
+	private double TABLE_WIDTH_PROPORTION = 0.98d;
 
 	public PdmLinkProductChooseDialog() {
 		super(PdmLinkProductChooseDialog.class);
 	}
 
 	@Override
+	public void actionPerformed(ActionEvent e) {
+
+	}
+
+	@Override
 	public double getHorizontalProportion() {
-		return 0.5d;
+		return 0.2d;
 	}
 
 	@Override
@@ -34,27 +49,21 @@ public class PdmLinkProductChooseDialog extends AbstractDialog implements Action
 	}
 
 	@Override
-	protected void initialize() {
+	public void initialize() {
 		logger.info("initialize pdm content...");
-		add(PdmLinkProductsPanel.newInstance(this));
+		add(new PdmLinkProductsPanel());
 
 		logger.info("initialize option content...");
-		Option confirm = Option.newInstance(Option.CONFIRM_BUTTON, null, this);
-		add(OptionPanel.newInstance(this, Arrays.asList(confirm, Option.newCancelOption(this))));
+		Option confirm = new Option(Option.CONFIRM_BUTTON, null, this);
+		add(new OptionPanel(Arrays.asList(confirm, Option.newCancelOption(this))));
 
 		logger.info("initialize completed...");
 	}
 
-	static class PdmLinkProductsPanel extends AbstractPanel {
+	class PdmLinkProductsPanel extends AbstractPanel {
 
 		private static final long serialVersionUID = -9183060824080475562L;
 		private final String TITLE = "title";
-
-		public static PdmLinkProductsPanel newInstance(Container parent) {
-			PdmLinkProductsPanel panel = initialize(PdmLinkProductsPanel.class);
-			panel.initialize(parent);
-			return panel;
-		}
 
 		@Override
 		public double getHorizontalProportion() {
@@ -67,17 +76,18 @@ public class PdmLinkProductChooseDialog extends AbstractDialog implements Action
 		}
 
 		@Override
-		protected void initialize() {
+		public void initialize() {
 			// set panel border to be title and etched type
 			setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(),
 					getResourceMap().getString(TITLE), TitledBorder.DEFAULT_JUSTIFICATION,
 					TitledBorder.DEFAULT_POSITION, toolkit.getFont()));
 
+			table = new PdmLinkProductTable();
+			JScrollPane sp = new JScrollPane(table);
+			sp.setPreferredSize(new Dimension((int) (getPreferredSize().width * TABLE_WIDTH_PROPORTION),
+					(int) (getPreferredSize().height * TABLE_HEIGTH_PROPORTION)));
+			table.setColumnWidth();
+			add(sp);
 		}
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-
 	}
 }

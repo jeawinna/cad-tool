@@ -5,15 +5,15 @@ import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
 
-import com.bplead.cad.util.XmlUtils;
+import priv.lee.cad.util.XmlUtils;
 
 public class CAD {
 
 	private static final Logger logger = Logger.getLogger(CAD.class);
 
-	public static CAD newInstance(File xml) {
+	public static CAD newInstance(File file) {
 		logger.info("initialize CAD...");
-		return XmlUtils.parse(xml, CAD.class);
+		return XmlUtils.parse(file, CAD.class);
 	}
 
 	private ArrayList<CADLink> detail;

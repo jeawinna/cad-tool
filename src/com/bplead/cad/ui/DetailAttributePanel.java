@@ -1,6 +1,5 @@
 package com.bplead.cad.ui;
 
-import java.awt.Container;
 import java.awt.Dimension;
 import java.lang.reflect.Field;
 import java.util.List;
@@ -14,27 +13,24 @@ import org.apache.log4j.Logger;
 
 import com.bplead.cad.io.bean.CAD;
 import com.bplead.cad.io.bean.CADLink;
-import com.bplead.cad.util.Assert;
+
+import priv.lee.cad.ui.AbstractPanel;
+import priv.lee.cad.util.Assert;
 
 public class DetailAttributePanel extends AbstractPanel {
 
 	private static final Logger logger = Logger.getLogger(DetailAttributePanel.class);
 	private static final long serialVersionUID = -206359105088128179L;
-
-	public static DetailAttributePanel newInstance(Container parent, CAD cad) {
-		DetailAttributePanel panel = initialize(DetailAttributePanel.class);
-		panel.setCad(cad);
-		panel.initialize(parent);
-		return panel;
-	}
-
 	private CAD cad;
 	private String[][] datas;
 	private String[] names;
-	private double TABLE_HEIGTH_PROPORTION = 0.95d;
+	private double TABLE_HEIGTH_PROPORTION = 0.9d;
 	private double TABLE_WIDTH_PROPORTION = 0.98d;
-
 	private final String TITLE = "title";
+
+	public DetailAttributePanel(CAD cad) {
+		this.cad = cad;
+	}
 
 	public CAD getCad() {
 		return cad;
@@ -51,7 +47,7 @@ public class DetailAttributePanel extends AbstractPanel {
 	}
 
 	@Override
-	protected void initialize() {
+	public void initialize() {
 		logger.info("initialize content...");
 		// ~ initialize content
 		setBorder(
@@ -60,15 +56,10 @@ public class DetailAttributePanel extends AbstractPanel {
 
 		logger.info("initialize detail table...");
 		initTableData(cad.getDetail());
-		JTable table = new JTable(datas, names);
-
 		Dimension dimension = getPreferredSize();
-		int width = (int) (dimension.width * TABLE_WIDTH_PROPORTION);
-		int height = (int) (dimension.height * TABLE_HEIGTH_PROPORTION);
-
-		JScrollPane sp = new JScrollPane(table);
-		sp.setPreferredSize(new Dimension(width, height));
-
+		JScrollPane sp = new JScrollPane(new JTable(datas, names));
+		sp.setPreferredSize(new Dimension((int) (dimension.width * TABLE_WIDTH_PROPORTION),
+				(int) (dimension.height * TABLE_HEIGTH_PROPORTION)));
 		add(sp);
 	}
 

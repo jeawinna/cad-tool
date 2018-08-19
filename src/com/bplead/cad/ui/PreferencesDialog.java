@@ -1,6 +1,5 @@
 package com.bplead.cad.ui;
 
-import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,11 +7,23 @@ import java.util.Arrays;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.border.TitledBorder;
 
 import org.apache.log4j.Logger;
 
-import com.bplead.cad.ui.PromptTextField.PromptTextFieldDimension;
+import com.bplead.cad.bean.client.CaxaTemporary;
+import com.bplead.cad.bean.client.DefaultContainer;
+import com.bplead.cad.bean.client.Preference;
+import com.bplead.cad.util.ClientUtils;
+
+import priv.lee.cad.ui.AbstractDialog;
+import priv.lee.cad.ui.AbstractPanel;
+import priv.lee.cad.ui.Option;
+import priv.lee.cad.ui.OptionPanel;
+import priv.lee.cad.ui.PromptTextField;
+import priv.lee.cad.util.StringUtils;
+import priv.lee.cad.util.XmlUtils;
 
 public class PreferencesDialog extends AbstractDialog {
 
@@ -20,8 +31,11 @@ public class PreferencesDialog extends AbstractDialog {
 	private static final long serialVersionUID = -2875157877197653599L;
 
 	public static void main(String[] args) {
-		new PreferencesDialog().newInstance(null);
+		new PreferencesDialog().activate();
 	}
+
+	private Preference preference = ClientUtils.temprary.getPreference();
+	private PreferencesPanel preferencePanel;
 
 	public PreferencesDialog() {
 		super(PreferencesDialog.class);
@@ -38,13 +52,14 @@ public class PreferencesDialog extends AbstractDialog {
 	}
 
 	@Override
-	protected void initialize() {
+	public void initialize() {
 		logger.info("initialize preferences content...");
-		add(PreferencesPanel.newInstance(this));
+		preferencePanel = new PreferencesPanel();
+		add(preferencePanel);
 
 		logger.info("initialize option content...");
-		Option confirm = Option.newInstance(Option.CONFIRM_BUTTON, null, new ConfirmActionListener());
-		add(OptionPanel.newInstance(this, Arrays.asList(confirm, Option.newCancelOption(this))));
+		Option confirm = new Option(Option.CONFIRM_BUTTON, null, new ConfirmActionListener());
+		add(new OptionPanel(Arrays.asList(confirm, Option.newCancelOption(this))));
 
 		logger.info("initialize completed...");
 	}
@@ -53,76 +68,92 @@ public class PreferencesDialog extends AbstractDialog {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			// ~ do confirm
+			if (preference == null) {
+				preference = new Preference();
+			}
 
+			logger.info("begin to write client temporay...");
+			preference.setCaxa(new CaxaTemporary(preferencePanel.cache.getText().getText(),
+					preferencePanel.exe.getText().getText()));
+			preference.setContainer(new DefaultContainer(preferencePanel.folder.getText().getText(),
+					preferencePanel.pdm.getText().getText()));
+			XmlUtils.store(ClientUtils.temprary);
+
+			dispose();
 		}
 	}
 
-	private static class FindCaxaCacheActionListener implements ActionListener {
+	private class FindCaxaCacheActionListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-
+			new LocalFileChooser(JFileChooser.DIRECTORIES_ONLY, preferencePanel.cache);
 		}
 	}
 
-	private static class FindCaxaExeActionListener implements ActionListener {
+	private class FindCaxaExeActionListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-
+			new LocalFileChooser(JFileChooser.FILES_ONLY, preferencePanel.exe);
 		}
 	}
 
-	private static class FindDefaultFolderActionListenner implements ActionListener {
+	private class FindDefaultFolderActionListenner implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-
+			new PdmLinkProductChooseDialog().activate();
 		}
 	}
 
-	private static class FindDefaultPdmActionListenner implements ActionListener {
+	private class FindDefaultPdmActionListenner implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-
+			new PdmLinkProductChooseDialog().activate();
 		}
 	}
 
-	static class PreferencesPanel extends AbstractPanel {
+	class PreferencesPanel extends AbstractPanel {
 
 		private static final long serialVersionUID = -5076567817803672184L;
+		public PromptTextField cache;
 		private final String CAXA_CACHE = "caxa.cache";
 		private final String CAXA_EXE = "caxa.exe";
 		private final String DEFAULT_FOLDER = "default.folder";
 		private final String DEFAULT_PDM = "default.pdm";
+		public PromptTextField exe;
+		public PromptTextField folder;
 		private final double HEIGHT_PROPORTION = 0.08d;
 		private final double LABEL_PROPORTION = 0.18d;
 		private final String OPEN = "open";
+		public PromptTextField pdm;
 		private final double TEXT_PROPORTION = 0.55d;
 		private final String TITLE = "title";
+		public PromptTextField url;
 		private final String WINDCHILL_URL = "wnc.url";
 
-		public static PreferencesPanel newInstance(Container parent) {
-			PreferencesPanel panel = initialize(PreferencesPanel.class);
-			panel.initialize(parent);
-			return panel;
-		}
-
 		private String getCaxaCache() {
-			return "CaxaCache";
+			return (isPreferenceCaxaNull() || StringUtils.isEmpty(preference.getCaxa().getCache())) ? ""
+					: preference.getCaxa().getCache();
 		}
 
 		private String getCaxaExe() {
-			return "CaxaExe";
+			return (preference == null || preference.getCaxa() == null
+					|| StringUtils.isEmpty(preference.getCaxa().getLocation())) ? ""
+							: preference.getCaxa().getLocation();
 		}
 
 		private String getDefaultFolder() {
-			return "Folder";
+			return (isPreferenceContainerNull() || StringUtils.isEmpty(preference.getContainer().getFolder())) ? ""
+					: preference.getContainer().getFolder();
 		}
 
 		private String getDefaultPdm() {
-			return "Pdm";
+			return (isPreferenceContainerNull() || StringUtils.isEmpty(preference.getContainer().getPdm())) ? ""
+					: preference.getContainer().getPdm();
 		}
 
 		@Override
@@ -136,11 +167,12 @@ public class PreferencesDialog extends AbstractDialog {
 		}
 
 		private String getWnctUrl() {
-			return "http://plm.teg.cn/Windchill";
+			String wncUrl = ClientUtils.temprary.getServer();
+			return StringUtils.isEmpty(wncUrl) ? "" : wncUrl;
 		}
 
 		@Override
-		protected void initialize() {
+		public void initialize() {
 			setLayout(new FlowLayout(FlowLayout.LEFT));
 
 			// set panel border to be title and etched type
@@ -149,39 +181,43 @@ public class PreferencesDialog extends AbstractDialog {
 					TitledBorder.DEFAULT_POSITION, toolkit.getFont()));
 
 			// ~ add components
-			PromptTextFieldDimension dimension = PromptTextField.newDimension(getPreferredSize(), LABEL_PROPORTION,
-					TEXT_PROPORTION, HEIGHT_PROPORTION);
-			PromptTextField url = PromptTextField.newInstance(getResourceMap().getString((WINDCHILL_URL)), getWnctUrl(),
-					dimension);
+			PromptTextField.PromptTextFieldDimension dimension = PromptTextField.newDimension(getPreferredSize(),
+					LABEL_PROPORTION, TEXT_PROPORTION, HEIGHT_PROPORTION);
+			url = PromptTextField.newInstance(getResourceMap().getString((WINDCHILL_URL)), getWnctUrl(), dimension);
 			add(url);
 
-			PromptTextField exe = PromptTextField.newInstance(getResourceMap().getString((CAXA_EXE)), getCaxaExe(),
-					dimension);
+			exe = PromptTextField.newInstance(getResourceMap().getString((CAXA_EXE)), getCaxaExe(), dimension);
 			add(exe);
 			JButton openExe = new JButton(getResourceMap().getString((OPEN)));
 			openExe.addActionListener(new FindCaxaExeActionListener());
 			add(openExe);
 
-			PromptTextField cache = PromptTextField.newInstance(getResourceMap().getString((CAXA_CACHE)),
-					getCaxaCache(), dimension);
+			cache = PromptTextField.newInstance(getResourceMap().getString((CAXA_CACHE)), getCaxaCache(), dimension);
 			add(cache);
 			JButton openCache = new JButton(getResourceMap().getString((OPEN)));
 			openCache.addActionListener(new FindCaxaCacheActionListener());
 			add(openCache);
 
-			PromptTextField pdm = PromptTextField.newInstance(getResourceMap().getString((DEFAULT_PDM)),
-					getDefaultPdm(), dimension);
+			pdm = PromptTextField.newInstance(getResourceMap().getString((DEFAULT_PDM)), getDefaultPdm(), dimension);
 			add(pdm);
 			JButton openPdm = new JButton(getResourceMap().getString((OPEN)));
 			openPdm.addActionListener(new FindDefaultPdmActionListenner());
 			add(openPdm);
 
-			PromptTextField folder = PromptTextField.newInstance(getResourceMap().getString((DEFAULT_FOLDER)),
-					getDefaultFolder(), dimension);
+			folder = PromptTextField.newInstance(getResourceMap().getString((DEFAULT_FOLDER)), getDefaultFolder(),
+					dimension);
 			add(folder);
 			JButton openFolder = new JButton(getResourceMap().getString((OPEN)));
 			openPdm.addActionListener(new FindDefaultFolderActionListenner());
 			add(openFolder);
+		}
+
+		private boolean isPreferenceCaxaNull() {
+			return preference == null || preference.getCaxa() == null;
+		}
+
+		private boolean isPreferenceContainerNull() {
+			return preference == null || preference.getContainer() == null;
 		}
 	}
 }

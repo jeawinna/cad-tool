@@ -1,14 +1,10 @@
 package com.bplead.cad.ui;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.Arrays;
 
 import javax.swing.BorderFactory;
@@ -16,39 +12,20 @@ import javax.swing.border.TitledBorder;
 
 import org.apache.log4j.Logger;
 
-import com.bplead.cad.ui.PromptTextField.PromptTextFieldDimension;
+import priv.lee.cad.ui.AbstractPanel;
+import priv.lee.cad.ui.Option;
+import priv.lee.cad.ui.OptionPanel;
+import priv.lee.cad.ui.PromptTextField;
 
 public class ContainerPanel extends AbstractPanel {
 
 	private static final String BUTTON_ICON = "folder.search.icon";
 	private static final String FOLDER_PROMPT = "folder.prompt";
-
 	private static final String FOLDER_TITLE = "folder.title";
-
 	private static final Logger logger = Logger.getLogger(ContainerPanel.class);
 	private static final String PDM_PROMPT = "pdm.prompt";
 	private static final String PDM_TITLE = "pdm.title";
 	private static final long serialVersionUID = 1442969218942586007L;
-
-	public static ContainerPanel newInstance(Container parent) {
-		ContainerPanel panel = initialize(ContainerPanel.class);
-		panel.initialize(parent);
-		return panel;
-	}
-
-	private int getHGap() {
-		Component[] components = getComponents();
-		if (components == null || components.length == 0) {
-			return 0;
-		}
-
-		BigDecimal width = BigDecimal.ZERO;
-		for (Component component : components) {
-			width = width.add(new BigDecimal(component.getPreferredSize().width));
-		}
-		return new BigDecimal(getPreferredSize().width).subtract(width)
-				.divide(new BigDecimal(components.length + 1), RoundingMode.DOWN).intValue();
-	}
 
 	@Override
 	public double getHorizontalProportion() {
@@ -61,35 +38,21 @@ public class ContainerPanel extends AbstractPanel {
 	}
 
 	@Override
-	protected void initialize() {
-		logger.info("initialize PDMLinkProduct panel...");
-		add(PDMLinkProductPanel.newInstance(this));
+	public void initialize() {
+		logger.info("initialize " + PDMLinkProductPanel.class + "...");
+		add(new PDMLinkProductPanel());
 
-		logger.info("initialize SubFolder panel...");
-		add(SubFolderPanel.newInstance((this)));
-
-		// set flow layout horizontal gap
-		FlowLayout layout = (FlowLayout) getLayout();
-		layout.setHgap(getHGap());
-
-		if (logger.isDebugEnabled()) {
-			setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		}
+		logger.info("initialize " + SubFolderPanel.class + "...");
+		add(new SubFolderPanel());
 	}
 
 	static class PDMLinkProductPanel extends SimpleButtonSetPanel {
 
 		private static final long serialVersionUID = 5788762488066451045L;
 
-		public static PDMLinkProductPanel newInstance(Container parent) {
-			PDMLinkProductPanel panel = initialize(PDMLinkProductPanel.class);
-			panel.initialize(parent);
-			return panel;
-		}
-
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			logger.debug("open pdmlinkproduct dialog performed");
+			new PdmLinkProductChooseDialog().activate();
 		}
 
 		@Override
@@ -116,17 +79,9 @@ public class ContainerPanel extends AbstractPanel {
 	abstract static class SimpleButtonSetPanel extends AbstractPanel implements ActionListener {
 
 		private static final long serialVersionUID = -5690721799689305895L;
-
-		public static SimpleButtonSetPanel newInstance(Container parent) {
-			SimpleButtonSetPanel panel = initialize(SimpleButtonSetPanel.class);
-			panel.initialize(parent);
-			return panel;
-		}
-
 		private final double BUTTON_PROPORTION = 0.3d;
 		private final double HEIGHT_PROPORTION = 0.3d;
 		private final double LABEL_PROPORTION = 0.15d;
-
 		private final double TEXT_PROPORTION = 0.65d;
 
 		private Dimension getButtonPrerredSize() {
@@ -136,7 +91,7 @@ public class ContainerPanel extends AbstractPanel {
 
 		@Override
 		public double getHorizontalProportion() {
-			return 0.462d;
+			return 0.47d;
 		}
 
 		@Override
@@ -145,22 +100,21 @@ public class ContainerPanel extends AbstractPanel {
 		}
 
 		@Override
-		protected void initialize() {
-			logger.info("modify to flow layout...");
+		public void initialize() {
+			logger.info("modify " + getClass() + " to flow layout...");
 			setLayout(new FlowLayout(FlowLayout.LEFT));
 
-			logger.info("initialize content...");
+			logger.info("initialize " + getClass() + "  content...");
 			// ~ initialize content
 			setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), setTitle(),
 					TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, toolkit.getFont()));
 
-			PromptTextFieldDimension dimension = PromptTextField.newDimension(getPreferredSize(), LABEL_PROPORTION,
-					TEXT_PROPORTION, HEIGHT_PROPORTION);
+			PromptTextField.PromptTextFieldDimension dimension = PromptTextField.newDimension(getPreferredSize(),
+					LABEL_PROPORTION, TEXT_PROPORTION, HEIGHT_PROPORTION);
 			PromptTextField text = PromptTextField.newInstance(setPrompt(), setText(), dimension);
 			add(text);
 
-			add(OptionPanel.newInstance(this,
-					Arrays.asList(Option.newInstance(null, BUTTON_ICON, this, getButtonPrerredSize()))));
+			add(new OptionPanel(Arrays.asList(new Option(null, BUTTON_ICON, this, getButtonPrerredSize()))));
 		}
 
 		protected abstract String setButtonText();
@@ -176,15 +130,9 @@ public class ContainerPanel extends AbstractPanel {
 
 		private static final long serialVersionUID = 5788762488066451045L;
 
-		public static SubFolderPanel newInstance(Container parent) {
-			SubFolderPanel panel = initialize(SubFolderPanel.class);
-			panel.initialize(parent);
-			return panel;
-		}
-
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			logger.debug("open subfolder dialog performed");
+			new PdmLinkProductChooseDialog().activate();
 		}
 
 		@Override

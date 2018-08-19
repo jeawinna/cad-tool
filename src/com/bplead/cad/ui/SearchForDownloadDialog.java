@@ -1,6 +1,5 @@
 package com.bplead.cad.ui;
 
-import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.LayoutManager;
 import java.awt.Window;
@@ -14,7 +13,11 @@ import javax.swing.border.TitledBorder;
 
 import org.apache.log4j.Logger;
 
-import com.bplead.cad.ui.PromptTextField.PromptTextFieldDimension;
+import priv.lee.cad.ui.AbstractDialog;
+import priv.lee.cad.ui.AbstractPanel;
+import priv.lee.cad.ui.Option;
+import priv.lee.cad.ui.OptionPanel;
+import priv.lee.cad.ui.PromptTextField;
 
 public class SearchForDownloadDialog extends AbstractDialog implements ActionListener {
 
@@ -24,7 +27,7 @@ public class SearchForDownloadDialog extends AbstractDialog implements ActionLis
 	private static final long serialVersionUID = 1336292047030719519L;
 
 	public static void main(String[] args) {
-		new SearchForDownloadDialog().newInstance(null);
+		new SearchForDownloadDialog();
 	}
 
 	public SearchForDownloadDialog() {
@@ -47,17 +50,17 @@ public class SearchForDownloadDialog extends AbstractDialog implements ActionLis
 	}
 
 	@Override
-	protected void initialize() {
+	public void initialize() {
 		setLayout(layout);
 
 		logger.info("initialize search conditions content...");
-		add(SearchConditionsPanel.newInstance(this));
+		add(new SearchConditionsPanel());
 
 		logger.info("initialize search result content...");
-		add(SearchResultPanel.newInstance(this));
+		add(new SearchResultPanel());
 
 		logger.info("initialize download setting content...");
-		add(DownloadSettingPanel.newInstance(this));
+		add(new DownloadSettingPanel());
 
 		logger.info("initialize completed...");
 	}
@@ -65,13 +68,6 @@ public class SearchForDownloadDialog extends AbstractDialog implements ActionLis
 	static class DownloadSettingPanel extends AbstractPanel implements ActionListener {
 
 		private static final long serialVersionUID = -6481481565984135229L;
-
-		public static DownloadSettingPanel newInstance(Container parent) {
-			DownloadSettingPanel panel = initialize(DownloadSettingPanel.class);
-			panel.initialize(parent);
-			return panel;
-		}
-
 		private final String DOWNLOAD_TO = "downloadTo";
 		private final double HEIGHT_PROPORTION = 0.5d;
 		private final double LABEL_PROPORTION = 0.1d;
@@ -93,20 +89,20 @@ public class SearchForDownloadDialog extends AbstractDialog implements ActionLis
 		}
 
 		@Override
-		protected void initialize() {
+		public void initialize() {
 			setLayout(layout);
 
-			PromptTextFieldDimension dimension = PromptTextField.newDimension(getPreferredSize(), LABEL_PROPORTION,
-					TEXT_PROPORTION, HEIGHT_PROPORTION);
+			PromptTextField.PromptTextFieldDimension dimension = PromptTextField.newDimension(getPreferredSize(),
+					LABEL_PROPORTION, TEXT_PROPORTION, HEIGHT_PROPORTION);
 			PromptTextField setting = PromptTextField.newInstance((getResourceMap().getString(DOWNLOAD_TO)), null,
 					dimension);
 			setting.setLabelAligment(SwingConstants.LEFT);
 			add(setting);
 
 			logger.info("initialize browser option...");
-			Option browse = Option.newInstance(Option.BROWSE_BUTTON, null, this);
-			Option confirm = Option.newInstance(Option.CONFIRM_BUTTON, null, this);
-			add(OptionPanel.newInstance(this, Arrays.asList(browse, confirm, Option.newCancelOption((Window) parent))));
+			Option browse = new Option(Option.BROWSE_BUTTON, null, this);
+			Option confirm = new Option(Option.CONFIRM_BUTTON, null, this);
+			add(new OptionPanel(Arrays.asList(browse, confirm, Option.newCancelOption((Window) getParent()))));
 		}
 	}
 
@@ -116,13 +112,6 @@ public class SearchForDownloadDialog extends AbstractDialog implements ActionLis
 		private static final String NUMBER = "number";
 		private static final String SEARCH = "search";
 		private static final long serialVersionUID = 7488199863056895133L;
-
-		public static SearchConditionsPanel newInstance(Container parent) {
-			SearchConditionsPanel panel = initialize(SearchConditionsPanel.class);
-			panel.initialize(parent);
-			return panel;
-		}
-
 		private final double HEIGHT_PROPORTION = 0.3d;
 		private final double LABEL_PROPORTION = 0.05d;
 		private final double TEXT_PROPORTION = 0.2d;
@@ -144,14 +133,14 @@ public class SearchForDownloadDialog extends AbstractDialog implements ActionLis
 		}
 
 		@Override
-		protected void initialize() {
+		public void initialize() {
 			// set panel border to be title and etched type
 			setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(),
 					getResourceMap().getString(TITLE), TitledBorder.DEFAULT_JUSTIFICATION,
 					TitledBorder.DEFAULT_POSITION, toolkit.getFont()));
 
-			PromptTextFieldDimension dimension = PromptTextField.newDimension(getPreferredSize(), LABEL_PROPORTION,
-					TEXT_PROPORTION, HEIGHT_PROPORTION);
+			PromptTextField.PromptTextFieldDimension dimension = PromptTextField.newDimension(getPreferredSize(),
+					LABEL_PROPORTION, TEXT_PROPORTION, HEIGHT_PROPORTION);
 			PromptTextField number = PromptTextField.newInstance((getResourceMap().getString(NUMBER)), null, dimension);
 			number.setLabelAligment(SwingConstants.CENTER);
 			add(number);
@@ -160,21 +149,14 @@ public class SearchForDownloadDialog extends AbstractDialog implements ActionLis
 			name.setLabelAligment(SwingConstants.CENTER);
 			add(name);
 
-			Option search = Option.newInstance(SEARCH, null, this);
-			add(OptionPanel.newInstance(this, Arrays.asList(search)));
+			Option search = new Option(SEARCH, null, this);
+			add(new OptionPanel(Arrays.asList(search)));
 		}
 	}
 
 	static class SearchResultPanel extends AbstractPanel {
 
 		private static final long serialVersionUID = -7416585921364617464L;
-
-		public static SearchResultPanel newInstance(Container parent) {
-			SearchResultPanel panel = initialize(SearchResultPanel.class);
-			panel.initialize(parent);
-			return panel;
-		}
-
 		private final String TITLE = "title";
 
 		@Override
@@ -188,7 +170,7 @@ public class SearchForDownloadDialog extends AbstractDialog implements ActionLis
 		}
 
 		@Override
-		protected void initialize() {
+		public void initialize() {
 			// set panel border to be title and etched type
 			setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(),
 					getResourceMap().getString(TITLE), TitledBorder.DEFAULT_JUSTIFICATION,

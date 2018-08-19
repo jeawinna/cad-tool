@@ -1,6 +1,5 @@
 package com.bplead.cad.ui;
 
-import java.awt.Container;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,36 +10,33 @@ import javax.swing.border.TitledBorder;
 import org.apache.log4j.Logger;
 
 import com.bplead.cad.io.bean.CAD;
-import com.bplead.cad.layout.DefaultGroupLayout;
-import com.bplead.cad.ui.PromptTextField.PromptTextFieldDimension;
+
+import priv.lee.cad.layout.DefaultGroupLayout;
+import priv.lee.cad.ui.AbstractPanel;
+import priv.lee.cad.ui.PromptTextField;
 
 public class BasicAttributePanel extends AbstractPanel {
 
 	private static final Logger logger = Logger.getLogger(BasicAttributePanel.class);
 	private static final long serialVersionUID = 5723039852386303330L;
-
-	public static BasicAttributePanel newInstance(Container parent, CAD cad) {
-		BasicAttributePanel panel = initialize(BasicAttributePanel.class);
-		panel.setCad(cad);
-		panel.initialize(parent);
-		return panel;
-	}
-
 	private CAD cad;
 	private final double HEIGHT_PROPORTION = 0.1d;
 	private final double HGAP_PROPORTION = 0.005d;
 	private final double LABEL_PROPORTION = 0.08d;
 	private final double TEXT_PROPORTION = 0.2d;
 	private final String TITLE = "title";
-
 	private final double VGAP_PROPORTION = 0.02d;
+
+	public BasicAttributePanel(CAD cad) {
+		this.cad = cad;
+	}
 
 	private List<PromptTextField> conver2Texts() {
 		// ~ reflect String type fields and convert to PromptTextField type
 		List<PromptTextField> texts = new ArrayList<PromptTextField>();
 		String value = "";
-		PromptTextFieldDimension dimension = PromptTextField.newDimension(getPreferredSize(), LABEL_PROPORTION,
-				TEXT_PROPORTION, HEIGHT_PROPORTION);
+		PromptTextField.PromptTextFieldDimension dimension = PromptTextField.newDimension(getPreferredSize(),
+				LABEL_PROPORTION, TEXT_PROPORTION, HEIGHT_PROPORTION);
 		Field[] fields = CAD.class.getDeclaredFields();
 		for (Field field : fields) {
 			field.setAccessible(true);
@@ -78,7 +74,7 @@ public class BasicAttributePanel extends AbstractPanel {
 	}
 
 	@Override
-	protected void initialize() {
+	public void initialize() {
 		logger.info("initialize content...");
 		// ~ initialize content
 		setBorder(

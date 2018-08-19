@@ -1,13 +1,19 @@
 package com.bplead.cad.ui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 
 import org.apache.log4j.Logger;
 
 import com.bplead.cad.io.bean.CAD;
-import com.bplead.cad.util.Assert;
-import com.bplead.cad.util.PropertiesUtils;
-import com.bplead.cad.util.XmlUtils;
+import com.bplead.cad.model.CustomStyleToolkit;
+
+import priv.lee.cad.model.StyleToolkit;
+import priv.lee.cad.ui.AbstractFrame;
+import priv.lee.cad.util.Assert;
+import priv.lee.cad.util.PropertiesUtils;
+import priv.lee.cad.util.XmlUtils;
 
 public class CADMainFrame extends AbstractFrame {
 
@@ -16,16 +22,18 @@ public class CADMainFrame extends AbstractFrame {
 
 	public static void main(String[] args) {
 		logger.info("begin to start...");
-		new CADMainFrame().newInstance(null);
+		new CADMainFrame().activate();
 		logger.info("ready...");
 	}
 
 	private CAD cad;
-
 	private final String CAD_REPOSITORY = "cad.xml.repository";
+	private StyleToolkit toolkit = new CustomStyleToolkit();
 
 	public CADMainFrame() {
 		super(CADMainFrame.class);
+
+		setToolkit(toolkit);
 	}
 
 	@Override
@@ -35,7 +43,7 @@ public class CADMainFrame extends AbstractFrame {
 
 	@Override
 	public double getVerticalProportion() {
-		return 0.9;
+		return 0.99;
 	}
 
 	private void initCAD() {
@@ -45,21 +53,29 @@ public class CADMainFrame extends AbstractFrame {
 	}
 
 	@Override
-	protected void initialize() {
-		logger.info("initialize CAD...");
+	public void initialize() {
+		logger.info("initialize " + getClass() + " CAD...");
 		initCAD();
 		Assert.notNull(cad, "CAD initialize failed.Please check the " + PropertiesUtils.readProperty(CAD_REPOSITORY));
 
-		logger.info("initialize menu bar...");
+		logger.info("initialize " + getClass() + " menu bar...");
 		setJMenuBar(toolkit.getStandardMenuBar());
 
-		logger.info("initialize container panel...");
-		getContentPane().add(ContainerPanel.newInstance(this));
+		logger.info("initialize " + getClass() + " container panel...");
+		getContentPane().add(new ContainerPanel());
 
-		logger.info("initialize basic attribute panel...");
-		getContentPane().add(BasicAttributePanel.newInstance(this, cad));
+		logger.info("initialize " + getClass() + " basic attribute panel...");
+		getContentPane().add(new BasicAttributePanel(cad));
 
-		logger.info("initialize detail attribute panel...");
-		getContentPane().add(DetailAttributePanel.newInstance(this, cad));
+		logger.info("initialize " + getClass() + " detail attribute panel...");
+		getContentPane().add(new DetailAttributePanel(cad));
+	}
+
+	public class PrefencesActionListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			new PreferencesDialog().activate();
+		}
 	}
 }

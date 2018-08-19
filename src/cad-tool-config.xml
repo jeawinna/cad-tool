@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Temporary>
+	<userName></userName>
+	<userPasswd></userPasswd>
+	<rememberMe></rememberMe>
+	<Preference>
+		<server></server>
+		<CaxaTemporary>
+			<location></location>
+			<cache></cache>
+		</CaxaTemporary>
+		<DefaultTemporary>
+			<pdm></pdm>
+			<folder></folder>
+		</DefaultTemporary>
+	</Preference>
+</Temporary>

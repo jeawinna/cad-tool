@@ -12,10 +12,14 @@ import javax.swing.border.TitledBorder;
 
 import org.apache.log4j.Logger;
 
+import com.bplead.cad.bean.SimplePdmLinkProduct;
+
+import priv.lee.cad.model.Callback;
 import priv.lee.cad.ui.AbstractPanel;
 import priv.lee.cad.ui.Option;
 import priv.lee.cad.ui.OptionPanel;
 import priv.lee.cad.ui.PromptTextField;
+import priv.lee.cad.util.Assert;
 
 public class ContainerPanel extends AbstractPanel {
 
@@ -49,10 +53,25 @@ public class ContainerPanel extends AbstractPanel {
 	static class PDMLinkProductPanel extends SimpleButtonSetPanel {
 
 		private static final long serialVersionUID = 5788762488066451045L;
+		private SimplePdmLinkProduct product;
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			new PdmLinkProductChooseDialog().activate();
+			new PdmLinkProductChooseDialog(this).activate();
+		}
+
+		@Override
+		public void call(Object object) {
+			Assert.notNull(object, "Callback object is required");
+			Assert.isInstanceOf(SimplePdmLinkProduct.class, object,
+					"Callback object must be a SimplePdmLinkProduct type");
+
+			this.product = (SimplePdmLinkProduct) object;
+			text.getText().setText(product.getName());
+		}
+
+		public SimplePdmLinkProduct getProduct() {
+			return product;
 		}
 
 		@Override
@@ -76,12 +95,13 @@ public class ContainerPanel extends AbstractPanel {
 		}
 	}
 
-	abstract static class SimpleButtonSetPanel extends AbstractPanel implements ActionListener {
+	abstract static class SimpleButtonSetPanel extends AbstractPanel implements ActionListener, Callback {
 
 		private static final long serialVersionUID = -5690721799689305895L;
 		private final double BUTTON_PROPORTION = 0.3d;
 		private final double HEIGHT_PROPORTION = 0.3d;
 		private final double LABEL_PROPORTION = 0.15d;
+		public PromptTextField text;
 		private final double TEXT_PROPORTION = 0.65d;
 
 		private Dimension getButtonPrerredSize() {
@@ -111,7 +131,7 @@ public class ContainerPanel extends AbstractPanel {
 
 			PromptTextField.PromptTextFieldDimension dimension = PromptTextField.newDimension(getPreferredSize(),
 					LABEL_PROPORTION, TEXT_PROPORTION, HEIGHT_PROPORTION);
-			PromptTextField text = PromptTextField.newInstance(setPrompt(), setText(), dimension);
+			text = PromptTextField.newInstance(setPrompt(), setText(), dimension);
 			add(text);
 
 			add(new OptionPanel(Arrays.asList(new Option(null, BUTTON_ICON, this, getButtonPrerredSize()))));
@@ -132,7 +152,12 @@ public class ContainerPanel extends AbstractPanel {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			new PdmLinkProductChooseDialog().activate();
+			new PdmLinkProductChooseDialog(this).activate();
+		}
+
+		@Override
+		public void call(Object object) {
+
 		}
 
 		@Override

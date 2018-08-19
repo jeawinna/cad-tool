@@ -17,6 +17,7 @@ import com.bplead.cad.bean.client.DefaultContainer;
 import com.bplead.cad.bean.client.Preference;
 import com.bplead.cad.util.ClientUtils;
 
+import priv.lee.cad.model.Callback;
 import priv.lee.cad.ui.AbstractDialog;
 import priv.lee.cad.ui.AbstractPanel;
 import priv.lee.cad.ui.Option;
@@ -29,16 +30,11 @@ public class PreferencesDialog extends AbstractDialog {
 
 	private static final Logger logger = Logger.getLogger(PreferencesDialog.class);
 	private static final long serialVersionUID = -2875157877197653599L;
-
-	public static void main(String[] args) {
-		new PreferencesDialog().activate();
-	}
-
 	private Preference preference = ClientUtils.temprary.getPreference();
 	private PreferencesPanel preferencePanel;
 
-	public PreferencesDialog() {
-		super(PreferencesDialog.class);
+	public PreferencesDialog(Callback container) {
+		super(PreferencesDialog.class, container);
 	}
 
 	@Override
@@ -62,6 +58,11 @@ public class PreferencesDialog extends AbstractDialog {
 		add(new OptionPanel(Arrays.asList(confirm, Option.newCancelOption(this))));
 
 		logger.info("initialize completed...");
+	}
+
+	@Override
+	public Object setCallbackObject() {
+		return null;
 	}
 
 	private class ConfirmActionListener implements ActionListener {
@@ -100,19 +101,29 @@ public class PreferencesDialog extends AbstractDialog {
 		}
 	}
 
-	private class FindDefaultFolderActionListenner implements ActionListener {
+	private class FindDefaultFolderActionListenner implements ActionListener, Callback {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			new PdmLinkProductChooseDialog().activate();
+			new PdmLinkProductChooseDialog(this).activate();
+		}
+
+		@Override
+		public void call(Object object) {
+
 		}
 	}
 
-	private class FindDefaultPdmActionListenner implements ActionListener {
+	private class FindDefaultPdmActionListenner implements ActionListener, Callback {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			new PdmLinkProductChooseDialog().activate();
+			new PdmLinkProductChooseDialog(this).activate();
+		}
+
+		@Override
+		public void call(Object object) {
+
 		}
 	}
 

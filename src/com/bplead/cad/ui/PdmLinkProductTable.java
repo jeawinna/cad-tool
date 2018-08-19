@@ -187,4 +187,8 @@ public class PdmLinkProductTable extends JTable implements ResourceMapper, Mouse
 	public void setResourceMap(ResourceMap resourceMap) {
 		this.resourceMap = resourceMap;
 	}
+
+	public SimplePdmLinkProduct getSelectedProduct() {
+		return products.get(getSelectedRow());
+	}
 }

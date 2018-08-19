@@ -1,7 +1,6 @@
 package com.bplead.cad.ui;
 
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
 
@@ -11,6 +10,7 @@ import javax.swing.border.TitledBorder;
 
 import org.apache.log4j.Logger;
 
+import priv.lee.cad.model.Callback;
 import priv.lee.cad.ui.AbstractDialog;
 import priv.lee.cad.ui.AbstractPanel;
 import priv.lee.cad.ui.Option;
@@ -20,22 +20,17 @@ public class PdmLinkProductChooseDialog extends AbstractDialog implements Action
 
 	private static final Logger logger = Logger.getLogger(PdmLinkProductChooseDialog.class);
 	private static final long serialVersionUID = 39269794179304687L;
-
-	public static void main(String[] args) {
-		new PdmLinkProductChooseDialog().activate();
-	}
-
 	private PdmLinkProductTable table;
 	private double TABLE_HEIGTH_PROPORTION = 0.9d;
 	private double TABLE_WIDTH_PROPORTION = 0.98d;
 
-	public PdmLinkProductChooseDialog() {
-		super(PdmLinkProductChooseDialog.class);
+	public PdmLinkProductChooseDialog(Callback container) {
+		super(PdmLinkProductChooseDialog.class, container);
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-
+	public Object setCallbackObject() {
+		return table.getSelectedProduct();
 	}
 
 	@Override

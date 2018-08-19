@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import com.bplead.cad.io.bean.CAD;
 import com.bplead.cad.model.CustomStyleToolkit;
 
+import priv.lee.cad.model.Callback;
 import priv.lee.cad.model.StyleToolkit;
 import priv.lee.cad.ui.AbstractFrame;
 import priv.lee.cad.util.Assert;
@@ -71,11 +72,16 @@ public class CADMainFrame extends AbstractFrame {
 		getContentPane().add(new DetailAttributePanel(cad));
 	}
 
-	public class PrefencesActionListener implements ActionListener {
+	public class PrefencesActionListener implements ActionListener, Callback {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			new PreferencesDialog().activate();
+			new PreferencesDialog(this).activate();
+		}
+
+		@Override
+		public void call(Object object) {
+
 		}
 	}
 }

@@ -13,6 +13,7 @@ import javax.swing.border.TitledBorder;
 
 import org.apache.log4j.Logger;
 
+import priv.lee.cad.model.Callback;
 import priv.lee.cad.ui.AbstractDialog;
 import priv.lee.cad.ui.AbstractPanel;
 import priv.lee.cad.ui.Option;
@@ -23,20 +24,10 @@ public class SearchForDownloadDialog extends AbstractDialog implements ActionLis
 
 	private static LayoutManager layout = new FlowLayout(FlowLayout.LEFT);
 	private static final Logger logger = Logger.getLogger(SearchForDownloadDialog.class);
-
 	private static final long serialVersionUID = 1336292047030719519L;
 
-	public static void main(String[] args) {
-		new SearchForDownloadDialog();
-	}
-
-	public SearchForDownloadDialog() {
-		super(SearchForDownloadDialog.class);
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-
+	public SearchForDownloadDialog(Callback container) {
+		super(SearchForDownloadDialog.class, container);
 	}
 
 	@Override
@@ -65,7 +56,12 @@ public class SearchForDownloadDialog extends AbstractDialog implements ActionLis
 		logger.info("initialize completed...");
 	}
 
-	static class DownloadSettingPanel extends AbstractPanel implements ActionListener {
+	@Override
+	public Object setCallbackObject() {
+		return null;
+	}
+
+	class DownloadSettingPanel extends AbstractPanel implements ActionListener {
 
 		private static final long serialVersionUID = -6481481565984135229L;
 		private final String DOWNLOAD_TO = "downloadTo";
@@ -106,7 +102,7 @@ public class SearchForDownloadDialog extends AbstractDialog implements ActionLis
 		}
 	}
 
-	static class SearchConditionsPanel extends AbstractPanel implements ActionListener {
+	class SearchConditionsPanel extends AbstractPanel implements ActionListener {
 
 		private static final String NAME = "name";
 		private static final String NUMBER = "number";
@@ -154,7 +150,7 @@ public class SearchForDownloadDialog extends AbstractDialog implements ActionLis
 		}
 	}
 
-	static class SearchResultPanel extends AbstractPanel {
+	class SearchResultPanel extends AbstractPanel {
 
 		private static final long serialVersionUID = -7416585921364617464L;
 		private final String TITLE = "title";

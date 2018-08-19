@@ -7,12 +7,16 @@ import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
 import org.apache.log4j.Logger;
+
+import com.bplead.cad.bean.SimpleObject;
+import com.bplead.cad.util.ClientUtils;
 
 import priv.lee.cad.model.Callback;
 import priv.lee.cad.ui.AbstractDialog;
@@ -26,6 +30,8 @@ public class SearchForDownloadDialog extends AbstractDialog implements ActionLis
 	private static LayoutManager layout = new FlowLayout(FlowLayout.LEFT);
 	private static final Logger logger = Logger.getLogger(SearchForDownloadDialog.class);
 	private static final long serialVersionUID = 1336292047030719519L;
+	private SearchConditionsPanel searchConditionPanel;
+	private SearchResultPanel searchResultPanel;
 
 	public SearchForDownloadDialog(Callback container) {
 		super(SearchForDownloadDialog.class, container);
@@ -47,10 +53,12 @@ public class SearchForDownloadDialog extends AbstractDialog implements ActionLis
 		setLayout(layout);
 
 		logger.info("initialize " + SearchConditionsPanel.class + " content...");
-		add(new SearchConditionsPanel());
+		searchConditionPanel = new SearchConditionsPanel();
+		add(searchConditionPanel);
 
 		logger.info("initialize " + SearchResultPanel.class + " content...");
-		add(new SearchResultPanel());
+		searchResultPanel = new SearchResultPanel();
+		add(searchResultPanel);
 
 		logger.info("initialize " + DownloadSettingPanel.class + " content...");
 		add(new DownloadSettingPanel());
@@ -117,12 +125,16 @@ public class SearchForDownloadDialog extends AbstractDialog implements ActionLis
 		private static final long serialVersionUID = 7488199863056895133L;
 		private final double HEIGHT_PROPORTION = 0.3d;
 		private final double LABEL_PROPORTION = 0.05d;
+		public PromptTextField name;
+		public PromptTextField number;
 		private final double TEXT_PROPORTION = 0.2d;
 		private final String TITLE = "title";
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-
+			List<? extends SimpleObject> objects = ClientUtils.search(number.getText().getText(),
+					name.getText().getText());
+			searchResultPanel.initResultTable(objects);
 		}
 
 		@Override
@@ -144,11 +156,11 @@ public class SearchForDownloadDialog extends AbstractDialog implements ActionLis
 
 			PromptTextField.PromptTextFieldDimension dimension = PromptTextField.newDimension(getPreferredSize(),
 					LABEL_PROPORTION, TEXT_PROPORTION, HEIGHT_PROPORTION);
-			PromptTextField number = PromptTextField.newInstance((getResourceMap().getString(NUMBER)), null, dimension);
+			number = PromptTextField.newInstance((getResourceMap().getString(NUMBER)), null, dimension);
 			number.setLabelAligment(SwingConstants.CENTER);
 			add(number);
 
-			PromptTextField name = PromptTextField.newInstance((getResourceMap().getString(NAME)), null, dimension);
+			name = PromptTextField.newInstance((getResourceMap().getString(NAME)), null, dimension);
 			name.setLabelAligment(SwingConstants.CENTER);
 			add(name);
 
@@ -178,6 +190,10 @@ public class SearchForDownloadDialog extends AbstractDialog implements ActionLis
 			setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(),
 					getResourceMap().getString(TITLE), TitledBorder.DEFAULT_JUSTIFICATION,
 					TitledBorder.DEFAULT_POSITION, toolkit.getFont()));
+
+		}
+
+		public void initResultTable(List<? extends SimpleObject> objects) {
 
 		}
 	}

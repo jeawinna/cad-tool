@@ -3,6 +3,7 @@ package com.bplead.cad.util;
 import java.util.List;
 
 import com.bplead.cad.bean.SimpleFolder;
+import com.bplead.cad.bean.SimpleObject;
 import com.bplead.cad.bean.SimplePdmLinkProduct;
 import com.bplead.cad.bean.client.Temporary;
 import com.bplead.cad.bean.constant.RemoteMethod;
@@ -21,5 +22,11 @@ public class ClientUtils extends ClientInstanceUtils {
 	@SuppressWarnings("unchecked")
 	public static List<SimplePdmLinkProduct> getSimplePdmLinkProducts() {
 		return invoke(RemoteMethod.GET_SIMPLE_PRODUCTS, null, null, List.class);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static List<? extends SimpleObject> search(String number, String name) {
+		return invoke(RemoteMethod.SEARCH, new Class<?>[] { String.class, String.class }, new Object[] { number, name },
+				List.class);
 	}
 }

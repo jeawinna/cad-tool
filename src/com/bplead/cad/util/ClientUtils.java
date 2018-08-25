@@ -2,13 +2,15 @@ package com.bplead.cad.util;
 
 import java.util.List;
 
+import com.bplead.cad.bean.SimpleDocument;
 import com.bplead.cad.bean.SimpleFolder;
-import com.bplead.cad.bean.SimpleObject;
 import com.bplead.cad.bean.SimplePdmLinkProduct;
 import com.bplead.cad.bean.client.Temporary;
 import com.bplead.cad.bean.constant.RemoteMethod;
 
+import priv.lee.cad.util.Assert;
 import priv.lee.cad.util.ClientInstanceUtils;
+import priv.lee.cad.util.StringUtils;
 
 public class ClientUtils extends ClientInstanceUtils {
 
@@ -25,7 +27,8 @@ public class ClientUtils extends ClientInstanceUtils {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static List<? extends SimpleObject> search(String number, String name) {
+	public static List<SimpleDocument> search(String number, String name) {
+		Assert.isTrue(StringUtils.hasText(number) || StringUtils.hasText(name), "Number or name is requried");
 		return invoke(RemoteMethod.SEARCH, new Class<?>[] { String.class, String.class }, new Object[] { number, name },
 				List.class);
 	}

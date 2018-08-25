@@ -9,9 +9,9 @@ import java.util.List;
 
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
-import com.bplead.cad.bean.SimplePdmLinkProduct;
-import com.bplead.cad.util.ClientUtils;
+import com.bplead.cad.bean.SimpleDocument;
 
 import priv.lee.cad.model.ResourceMap;
 import priv.lee.cad.model.ResourceMapper;
@@ -20,28 +20,35 @@ import priv.lee.cad.util.Assert;
 import priv.lee.cad.util.StringUtils;
 import priv.lee.cad.util.XmlUtils;
 
-public class PdmLinkProductTable extends JTable implements ResourceMapper, MouseListener {
+public class SearchResultTable extends JTable implements ResourceMapper, MouseListener {
 
+	private static final int FIXED_WIDTH = 5;
 	private static final long serialVersionUID = -5844495101340439741L;
 	private final String COL_HEADER_SUFFIX = "].header";
 	private final String COL_NAME_SUFFIX = "].value.name";
 	private final String COL_TYPE_SUFFIX = "].value.type";
 	private final String COL_WIDTH_SUFFIX = "].proportion.width";
 	private final String COLUMN_TOTAL = "column.total";
+	private List<SimpleDocument> documents;
 	private final String PREFIX_COL_HEADER = "column[";
-	private List<SimplePdmLinkProduct> products;
 	private ResourceMap resourceMap;
+
 	{
-		resourceMap = new DefaultResourceMap(PdmLinkProductTable.class);
+		resourceMap = new DefaultResourceMap(SearchResultTable.class);
 	}
 
-	public PdmLinkProductTable() {
-		this.products = ClientUtils.getSimplePdmLinkProducts();
+	public SearchResultTable(List<SimpleDocument> documents) {
+		this.documents = documents;
 		initTable();
 	}
 
+	public void clear() {
+		DefaultTableModel tableModel = (DefaultTableModel) getModel();
+		tableModel.setRowCount(0);
+	}
+
 	@SuppressWarnings("unchecked")
-	private <T> T getCellContent(SimplePdmLinkProduct product, String name, Class<T> clatt) {
+	private <T> T getCellContent(SimpleDocument product, String name, Class<T> clatt) {
 		if (product == null || StringUtils.isEmpty(name) || clatt == null) {
 			return null;
 		}
@@ -91,8 +98,8 @@ public class PdmLinkProductTable extends JTable implements ResourceMapper, Mouse
 		return new BigDecimal(getParent().getPreferredSize().width).multiply(new BigDecimal(proportion)).intValue();
 	}
 
-	public List<SimplePdmLinkProduct> getProducts() {
-		return products;
+	public List<SimpleDocument> getProducts() {
+		return documents;
 	}
 
 	@Override
@@ -100,46 +107,31 @@ public class PdmLinkProductTable extends JTable implements ResourceMapper, Mouse
 		return resourceMap;
 	}
 
-	public SimplePdmLinkProduct getRowData(int row) {
-		if (products == null) {
+	public SimpleDocument getRowData(int row) {
+		if (documents == null) {
 			return null;
 		}
-		Assert.isTrue(row < products.size(), "Row out of bounds:" + row);
-		return products.get(row);
+		Assert.isTrue(row < documents.size(), "Row out of bounds:" + row);
+		return documents.get(row);
+	}
+
+	public SimpleDocument getSelectedDocument() {
+		return documents.get(getSelectedRow());
 	}
 
 	private void initTable() {
-		if (products == null) {
-			return;
-		}
-
 		DefaultTableModel model = (DefaultTableModel) getModel();
 		List<String> headers = getColumnHeaders();
 		for (int column = 0; column < headers.size(); column++) {
-			model.addColumn(headers.get(column));
-
-			for (int row = 0; row < products.size(); row++) {
-				if (model.getRowCount() <= row) {
-					model.addRow(new Object[] {});
-				}
-
-				try {
-					Object content = getCellContent(products.get(row), getCellContentName(column),
-							getCellContentType(column));
-					model.setValueAt(content == null ? "" : content, row, column);
-				} catch (ClassNotFoundException e) {
-					e.printStackTrace();
-				}
+			if (model.findColumn(headers.get(column)) == -1) {
+				model.addColumn(headers.get(column));
 			}
+
+			setRows(model, column);
 		}
 		addMouseListener(this);
-	}
 
-	public void setColumnWidth() {
-		for (int column = 0; column < getColumnCount(); column++) {
-			int width = getColumnWidth(column);
-			getColumnModel().getColumn(column).setPreferredWidth(width);
-		}
+		invalidate();
 	}
 
 	@Override
@@ -161,24 +153,30 @@ public class PdmLinkProductTable extends JTable implements ResourceMapper, Mouse
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		if (e.getButton() == MouseEvent.BUTTON1) {
-			int selectedRow = getSelectedRow();
-			Boolean isSelected = (Boolean) getValueAt(selectedRow, 0);
-			DefaultTableModel model = (DefaultTableModel) getModel();
-			int count = model.getRowCount();
-			if (!isSelected) {
-				setValueAt(true, selectedRow, 0);
-				for (int i = 0; i < count; i++) {
-					if (i != selectedRow) {
-						setValueAt(false, i, 0);
-					}
-				}
-			}
-		}
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
+	}
+
+	public void refresh(List<SimpleDocument> documents) {
+		this.documents = documents;
+		initTable();
+	}
+
+	public void setColumnWidth() {
+		for (int column = 0; column < getColumnCount(); column++) {
+			Class<?> cls = getColumnClass(column);
+			if (column == 0 && Boolean.class.isAssignableFrom(cls)) {
+				TableColumn firsetColumn = getColumnModel().getColumn(0);
+				firsetColumn.setPreferredWidth(FIXED_WIDTH);
+				firsetColumn.setMaxWidth(FIXED_WIDTH);
+				firsetColumn.setMinWidth(FIXED_WIDTH);
+				continue;
+			}
+			int width = getColumnWidth(column);
+			getColumnModel().getColumn(column).setPreferredWidth(width);
+		}
 	}
 
 	@Override
@@ -186,7 +184,24 @@ public class PdmLinkProductTable extends JTable implements ResourceMapper, Mouse
 		this.resourceMap = resourceMap;
 	}
 
-	public SimplePdmLinkProduct getSelectedProduct() {
-		return products.get(getSelectedRow());
+	private void setRows(DefaultTableModel model, int column) {
+		if (documents == null || documents.isEmpty()) {
+			clear();
+			return;
+		}
+
+		for (int row = 0; row < documents.size(); row++) {
+			if (model.getRowCount() <= row) {
+				model.addRow(new Object[] {});
+			}
+
+			try {
+				Object content = getCellContent(documents.get(row), getCellContentName(column),
+						getCellContentType(column));
+				model.setValueAt(content == null ? "" : content, row, column);
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }

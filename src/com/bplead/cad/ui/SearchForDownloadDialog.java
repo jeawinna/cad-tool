@@ -1,6 +1,7 @@
 package com.bplead.cad.ui;
 
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.LayoutManager;
 import java.awt.Window;
@@ -10,12 +11,13 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.BorderFactory;
+import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
 import org.apache.log4j.Logger;
 
-import com.bplead.cad.bean.SimpleObject;
+import com.bplead.cad.bean.SimpleDocument;
 import com.bplead.cad.util.ClientUtils;
 
 import priv.lee.cad.model.Callback;
@@ -132,8 +134,7 @@ public class SearchForDownloadDialog extends AbstractDialog implements ActionLis
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			List<? extends SimpleObject> objects = ClientUtils.search(number.getText().getText(),
-					name.getText().getText());
+			List<SimpleDocument> objects = ClientUtils.search(number.getText().getText(), name.getText().getText());
 			searchResultPanel.initResultTable(objects);
 		}
 
@@ -172,6 +173,9 @@ public class SearchForDownloadDialog extends AbstractDialog implements ActionLis
 	class SearchResultPanel extends AbstractPanel {
 
 		private static final long serialVersionUID = -7416585921364617464L;
+		private SearchResultTable table;
+		private double TABLE_HEIGTH_PROPORTION = 0.85d;
+		private double TABLE_WIDTH_PROPORTION = 0.98d;
 		private final String TITLE = "title";
 
 		@Override
@@ -191,10 +195,16 @@ public class SearchForDownloadDialog extends AbstractDialog implements ActionLis
 					getResourceMap().getString(TITLE), TitledBorder.DEFAULT_JUSTIFICATION,
 					TitledBorder.DEFAULT_POSITION, toolkit.getFont()));
 
+			table = new SearchResultTable(null);
+			JScrollPane sp = new JScrollPane(table);
+			sp.setPreferredSize(new Dimension((int) (getPreferredSize().width * TABLE_WIDTH_PROPORTION),
+					(int) (getPreferredSize().height * TABLE_HEIGTH_PROPORTION)));
+			table.setColumnWidth();
+			add(sp);
 		}
 
-		public void initResultTable(List<? extends SimpleObject> objects) {
-
+		public void initResultTable(List<SimpleDocument> documents) {
+			table.refresh(documents);
 		}
 	}
 }

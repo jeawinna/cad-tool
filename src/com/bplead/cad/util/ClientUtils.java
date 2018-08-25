@@ -16,6 +16,10 @@ public class ClientUtils extends ClientInstanceUtils {
 
 	public static Temporary temprary = new Temporary();
 
+	public static Object download(List<SimpleDocument> documents) {
+		return null;
+	}
+
 	public static SimpleFolder getSimpleFolders(SimplePdmLinkProduct product) {
 		return invoke(RemoteMethod.GET_SIMPLE_FOLDERS, new Class<?>[] { SimplePdmLinkProduct.class },
 				new Object[] { product }, SimpleFolder.class);

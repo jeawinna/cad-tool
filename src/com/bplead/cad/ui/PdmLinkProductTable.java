@@ -187,6 +187,13 @@ public class PdmLinkProductTable extends JTable implements ResourceMapper, Mouse
 	}
 
 	public SimplePdmLinkProduct getSelectedProduct() {
-		return products.get(getSelectedRow());
+		int rows = getModel().getRowCount();
+		for (int i = 0; i < rows; i++) {
+			Boolean selected = (Boolean) getValueAt(i, 0);
+			if (selected) {
+				return products.get(i);
+			}
+		}
+		return null;
 	}
 }

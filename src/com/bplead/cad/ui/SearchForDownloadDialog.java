@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.BorderFactory;
+import javax.swing.JFileChooser;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
@@ -26,12 +27,14 @@ import priv.lee.cad.ui.AbstractPanel;
 import priv.lee.cad.ui.Option;
 import priv.lee.cad.ui.OptionPanel;
 import priv.lee.cad.ui.PromptTextField;
+import priv.lee.cad.util.Assert;
 
 public class SearchForDownloadDialog extends AbstractDialog implements ActionListener {
 
 	private static LayoutManager layout = new FlowLayout(FlowLayout.LEFT);
 	private static final Logger logger = Logger.getLogger(SearchForDownloadDialog.class);
 	private static final long serialVersionUID = 1336292047030719519L;
+	private DownloadSettingPanel downloadSettingPanel;
 	private SearchConditionsPanel searchConditionPanel;
 	private SearchResultPanel searchResultPanel;
 
@@ -63,14 +66,20 @@ public class SearchForDownloadDialog extends AbstractDialog implements ActionLis
 		add(searchResultPanel);
 
 		logger.info("initialize " + DownloadSettingPanel.class + " content...");
-		add(new DownloadSettingPanel());
+		downloadSettingPanel = new DownloadSettingPanel();
+		add(downloadSettingPanel);
 
 		logger.info("initialize " + getClass() + "  completed...");
 	}
 
 	@Override
 	public Object setCallbackObject() {
-		return null;
+		Assert.hasText(downloadSettingPanel.setting.getText().getText(), "Please choose your local repository");
+
+		List<SimpleDocument> documents = searchResultPanel.table.getSelectedDocuments();
+		Assert.notEmpty(documents, "Please select at least 1 document");
+
+		return ClientUtils.download(documents);
 	}
 
 	class DownloadSettingPanel extends AbstractPanel implements ActionListener {
@@ -79,11 +88,12 @@ public class SearchForDownloadDialog extends AbstractDialog implements ActionLis
 		private final String DOWNLOAD_TO = "downloadTo";
 		private final double HEIGHT_PROPORTION = 0.5d;
 		private final double LABEL_PROPORTION = 0.1d;
+		protected PromptTextField setting;
 		private final double TEXT_PROPORTION = 0.5d;
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-
+			new LocalFileChooser(JFileChooser.DIRECTORIES_ONLY, setting);
 		}
 
 		@Override
@@ -102,19 +112,19 @@ public class SearchForDownloadDialog extends AbstractDialog implements ActionLis
 
 			PromptTextField.PromptTextFieldDimension dimension = PromptTextField.newDimension(getPreferredSize(),
 					LABEL_PROPORTION, TEXT_PROPORTION, HEIGHT_PROPORTION);
-			PromptTextField setting = PromptTextField.newInstance((getResourceMap().getString(DOWNLOAD_TO)), null,
-					dimension);
+			setting = PromptTextField.newInstance((getResourceMap().getString(DOWNLOAD_TO)), null, dimension);
 			setting.setLabelAligment(SwingConstants.LEFT);
 			add(setting);
 
 			logger.info("initialize browser option...");
 			Option browse = new Option(Option.BROWSE_BUTTON, null, this);
-			Option confirm = new Option(Option.CONFIRM_BUTTON, null, this);
 
 			Container parent = getParent();
 			while (!(parent instanceof Window)) {
 				parent = parent.getParent();
 			}
+			Option confirm = new Option(Option.CONFIRM_BUTTON, null, (ActionListener) parent);
+
 			add(new OptionPanel(Arrays.asList(browse, confirm, Option.newCancelOption((Window) parent))));
 		}
 	}
@@ -173,7 +183,7 @@ public class SearchForDownloadDialog extends AbstractDialog implements ActionLis
 	class SearchResultPanel extends AbstractPanel {
 
 		private static final long serialVersionUID = -7416585921364617464L;
-		private SearchResultTable table;
+		protected SearchResultTable table;
 		private double TABLE_HEIGTH_PROPORTION = 0.85d;
 		private double TABLE_WIDTH_PROPORTION = 0.98d;
 		private final String TITLE = "title";

@@ -115,8 +115,16 @@ public class SearchResultTable extends JTable implements ResourceMapper, MouseLi
 		return documents.get(row);
 	}
 
-	public SimpleDocument getSelectedDocument() {
-		return documents.get(getSelectedRow());
+	public List<SimpleDocument> getSelectedDocuments() {
+		List<SimpleDocument> selectedDocuments = new ArrayList<SimpleDocument>();
+		int rows = getModel().getRowCount();
+		for (int i = 0; i < rows; i++) {
+			Boolean selected = (Boolean) getValueAt(i, 0);
+			if (selected) {
+				selectedDocuments.add(documents.get(i));
+			}
+		}
+		return selectedDocuments;
 	}
 
 	private void initTable() {

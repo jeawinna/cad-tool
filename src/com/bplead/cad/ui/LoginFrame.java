@@ -26,9 +26,9 @@ public class LoginFrame extends AbstractLoginFrame {
 
 	@Override
 	public ServerClientTemporary toTemporary() {
-		Assert.hasText(server.host.getTextContent(), "Server host is required");
-		Assert.hasText(server.user.getTextContent(), "User name is required");
-		Assert.hasText(server.pwd.getTextContent(), "User password is required");
+		Assert.hasText(server.host.getTextContent(), LoginFrame.class.getName() + "_1");
+		Assert.hasText(server.user.getTextContent(), LoginFrame.class.getName() + "_2");
+		Assert.hasText(server.pwd.getTextContent(), LoginFrame.class.getName() + "_3");
 
 		Temporary temporary = new Temporary(server.host.getTextContent(), server.user.getTextContent(),
 				server.pwd.getTextContent(), server.remeberme.isSelected());

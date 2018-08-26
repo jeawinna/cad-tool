@@ -2,6 +2,7 @@ package com.bplead.cad.util;
 
 import java.util.List;
 
+import com.bplead.cad.bean.DataContent;
 import com.bplead.cad.bean.SimpleDocument;
 import com.bplead.cad.bean.SimpleFolder;
 import com.bplead.cad.bean.SimplePdmLinkProduct;
@@ -16,11 +17,14 @@ public class ClientUtils extends ClientInstanceUtils {
 
 	public static Temporary temprary = new Temporary();
 
-	public static Object download(List<SimpleDocument> documents) {
-		return null;
+	public static DataContent download(List<SimpleDocument> documents) {
+		Assert.notEmpty(documents, "Documents is requried");
+		return invoke(RemoteMethod.DOWNLOAD, new Class<?>[] { List.class }, new Object[] { documents },
+				DataContent.class);
 	}
 
 	public static SimpleFolder getSimpleFolders(SimplePdmLinkProduct product) {
+		Assert.notNull(product, "Product is requried");
 		return invoke(RemoteMethod.GET_SIMPLE_FOLDERS, new Class<?>[] { SimplePdmLinkProduct.class },
 				new Object[] { product }, SimpleFolder.class);
 	}

@@ -7,6 +7,7 @@ import java.awt.LayoutManager;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import javax.swing.border.TitledBorder;
 
 import org.apache.log4j.Logger;
 
+import com.bplead.cad.bean.DataContent;
 import com.bplead.cad.bean.SimpleDocument;
 import com.bplead.cad.util.ClientUtils;
 
@@ -28,6 +30,7 @@ import priv.lee.cad.ui.Option;
 import priv.lee.cad.ui.OptionPanel;
 import priv.lee.cad.ui.PromptTextField;
 import priv.lee.cad.util.Assert;
+import priv.lee.cad.util.FTPUtils;
 
 public class SearchForDownloadDialog extends AbstractDialog implements ActionListener {
 
@@ -40,6 +43,12 @@ public class SearchForDownloadDialog extends AbstractDialog implements ActionLis
 
 	public SearchForDownloadDialog(Callback container) {
 		super(SearchForDownloadDialog.class, container);
+	}
+
+	private void download(File serverFile, File localFile) {
+		FTPUtils utils = FTPUtils.newInstance();
+		utils.download(serverFile, localFile);
+		utils.delete(serverFile);
 	}
 
 	@Override
@@ -74,12 +83,17 @@ public class SearchForDownloadDialog extends AbstractDialog implements ActionLis
 
 	@Override
 	public Object setCallbackObject() {
-		Assert.hasText(downloadSettingPanel.setting.getText().getText(), "Please choose your local repository");
+		String localPath = downloadSettingPanel.setting.getText().getText();
+		Assert.hasText(localPath, "Please choose your local repository");
 
 		List<SimpleDocument> documents = searchResultPanel.table.getSelectedDocuments();
 		Assert.notEmpty(documents, "Please select at least 1 document");
 
-		return ClientUtils.download(documents);
+		DataContent content = ClientUtils.download(documents);
+		Assert.notNull(content, "Failed to download.Please contact to the Administrators");
+
+		download(content.getServerFile(), new File(localPath + File.separator + content.getServerFile().getName()));
+		return null;
 	}
 
 	class DownloadSettingPanel extends AbstractPanel implements ActionListener {

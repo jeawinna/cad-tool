@@ -10,10 +10,11 @@ import priv.lee.cad.ui.PromptTextField;
 public class LocalFileChooser extends JFileChooser {
 
 	private static final long serialVersionUID = -4355323193750393407L;
+	private static final String CHOOSE = "Choose";
 
 	public LocalFileChooser(int mode, PromptTextField text) {
 		setFileSelectionMode(mode);
-		showDialog(new JLabel(), "Choose");
+		showDialog(new JLabel(), CHOOSE);
 
 		File selectedFile = getSelectedFile();
 		if (selectedFile != null) {

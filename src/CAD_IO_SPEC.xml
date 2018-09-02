@@ -2,9 +2,9 @@
 <root>
 	<number>图号代号</number>
 	<name>名称</name>
-	<jdeNum>JDE项目号</jdeNum>
+	<jdeNum>GC000001</jdeNum>
 	<material>材料</material>
-	<detailNum>详细图号</detailNum>
+	<detailNum>12345z1-(060~100)/88-01</detailNum> <!-- 详细图号 -->
 	<weight>重量</weight>
 	<pageSize>共页</pageSize>
 	<indexPage>第页</indexPage>

@@ -3,16 +3,24 @@ package com.bplead.cad.ui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.SwingWorker;
 
 import org.apache.log4j.Logger;
 
-import com.bplead.cad.io.bean.CAD;
+import com.bplead.cad.bean.io.CAD;
+import com.bplead.cad.bean.io.Document;
 import com.bplead.cad.model.CustomStyleToolkit;
+import com.bplead.cad.util.ClientUtils;
+import com.bplead.cad.util.ValidateUtils;
 
 import priv.lee.cad.model.Callback;
 import priv.lee.cad.model.StyleToolkit;
 import priv.lee.cad.ui.AbstractFrame;
 import priv.lee.cad.util.Assert;
+import priv.lee.cad.util.FTPUtils;
 import priv.lee.cad.util.PropertiesUtils;
 import priv.lee.cad.util.XmlUtils;
 
@@ -20,8 +28,11 @@ public class CADMainFrame extends AbstractFrame {
 
 	private static final Logger logger = Logger.getLogger(CADMainFrame.class);
 	private static final long serialVersionUID = -1719424691262349744L;
+	private BasicAttributePanel basicAttributePanel;
 	private CAD cad;
 	private final String CAD_REPOSITORY = "cad.xml.repository";
+	private ContainerPanel containerPanel;
+	private DetailAttributePanel detailAttributePanel;
 	private StyleToolkit toolkit = new CustomStyleToolkit();
 
 	public CADMainFrame() {
@@ -53,23 +64,67 @@ public class CADMainFrame extends AbstractFrame {
 		Assert.notNull(cad, "CAD initialize failed.Please check the " + PropertiesUtils.readProperty(CAD_REPOSITORY));
 
 		logger.info("initialize " + getClass() + " menu bar...");
-		setJMenuBar(toolkit.getStandardMenuBar());
+		setJMenuBar(toolkit.getStandardMenuBar(new CheckinActionListenner(), new CheckoutActionListenner()));
 
 		logger.info("initialize " + getClass() + " container panel...");
-		getContentPane().add(new ContainerPanel());
+		containerPanel = new ContainerPanel();
+		getContentPane().add(containerPanel);
 
 		logger.info("initialize " + getClass() + " basic attribute panel...");
-		getContentPane().add(new BasicAttributePanel(cad));
+		basicAttributePanel = new BasicAttributePanel(cad);
+		getContentPane().add(basicAttributePanel);
 
 		logger.info("initialize " + getClass() + " detail attribute panel...");
-		getContentPane().add(new DetailAttributePanel(cad));
+		detailAttributePanel = new DetailAttributePanel(cad);
+		getContentPane().add(detailAttributePanel);
 	}
 
 	public class CheckinActionListenner implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			logger.debug("*************************");
+			ValidateUtils.checkin(cad);
+
+			CheckinWorker worker = new CheckinWorker(buildDocument());
+			worker.execute();
+		}
+
+		private Document buildDocument() {
+
+			return null;
+		}
+	}
+
+	private class CheckinWorker extends SwingWorker<String, String> {
+
+		private Document document;
+
+		public CheckinWorker(Document document) {
+			this.document = document;
+		}
+
+		@Override
+		protected String doInBackground() throws Exception {
+			logger.info("start...");
+
+			ArrayList<String> attachments = cad.getAttachments();
+			for (String attachment : attachments) {
+				File file = new File(attachment);
+				FTPUtils.newInstance().upload(file);
+
+				// TODO
+				// publish(CustomPrompt);
+			}
+
+			ClientUtils.checkin(document);
+
+			logger.info("complete...");
+			return null;
+		}
+
+		@Override
+		protected void process(List<String> chunks) {
+			super.process(chunks);
 		}
 	}
 

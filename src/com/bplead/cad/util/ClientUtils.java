@@ -8,6 +8,7 @@ import com.bplead.cad.bean.SimpleFolder;
 import com.bplead.cad.bean.SimplePdmLinkProduct;
 import com.bplead.cad.bean.client.Temporary;
 import com.bplead.cad.bean.constant.RemoteMethod;
+import com.bplead.cad.bean.io.Document;
 
 import priv.lee.cad.util.Assert;
 import priv.lee.cad.util.ClientInstanceUtils;
@@ -16,6 +17,12 @@ import priv.lee.cad.util.StringUtils;
 public class ClientUtils extends ClientInstanceUtils {
 
 	public static Temporary temprary = new Temporary();
+
+	public static boolean checkin(Document document) {
+		Assert.notNull(document, "Document is required");
+		return invoke(RemoteMethod.CHECKIN, new Class<?>[] { Document.class }, new Object[] { document },
+				Boolean.class);
+	}
 
 	public static DataContent download(List<SimpleDocument> documents) {
 		Assert.notEmpty(documents, "Documents is requried");

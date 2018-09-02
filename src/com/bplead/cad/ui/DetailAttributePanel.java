@@ -11,8 +11,8 @@ import javax.swing.border.TitledBorder;
 
 import org.apache.log4j.Logger;
 
-import com.bplead.cad.io.bean.CAD;
-import com.bplead.cad.io.bean.CADLink;
+import com.bplead.cad.bean.io.CAD;
+import com.bplead.cad.bean.io.CADLink;
 
 import priv.lee.cad.ui.AbstractPanel;
 import priv.lee.cad.util.Assert;

@@ -66,7 +66,7 @@ public class DetailAttributePanel extends AbstractPanel {
 	private void initTableData(List<CADLink> links) {
 		Field[] fields = CADLink.class.getDeclaredFields();
 		names = new String[fields.length];
-		datas = new String[links == null || links.isEmpty() ? 0 : links.size()][fields.length];
+		datas = new String[links == null || links.isEmpty() ? 0 : links.size()][names.length];
 		for (int i = 0; i < fields.length; i++) {
 			Field field = fields[i];
 			field.setAccessible(true);

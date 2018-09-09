@@ -38,7 +38,6 @@ public class ContainerPanel extends AbstractPanel {
 	private final String PDM_TITLE = "pdm.title";
 	public PDMLinkProductPanel pdmlinkProductPanel;
 	private Preference preference = ClientUtils.temprary.getPreference();
-	private SimplePdmLinkProduct product;
 	public SubFolderPanel subFolderPanel;
 
 	private Container getDefaultContainer() {
@@ -71,9 +70,11 @@ public class ContainerPanel extends AbstractPanel {
 	class PDMLinkProductPanel extends SimpleButtonSetPanel<SimplePdmLinkProduct> {
 
 		private static final long serialVersionUID = 5788762488066451045L;
+		private SimplePdmLinkProduct product;
 
 		public PDMLinkProductPanel(SimplePdmLinkProduct product) {
 			super(product);
+			this.product = product;
 		}
 
 		@Override
@@ -185,16 +186,16 @@ public class ContainerPanel extends AbstractPanel {
 	class SubFolderPanel extends SimpleButtonSetPanel<SimpleFolder> {
 
 		private static final long serialVersionUID = 5788762488066451045L;
-
 		private SimpleFolder folder;
 
 		public SubFolderPanel(SimpleFolder folder) {
 			super(folder);
+			this.folder = folder;
 		}
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			new FolderChooseDialog(this, product).activate();
+			new FolderChooseDialog(this, pdmlinkProductPanel.product).activate();
 		}
 
 		@Override

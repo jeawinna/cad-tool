@@ -57,8 +57,14 @@ public class CADMainFrame extends AbstractFrame {
 		return 0.99;
 	}
 
+	public static void main(String[] args) {
+		File xml = new File(
+				CADMainFrame.class.getResource(PropertiesUtils.readProperty("cad.xml.repository")).getPath());
+		System.out.println(XmlUtils.read(xml, CAD.class));
+	}
+
 	private void initCAD() {
-		File xml = new File(XmlUtils.class.getResource(PropertiesUtils.readProperty(CAD_REPOSITORY)).getPath());
+		File xml = new File(CADMainFrame.class.getResource(PropertiesUtils.readProperty(CAD_REPOSITORY)).getPath());
 		this.cad = XmlUtils.read(xml, CAD.class);
 		logger.debug("cad:" + cad);
 	}

@@ -8,6 +8,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableModel;
 
 import org.apache.log4j.Logger;
 
@@ -57,7 +58,16 @@ public class DetailAttributePanel extends AbstractPanel {
 		logger.info("initialize detail table...");
 		initTableData(cad.getDetail());
 		Dimension dimension = getPreferredSize();
-		JScrollPane sp = new JScrollPane(new JTable(datas, names));
+		DefaultTableModel model = new DefaultTableModel(datas, names) {
+			private static final long serialVersionUID = 2965741710969780926L;
+
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+
+		JScrollPane sp = new JScrollPane(new JTable(model));
 		sp.setPreferredSize(new Dimension((int) (dimension.width * TABLE_WIDTH_PROPORTION),
 				(int) (dimension.height * TABLE_HEIGTH_PROPORTION)));
 		add(sp);

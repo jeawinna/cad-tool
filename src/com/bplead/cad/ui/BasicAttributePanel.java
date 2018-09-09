@@ -54,6 +54,7 @@ public class BasicAttributePanel extends AbstractPanel {
 			}
 			PromptTextField text = PromptTextField.newInstance(getResourceMap().getString(field.getName()), value,
 					dimension);
+			text.setEditable(false);
 			texts.add(text);
 		}
 		return texts;

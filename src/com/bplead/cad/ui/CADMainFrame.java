@@ -57,12 +57,6 @@ public class CADMainFrame extends AbstractFrame {
 		return 0.99;
 	}
 
-	public static void main(String[] args) {
-		File xml = new File(
-				CADMainFrame.class.getResource(PropertiesUtils.readProperty("cad.xml.repository")).getPath());
-		System.out.println(XmlUtils.read(xml, CAD.class));
-	}
-
 	private void initCAD() {
 		File xml = new File(CADMainFrame.class.getResource(PropertiesUtils.readProperty(CAD_REPOSITORY)).getPath());
 		this.cad = XmlUtils.read(xml, CAD.class);
@@ -120,14 +114,6 @@ public class CADMainFrame extends AbstractFrame {
 
 			CheckinWorker worker = new CheckinWorker(document);
 			worker.execute();
-
-			try {
-				if (worker.get()) {
-					// TODO
-				}
-			} catch (Exception ex) {
-				Assert.isTrue(false, CustomPrompt.CHECKIN_FAILED);
-			}
 		}
 
 		private List<Attachment> buildAttachments() {
@@ -172,35 +158,48 @@ public class CADMainFrame extends AbstractFrame {
 		}
 	}
 
-	private class CheckinWorker extends SwingWorker<Boolean, String> {
+	private class CheckinWorker extends SwingWorker<Boolean, PopProgress.PromptProgress> implements Callback {
 
 		private Document document;
+		private PopProgress progress;
+		private final String PROMPT_0 = "checkin.prompt.0";
+		private final String PROMPT_50 = "checkin.prompt.50";
+		private final String PROMPT_100 = "checkin.prompt.100";
 
 		public CheckinWorker(Document document) {
 			this.document = document;
+			this.progress = new PopProgress(this);
+			progress.activate();
+		}
+
+		@Override
+		public void call(Object object) {
+
 		}
 
 		@Override
 		protected Boolean doInBackground() throws Exception {
 			logger.info("start...");
-
 			List<Attachment> attachments = document.getAttachments();
+			publish(new PopProgress.PromptProgress(getResourceMap().getString(PROMPT_0), 0));
 			for (Attachment attachment : attachments) {
 				File file = new File(attachment.getAbsolutePath());
 				FTPUtils.newInstance().upload(file);
-
-				// TODO
-				// publish(CustomPrompt);
 			}
-
+			publish(new PopProgress.PromptProgress(getResourceMap().getString(PROMPT_50), 50));
 			boolean successed = ClientUtils.checkin(document);
 			logger.info("complete...");
 			return successed;
 		}
 
 		@Override
-		protected void process(List<String> chunks) {
-			super.process(chunks);
+		protected void done() {
+			publish(new PopProgress.PromptProgress(getResourceMap().getString(PROMPT_100), 100));
+		}
+
+		@Override
+		protected void process(List<PopProgress.PromptProgress> chunks) {
+			progress.setProgress(chunks.get(0));
 		}
 	}
 

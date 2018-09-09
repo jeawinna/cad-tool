@@ -12,10 +12,11 @@ import javax.swing.border.TitledBorder;
 
 import org.apache.log4j.Logger;
 
+import com.bplead.cad.bean.SimpleFolder;
 import com.bplead.cad.bean.SimplePdmLinkProduct;
 import com.bplead.cad.bean.client.CaxaTemporary;
-import com.bplead.cad.bean.client.DefaultContainer;
 import com.bplead.cad.bean.client.Preference;
+import com.bplead.cad.bean.io.Container;
 import com.bplead.cad.util.ClientUtils;
 
 import priv.lee.cad.model.Callback;
@@ -30,7 +31,7 @@ import priv.lee.cad.util.XmlUtils;
 
 public class PreferencesDialog extends AbstractDialog {
 
-	private static final Logger logger = Logger.getLogger(PreferencesDialog.class);
+	private final Logger logger = Logger.getLogger(PreferencesDialog.class);
 	private static final long serialVersionUID = -2875157877197653599L;
 	private Preference preference = ClientUtils.temprary.getPreference();
 	private PreferencesPanel preferencePanel;
@@ -79,8 +80,8 @@ public class PreferencesDialog extends AbstractDialog {
 			logger.info("begin to write client temporay...");
 			preference.setCaxa(new CaxaTemporary(preferencePanel.cache.getText().getText(),
 					preferencePanel.exe.getText().getText()));
-			preference.setContainer(new DefaultContainer(preferencePanel.folder.getText().getText(),
-					preferencePanel.pdm.getText().getText()));
+			preference.setContainer(new Container(preferencePanel.product, preferencePanel.folder));
+
 			XmlUtils.store(ClientUtils.temprary);
 
 			dispose();
@@ -107,14 +108,27 @@ public class PreferencesDialog extends AbstractDialog {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			new FolderChooseDialog(this, preferencePanel.getProduct()).activate();
+			new FolderChooseDialog(this, preferencePanel.product).activate();
 		}
 
 		@Override
 		public void call(Object object) {
 			Assert.notNull(object, "Callback object is required");
 
-			preferencePanel.folder.getText().setText(object.toString());
+			Object[] nodes = (Object[]) object;
+			SimpleFolder folder = ((FolderTree.FolderNode) nodes[nodes.length - 1]).getFolder();
+			preferencePanel.setFolder(folder);
+
+			String path = "";
+			for (int i = 0; i < nodes.length; i++) {
+				FolderTree.FolderNode node = (FolderTree.FolderNode) nodes[i];
+				if (StringUtils.isEmpty(path)) {
+					path = node.toString();
+				} else {
+					path = "/Default/" + node.toString();
+				}
+			}
+			preferencePanel.folderTextField.getText().setText(path);
 		}
 	}
 
@@ -133,7 +147,7 @@ public class PreferencesDialog extends AbstractDialog {
 
 			SimplePdmLinkProduct product = (SimplePdmLinkProduct) object;
 			preferencePanel.setProduct(product);
-			preferencePanel.pdm.getText().setText(product.getName());
+			preferencePanel.productTextField.getText().setText(product.getName());
 		}
 	}
 
@@ -146,11 +160,12 @@ public class PreferencesDialog extends AbstractDialog {
 		private final String DEFAULT_FOLDER = "default.folder";
 		private final String DEFAULT_PDM = "default.pdm";
 		public PromptTextField exe;
-		public PromptTextField folder;
+		public SimpleFolder folder;
+		public PromptTextField folderTextField;
 		private final double HEIGHT_PROPORTION = 0.08d;
 		private final double LABEL_PROPORTION = 0.18d;
 		private final String OPEN = "open";
-		public PromptTextField pdm;
+		public PromptTextField productTextField;
 		private SimplePdmLinkProduct product;
 		private final double TEXT_PROPORTION = 0.55d;
 		private final String TITLE = "title";
@@ -162,29 +177,26 @@ public class PreferencesDialog extends AbstractDialog {
 					: preference.getCaxa().getCache();
 		}
 
+		public void setFolder(SimpleFolder folder) {
+			this.folder = folder;
+		}
+
 		private String getCaxaExe() {
-			return (preference == null || preference.getCaxa() == null
-					|| StringUtils.isEmpty(preference.getCaxa().getLocation())) ? ""
-							: preference.getCaxa().getLocation();
+			return (isPreferenceCaxaNull() || StringUtils.isEmpty(preference.getCaxa().getLocation())) ? ""
+					: preference.getCaxa().getLocation();
 		}
 
 		private String getDefaultFolder() {
-			return (isPreferenceContainerNull() || StringUtils.isEmpty(preference.getContainer().getFolder())) ? ""
-					: preference.getContainer().getFolder();
+			return isPreferenceContainerNull() ? "" : preference.getContainer().getFolder().getName();
 		}
 
 		private String getDefaultPdm() {
-			return (isPreferenceContainerNull() || StringUtils.isEmpty(preference.getContainer().getPdm())) ? ""
-					: preference.getContainer().getPdm();
+			return isPreferenceContainerNull() ? "" : preference.getContainer().getProduct().getName();
 		}
 
 		@Override
 		public double getHorizontalProportion() {
 			return 0.95d;
-		}
-
-		public SimplePdmLinkProduct getProduct() {
-			return product;
 		}
 
 		@Override
@@ -224,15 +236,16 @@ public class PreferencesDialog extends AbstractDialog {
 			openCache.addActionListener(new FindCaxaCacheActionListener());
 			add(openCache);
 
-			pdm = PromptTextField.newInstance(getResourceMap().getString((DEFAULT_PDM)), getDefaultPdm(), dimension);
-			add(pdm);
+			productTextField = PromptTextField.newInstance(getResourceMap().getString((DEFAULT_PDM)), getDefaultPdm(),
+					dimension);
+			add(productTextField);
 			JButton openPdm = new JButton(getResourceMap().getString((OPEN)));
 			openPdm.addActionListener(new FindDefaultPdmActionListenner());
 			add(openPdm);
 
-			folder = PromptTextField.newInstance(getResourceMap().getString((DEFAULT_FOLDER)), getDefaultFolder(),
-					dimension);
-			add(folder);
+			folderTextField = PromptTextField.newInstance(getResourceMap().getString((DEFAULT_FOLDER)),
+					getDefaultFolder(), dimension);
+			add(folderTextField);
 			JButton openFolder = new JButton(getResourceMap().getString((OPEN)));
 			openFolder.addActionListener(new FindDefaultFolderActionListenner());
 			add(openFolder);

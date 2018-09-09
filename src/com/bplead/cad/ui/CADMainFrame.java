@@ -3,15 +3,22 @@ package com.bplead.cad.ui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import javax.swing.SwingWorker;
 
 import org.apache.log4j.Logger;
 
+import com.bplead.cad.bean.client.Preference;
+import com.bplead.cad.bean.io.Attachment;
 import com.bplead.cad.bean.io.CAD;
+import com.bplead.cad.bean.io.Container;
 import com.bplead.cad.bean.io.Document;
+import com.bplead.cad.model.CustomPrompt;
 import com.bplead.cad.model.CustomStyleToolkit;
 import com.bplead.cad.util.ClientUtils;
 import com.bplead.cad.util.ValidateUtils;
@@ -52,7 +59,7 @@ public class CADMainFrame extends AbstractFrame {
 
 	private void initCAD() {
 		File xml = new File(XmlUtils.class.getResource(PropertiesUtils.readProperty(CAD_REPOSITORY)).getPath());
-		this.cad = XmlUtils.parse(xml, CAD.class);
+		this.cad = XmlUtils.read(xml, CAD.class);
 		logger.debug("cad:" + cad);
 	}
 
@@ -79,23 +86,87 @@ public class CADMainFrame extends AbstractFrame {
 		getContentPane().add(detailAttributePanel);
 	}
 
-	public class CheckinActionListenner implements ActionListener {
+	public class CheckinActionListenner implements ActionListener, FilenameFilter {
+
+		private static final String DOC_TYPE = "wt.document.type";
+		private final String CONFIG_SUFFIX = "wt.document.config.file.suffix";
+		private String configSuffix = PropertiesUtils.readProperty(CONFIG_SUFFIX);
+		private String docType;
+		private final String OID = "oid";
+		private Preference preference = ClientUtils.temprary.getPreference();
+		private final String PRIMARY_SUFFIX = "wt.document.primary.file.suffix";
+		private String primarySuffix = PropertiesUtils.readProperty(PRIMARY_SUFFIX);
+		{
+			docType = PropertiesUtils.readProperty(DOC_TYPE);
+		}
+
+		@Override
+		public boolean accept(File dir, String name) {
+			return new File(dir, name).isFile() && name.endsWith(configSuffix);
+		}
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			ValidateUtils.checkin(cad);
+			ValidateUtils.preference();
 
-			CheckinWorker worker = new CheckinWorker(buildDocument());
+			Document document = buildDocument();
+			ValidateUtils.checkin(document);
+
+			CheckinWorker worker = new CheckinWorker(document);
 			worker.execute();
+
+			try {
+				if (worker.get()) {
+					// TODO
+				}
+			} catch (Exception ex) {
+				Assert.isTrue(false, CustomPrompt.CHECKIN_FAILED);
+			}
+		}
+
+		private List<Attachment> buildAttachments() {
+			List<Attachment> attachments = new ArrayList<Attachment>();
+			File[] files = new File(preference.getCaxa().getCache()).listFiles();
+			for (int i = 0; i < files.length; i++) {
+				File file = files[i];
+				if (file.getName().endsWith(configSuffix)) {
+					continue;
+				}
+				Attachment attachment = new Attachment(file, file.getName().endsWith(primarySuffix));
+				attachments.add(attachment);
+			}
+			return attachments;
 		}
 
 		private Document buildDocument() {
+			Document document = new Document(null, cad.getName(), null);
+			File directory = new File(preference.getCaxa().getCache());
+			File[] properties = directory.listFiles(this);
+			if (properties != null && properties.length > 0) {
+				Assert.isTrue(properties.length == 1, CustomPrompt.ONLY_ONE_PROPERTIES);
+				document.setOid(getDocumentOid(properties[0]));
+			}
+			document.setContainer(new Container(containerPanel.pdmlinkProductPanel.getProduct(),
+					containerPanel.subFolderPanel.getFolder()));
+			document.setCad(cad);
+			document.setAttachments(buildAttachments());
+			document.setType(docType);
+			return document;
+		}
 
+		private String getDocumentOid(File file) {
+			try {
+				Properties properties = new Properties();
+				properties.load(new FileInputStream(file));
+				return properties.getProperty(OID);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			return null;
 		}
 	}
 
-	private class CheckinWorker extends SwingWorker<String, String> {
+	private class CheckinWorker extends SwingWorker<Boolean, String> {
 
 		private Document document;
 
@@ -104,22 +175,21 @@ public class CADMainFrame extends AbstractFrame {
 		}
 
 		@Override
-		protected String doInBackground() throws Exception {
+		protected Boolean doInBackground() throws Exception {
 			logger.info("start...");
 
-			ArrayList<String> attachments = cad.getAttachments();
-			for (String attachment : attachments) {
-				File file = new File(attachment);
+			List<Attachment> attachments = document.getAttachments();
+			for (Attachment attachment : attachments) {
+				File file = new File(attachment.getAbsolutePath());
 				FTPUtils.newInstance().upload(file);
 
 				// TODO
 				// publish(CustomPrompt);
 			}
 
-			ClientUtils.checkin(document);
-
+			boolean successed = ClientUtils.checkin(document);
 			logger.info("complete...");
-			return null;
+			return successed;
 		}
 
 		@Override

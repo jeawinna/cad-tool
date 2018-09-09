@@ -12,7 +12,11 @@ import javax.swing.border.TitledBorder;
 
 import org.apache.log4j.Logger;
 
+import com.bplead.cad.bean.SimpleFolder;
 import com.bplead.cad.bean.SimplePdmLinkProduct;
+import com.bplead.cad.bean.client.Preference;
+import com.bplead.cad.bean.io.Container;
+import com.bplead.cad.util.ClientUtils;
 
 import priv.lee.cad.model.Callback;
 import priv.lee.cad.ui.AbstractPanel;
@@ -23,14 +27,23 @@ import priv.lee.cad.util.Assert;
 
 public class ContainerPanel extends AbstractPanel {
 
-	private static final String BUTTON_ICON = "folder.search.icon";
-	private static final String FOLDER_PROMPT = "folder.prompt";
-	private static final String FOLDER_TITLE = "folder.title";
-	private static final Logger logger = Logger.getLogger(ContainerPanel.class);
-	private static final String PDM_PROMPT = "pdm.prompt";
-	private static final String PDM_TITLE = "pdm.title";
 	private static final long serialVersionUID = 1442969218942586007L;
+	private final String BUTTON_ICON = "folder.search.icon";
+	private final String EMPTY_FOLDER = "folder.empty.prompt";
+	private final String EMPTY_PDMLINKPRODUCT = "pdm.empty.prompt";
+	private final String FOLDER_PROMPT = "folder.prompt";
+	private final String FOLDER_TITLE = "folder.title";
+	private final Logger logger = Logger.getLogger(ContainerPanel.class);
+	private final String PDM_PROMPT = "pdm.prompt";
+	private final String PDM_TITLE = "pdm.title";
+	public PDMLinkProductPanel pdmlinkProductPanel;
+	private Preference preference = ClientUtils.temprary.getPreference();
 	private SimplePdmLinkProduct product;
+	public SubFolderPanel subFolderPanel;
+
+	private Container getDefaultContainer() {
+		return preference == null ? null : preference.getContainer();
+	}
 
 	@Override
 	public double getHorizontalProportion() {
@@ -44,16 +57,24 @@ public class ContainerPanel extends AbstractPanel {
 
 	@Override
 	public void initialize() {
+		Container container = getDefaultContainer();
+
 		logger.info("initialize " + PDMLinkProductPanel.class + "...");
-		add(new PDMLinkProductPanel());
+		pdmlinkProductPanel = new PDMLinkProductPanel(container == null ? null : container.getProduct());
+		add(pdmlinkProductPanel);
 
 		logger.info("initialize " + SubFolderPanel.class + "...");
-		add(new SubFolderPanel());
+		subFolderPanel = new SubFolderPanel(container == null ? null : container.getFolder());
+		add(subFolderPanel);
 	}
 
-	class PDMLinkProductPanel extends SimpleButtonSetPanel {
+	class PDMLinkProductPanel extends SimpleButtonSetPanel<SimplePdmLinkProduct> {
 
 		private static final long serialVersionUID = 5788762488066451045L;
+
+		public PDMLinkProductPanel(SimplePdmLinkProduct product) {
+			super(product);
+		}
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -67,7 +88,8 @@ public class ContainerPanel extends AbstractPanel {
 					"Callback object must be a SimplePdmLinkProduct type");
 
 			product = (SimplePdmLinkProduct) object;
-			text.getText().setText(product.getName());
+
+			refresh(product.getName());
 		}
 
 		public SimplePdmLinkProduct getProduct() {
@@ -85,8 +107,11 @@ public class ContainerPanel extends AbstractPanel {
 		}
 
 		@Override
-		protected String setText() {
-			return "Test PDMLinkProduct";
+		protected String setText(SimplePdmLinkProduct product) {
+			if (product == null) {
+				return getResourceMap().getString(EMPTY_PDMLINKPRODUCT);
+			}
+			return product.getName();
 		}
 
 		@Override
@@ -95,14 +120,19 @@ public class ContainerPanel extends AbstractPanel {
 		}
 	}
 
-	abstract static class SimpleButtonSetPanel extends AbstractPanel implements ActionListener, Callback {
+	abstract class SimpleButtonSetPanel<T> extends AbstractPanel implements ActionListener, Callback {
 
 		private static final long serialVersionUID = -5690721799689305895L;
 		private final double BUTTON_PROPORTION = 0.3d;
 		private final double HEIGHT_PROPORTION = 0.3d;
 		private final double LABEL_PROPORTION = 0.15d;
+		private T object;
 		public PromptTextField text;
 		private final double TEXT_PROPORTION = 0.65d;
+
+		public SimpleButtonSetPanel(T object) {
+			this.object = object;
+		}
 
 		private Dimension getButtonPrerredSize() {
 			BigDecimal width = new BigDecimal(getPreferredSize().height).multiply(new BigDecimal(BUTTON_PROPORTION));
@@ -131,24 +161,36 @@ public class ContainerPanel extends AbstractPanel {
 
 			PromptTextField.PromptTextFieldDimension dimension = PromptTextField.newDimension(getPreferredSize(),
 					LABEL_PROPORTION, TEXT_PROPORTION, HEIGHT_PROPORTION);
-			text = PromptTextField.newInstance(setPrompt(), setText(), dimension);
+			text = PromptTextField.newInstance(setPrompt(), setText(object), dimension);
 			add(text);
 
 			add(new OptionPanel(Arrays.asList(new Option(null, BUTTON_ICON, this, getButtonPrerredSize()))));
+		}
+
+		protected void refresh(String text) {
+			this.text.getText().setText(text);
+
+			validate();
 		}
 
 		protected abstract String setButtonText();
 
 		protected abstract String setPrompt();
 
-		protected abstract String setText();
+		protected abstract String setText(T object);
 
 		protected abstract String setTitle();
 	}
 
-	class SubFolderPanel extends SimpleButtonSetPanel {
+	class SubFolderPanel extends SimpleButtonSetPanel<SimpleFolder> {
 
 		private static final long serialVersionUID = 5788762488066451045L;
+
+		private SimpleFolder folder;
+
+		public SubFolderPanel(SimpleFolder folder) {
+			super(folder);
+		}
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -159,7 +201,14 @@ public class ContainerPanel extends AbstractPanel {
 		public void call(Object object) {
 			Assert.notNull(object, "Callback object is required");
 
-			text.getText().setText(object.toString());
+			Object[] nodes = (Object[]) object;
+			folder = ((FolderTree.FolderNode) nodes[nodes.length - 1]).getFolder();
+
+			refresh(folder.getName());
+		}
+
+		public SimpleFolder getFolder() {
+			return folder;
 		}
 
 		@Override
@@ -173,8 +222,11 @@ public class ContainerPanel extends AbstractPanel {
 		}
 
 		@Override
-		protected String setText() {
-			return "/test/folder";
+		protected String setText(SimpleFolder folder) {
+			if (folder == null) {
+				return getResourceMap().getString(EMPTY_FOLDER);
+			}
+			return folder.getName();
 		}
 
 		@Override

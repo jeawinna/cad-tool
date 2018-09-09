@@ -4,7 +4,6 @@ import java.awt.Dimension;
 import java.util.Arrays;
 
 import javax.swing.JScrollPane;
-import javax.swing.tree.TreePath;
 
 import org.apache.log4j.Logger;
 
@@ -15,7 +14,6 @@ import priv.lee.cad.ui.AbstractDialog;
 import priv.lee.cad.ui.Option;
 import priv.lee.cad.ui.OptionPanel;
 import priv.lee.cad.util.Assert;
-import priv.lee.cad.util.StringUtils;
 
 public class FolderChooseDialog extends AbstractDialog {
 
@@ -61,19 +59,6 @@ public class FolderChooseDialog extends AbstractDialog {
 
 	@Override
 	public Object setCallbackObject() {
-		String path = "";
-		TreePath treePath = folderTree.getSelectionPath();
-		Object[] nodes = (Object[]) treePath.getPath();
-		if (nodes != null) {
-			for (int i = 0; i < nodes.length; i++) {
-				FolderTree.FolderNode node = (FolderTree.FolderNode) nodes[i];
-				if (StringUtils.isEmpty(path)) {
-					path = node.toString();
-				} else {
-					path = "/Default/" + node.toString();
-				}
-			}
-		}
-		return path;
+		return folderTree.getSelectionPath().getPath();
 	}
 }

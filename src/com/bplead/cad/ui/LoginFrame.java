@@ -6,8 +6,11 @@ import com.bplead.cad.util.ClientUtils;
 import priv.lee.cad.model.ServerClientTemporary;
 import priv.lee.cad.ui.AbstractLoginFrame;
 import priv.lee.cad.util.Assert;
+import priv.lee.cad.util.XmlUtils;
 
 public class LoginFrame extends AbstractLoginFrame {
+
+	private static final long serialVersionUID = 2220682440023001808L;
 
 	public static void main(String[] args) {
 		new LoginFrame().activate();
@@ -16,8 +19,6 @@ public class LoginFrame extends AbstractLoginFrame {
 	public LoginFrame() {
 		super(LoginFrame.class, Temporary.class);
 	}
-
-	private static final long serialVersionUID = 2220682440023001808L;
 
 	@Override
 	public void startNextFrame() {
@@ -30,8 +31,15 @@ public class LoginFrame extends AbstractLoginFrame {
 		Assert.hasText(server.user.getTextContent(), LoginFrame.class.getName() + "_2");
 		Assert.hasText(server.pwd.getTextContent(), LoginFrame.class.getName() + "_3");
 
-		Temporary temporary = new Temporary(server.host.getTextContent(), server.user.getTextContent(),
-				server.pwd.getTextContent(), server.remeberme.isSelected());
+		Temporary temporary = XmlUtils.read(Temporary.class);
+		if (temporary == null || !server.user.getTextContent().equals(temporary.getUserName())) {
+			temporary = new Temporary(server.host.getTextContent(), server.user.getTextContent(),
+					server.pwd.getTextContent(), server.remeberme.isSelected());
+		} else {
+			temporary.setUserName(server.user.getTextContent());
+			temporary.setUserPasswd(server.pwd.getTextContent());
+			temporary.setRememberMe(server.remeberme.isSelected());
+		}
 		ClientUtils.temprary = temporary;
 		return temporary;
 	}

@@ -12,10 +12,6 @@ public class LoginFrame extends AbstractLoginFrame {
 
 	private static final long serialVersionUID = 2220682440023001808L;
 
-	public static void main(String[] args) {
-		new LoginFrame().activate();
-	}
-
 	public LoginFrame() {
 		super(LoginFrame.class, Temporary.class);
 	}

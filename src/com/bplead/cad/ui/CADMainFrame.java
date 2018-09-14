@@ -33,14 +33,14 @@ import priv.lee.cad.util.XmlUtils;
 
 public class CADMainFrame extends AbstractFrame {
 
-	private static final Logger logger = Logger.getLogger(CADMainFrame.class);
 	private static final long serialVersionUID = -1719424691262349744L;
-	private BasicAttributePanel basicAttributePanel;
+	protected BasicAttributePanel basicAttributePanel;
 	private CAD cad;
 	private final String CAD_REPOSITORY = "cad.xml.repository";
-	private ContainerPanel containerPanel;
-	private DetailAttributePanel detailAttributePanel;
-	private StyleToolkit toolkit = new CustomStyleToolkit();
+	protected ContainerPanel containerPanel;
+	protected DetailAttributePanel detailAttributePanel;
+	private final Logger logger = Logger.getLogger(CADMainFrame.class);
+	protected StyleToolkit toolkit = new CustomStyleToolkit();
 
 	public CADMainFrame() {
 		super(CADMainFrame.class);
@@ -49,12 +49,12 @@ public class CADMainFrame extends AbstractFrame {
 
 	@Override
 	public double getHorizontalProportion() {
-		return 0.6;
+		return 0.6d;
 	}
 
 	@Override
 	public double getVerticalProportion() {
-		return 0.99;
+		return 0.99d;
 	}
 
 	private void initCAD() {
@@ -163,8 +163,8 @@ public class CADMainFrame extends AbstractFrame {
 		private Document document;
 		private PopProgress progress;
 		private final String PROMPT_0 = "checkin.prompt.0";
-		private final String PROMPT_50 = "checkin.prompt.50";
 		private final String PROMPT_100 = "checkin.prompt.100";
+		private final String PROMPT_50 = "checkin.prompt.50";
 
 		public CheckinWorker(Document document) {
 			this.document = document;

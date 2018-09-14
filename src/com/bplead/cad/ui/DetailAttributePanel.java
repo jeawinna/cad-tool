@@ -1,6 +1,7 @@
 package com.bplead.cad.ui;
 
 import java.awt.Dimension;
+import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.List;
 
@@ -12,8 +13,7 @@ import javax.swing.table.DefaultTableModel;
 
 import org.apache.log4j.Logger;
 
-import com.bplead.cad.bean.io.CAD;
-import com.bplead.cad.bean.io.CADLink;
+import com.bplead.cad.bean.io.DetailModel;
 
 import priv.lee.cad.ui.AbstractPanel;
 import priv.lee.cad.util.Assert;
@@ -22,29 +22,39 @@ public class DetailAttributePanel extends AbstractPanel {
 
 	private static final Logger logger = Logger.getLogger(DetailAttributePanel.class);
 	private static final long serialVersionUID = -206359105088128179L;
-	private CAD cad;
+	private boolean autoResizeOff = false;
 	private String[][] datas;
+	private DetailModel detailModel;
+	private double horizontalProportion = 0.95d;
 	private String[] names;
 	private double TABLE_HEIGTH_PROPORTION = 0.9d;
 	private double TABLE_WIDTH_PROPORTION = 0.98d;
 	private final String TITLE = "title";
+	private double verticalProportion = 0.45d;
 
-	public DetailAttributePanel(CAD cad) {
-		this.cad = cad;
+	public DetailAttributePanel(DetailModel detailModel) {
+		this.detailModel = detailModel;
 	}
 
-	public CAD getCad() {
-		return cad;
+	private Class<? extends Serializable> getActualType(List<? extends Serializable> detail) {
+		if (detail == null || detail.isEmpty()) {
+			return null;
+		}
+		return detail.get(0).getClass();
+	}
+
+	public DetailModel getDetailModel() {
+		return detailModel;
 	}
 
 	@Override
 	public double getHorizontalProportion() {
-		return 0.95d;
+		return horizontalProportion;
 	}
 
 	@Override
 	public double getVerticalProportion() {
-		return 0.45d;
+		return verticalProportion;
 	}
 
 	@Override
@@ -56,8 +66,8 @@ public class DetailAttributePanel extends AbstractPanel {
 						TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, toolkit.getFont()));
 
 		logger.info("initialize detail table...");
-		initTableData(cad.getDetail());
-		Dimension dimension = getPreferredSize();
+		initTableData(detailModel.getDetail());
+
 		DefaultTableModel model = new DefaultTableModel(datas, names) {
 			private static final long serialVersionUID = 2965741710969780926L;
 
@@ -67,40 +77,63 @@ public class DetailAttributePanel extends AbstractPanel {
 			}
 		};
 
-		JScrollPane sp = new JScrollPane(new JTable(model));
+		JTable table = new JTable(model);
+		if (autoResizeOff) {
+			table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		}
+
+		JScrollPane sp = new JScrollPane(table);
+		Dimension dimension = getPreferredSize();
 		sp.setPreferredSize(new Dimension((int) (dimension.width * TABLE_WIDTH_PROPORTION),
 				(int) (dimension.height * TABLE_HEIGTH_PROPORTION)));
 		add(sp);
 	}
 
-	private void initTableData(List<CADLink> links) {
-		Field[] fields = CADLink.class.getDeclaredFields();
+	private void initTableData(List<? extends Serializable> detail) {
+		Class<? extends Serializable> cls = getActualType(detail);
+		if (cls == null) {
+			return;
+		}
+
+		Field[] fields = cls.getDeclaredFields();
 		names = new String[fields.length];
-		datas = new String[links == null || links.isEmpty() ? 0 : links.size()][names.length];
+		datas = new String[detail == null || detail.isEmpty() ? 0 : detail.size()][names.length];
 		for (int i = 0; i < fields.length; i++) {
 			Field field = fields[i];
 			field.setAccessible(true);
 			String name = getResourceMap().getString(field.getName());
 			Assert.hasText(name, "Table column name[" + field.getName() + "] must not be null");
 			names[i] = name;
-			if (links == null || links.isEmpty()) {
+			if (detail == null || detail.isEmpty()) {
 				continue;
 			}
-			for (int j = 0; j < links.size(); j++) {
-				CADLink link = links.get(j);
-				Object value = "";
+			for (int j = 0; j < detail.size(); j++) {
+				Serializable serializable = detail.get(j);
+				Object value = null;
 				try {
-					value = field.get(link);
+					value = field.get(serializable);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 				logger.debug(name + "=" + value);
-				datas[j][i] = String.valueOf(value);
+				datas[j][i] = String.valueOf(value == null ? "" : value);
 			}
 		}
 	}
 
-	public void setCad(CAD cad) {
-		this.cad = cad;
+	public void setAutoResizeOff(boolean autoResizeOff) {
+		this.autoResizeOff = autoResizeOff;
+	}
+
+	public void setDetailModel(DetailModel detailModel) {
+		this.detailModel = detailModel;
+	}
+
+	public void setHorizontalProportion(double horizontalProportion) {
+		this.horizontalProportion = horizontalProportion;
+	}
+
+	public void setVerticalProportion(double verticalProportion) {
+		this.verticalProportion = verticalProportion;
 	}
 }

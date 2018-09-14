@@ -1,5 +1,6 @@
 package com.bplead.cad.ui;
 
+import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,26 +10,24 @@ import javax.swing.border.TitledBorder;
 
 import org.apache.log4j.Logger;
 
-import com.bplead.cad.bean.io.CAD;
-
 import priv.lee.cad.layout.DefaultGroupLayout;
 import priv.lee.cad.ui.AbstractPanel;
 import priv.lee.cad.ui.PromptTextField;
 
 public class BasicAttributePanel extends AbstractPanel {
 
-	private static final Logger logger = Logger.getLogger(BasicAttributePanel.class);
 	private static final long serialVersionUID = 5723039852386303330L;
-	private CAD cad;
 	private final double HEIGHT_PROPORTION = 0.1d;
 	private final double HGAP_PROPORTION = 0.005d;
-	private final double LABEL_PROPORTION = 0.08d;
-	private final double TEXT_PROPORTION = 0.2d;
+	private double labelProportion = 0.08d;
+	private final Logger logger = Logger.getLogger(BasicAttributePanel.class);
+	private Serializable serializable;
+	private double textProportion = 0.2d;
 	private final String TITLE = "title";
 	private final double VGAP_PROPORTION = 0.02d;
 
-	public BasicAttributePanel(CAD cad) {
-		this.cad = cad;
+	public BasicAttributePanel(Serializable serializable) {
+		this.serializable = serializable;
 	}
 
 	private List<PromptTextField> conver2Texts() {
@@ -36,14 +35,14 @@ public class BasicAttributePanel extends AbstractPanel {
 		List<PromptTextField> texts = new ArrayList<PromptTextField>();
 		String value = "";
 		PromptTextField.PromptTextFieldDimension dimension = PromptTextField.newDimension(getPreferredSize(),
-				LABEL_PROPORTION, TEXT_PROPORTION, HEIGHT_PROPORTION);
-		Field[] fields = CAD.class.getDeclaredFields();
+				labelProportion, textProportion, HEIGHT_PROPORTION);
+		Field[] fields = serializable.getClass().getDeclaredFields();
 		for (Field field : fields) {
 			field.setAccessible(true);
 			value = "";
 			try {
-				if (cad != null) {
-					Object object = field.get(cad);
+				if (this.serializable != null) {
+					Object object = field.get(serializable);
 					if (!(object instanceof String)) {
 						continue;
 					}
@@ -60,13 +59,21 @@ public class BasicAttributePanel extends AbstractPanel {
 		return texts;
 	}
 
-	public CAD getCad() {
-		return cad;
+	public Serializable getCad() {
+		return serializable;
 	}
 
 	@Override
 	public double getHorizontalProportion() {
 		return 0.95d;
+	}
+
+	public double getLabelProportion() {
+		return labelProportion;
+	}
+
+	public double getTextProportion() {
+		return textProportion;
 	}
 
 	@Override
@@ -95,7 +102,15 @@ public class BasicAttributePanel extends AbstractPanel {
 		layout.addComponent(texts).layout(3);
 	}
 
-	public void setCad(CAD cad) {
-		this.cad = cad;
+	public void setCad(Serializable cad) {
+		this.serializable = cad;
+	}
+
+	public void setLabelProportion(double labelProportion) {
+		this.labelProportion = labelProportion;
+	}
+
+	public void setTextProportion(double textProportion) {
+		this.textProportion = textProportion;
 	}
 }

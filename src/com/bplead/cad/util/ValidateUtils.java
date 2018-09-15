@@ -10,6 +10,7 @@ import com.bplead.cad.bean.SimpleFolder;
 import com.bplead.cad.bean.SimplePdmLinkProduct;
 import com.bplead.cad.bean.client.Preference;
 import com.bplead.cad.bean.io.Attachment;
+import com.bplead.cad.bean.io.CAD;
 import com.bplead.cad.bean.io.Document;
 import com.bplead.cad.model.CustomPrompt;
 
@@ -44,26 +45,29 @@ public class ValidateUtils {
 
 		logger.info("Validate checkin begin...");
 
-		Assert.hasText(document.getCad().getDetailNum(), CustomPrompt.DETAIL_NUMBER_NULL);
-
-		Assert.isTrue(validateDetailNum(document.getCad().getDetailNum()), CustomPrompt.ERROR_DETAIL_NUMBER_FORMAT);
-
-		if (document.getCad().getDetailNum().equals(document.getCad().getNumber())) {
-			Assert.isTrue(!StringUtils.hasText(document.getCad().getJdeNum()), CustomPrompt.JDE_NUMBER_NOT_NULL);
-		} else {
-			Assert.isTrue(StringUtils.hasText(document.getCad().getJdeNum()), CustomPrompt.JDE_NUMBER_NULL);
-		}
-
 		List<Attachment> attachments = document.getAttachments();
 		Assert.notEmpty(attachments, CustomPrompt.ATTACHMENTS_NULL);
 
 		if (ClientUtils.StartArguments.CAD.equals(ClientUtils.args.getType())) {
+			CAD cad = (CAD) document.getObject();
+
+			Assert.hasText(cad.getDetailNum(), CustomPrompt.DETAIL_NUMBER_NULL);
+
+			Assert.isTrue(validateDetailNum(cad.getDetailNum()), CustomPrompt.ERROR_DETAIL_NUMBER_FORMAT);
+			if (cad.getDetailNum().equals(cad.getNumber())) {
+				Assert.isTrue(!StringUtils.hasText(cad.getJdeNum()), CustomPrompt.JDE_NUMBER_NOT_NULL);
+			} else {
+				Assert.isTrue(StringUtils.hasText(cad.getJdeNum()), CustomPrompt.JDE_NUMBER_NULL);
+			}
+
 			validateExb(attachments);
 		}
 
 		validateProduct(document.getContainer().getProduct());
 
 		validateFolder(document.getContainer().getFolder());
+
+		validateType(document.getType());
 
 		logger.info("Validate checkin complete...");
 	}
@@ -106,6 +110,10 @@ public class ValidateUtils {
 
 	public static void validateProduct(SimplePdmLinkProduct product) {
 		Assert.notNull(product, CustomPrompt.PRODUCT_NULL);
+	}
+
+	public static void validateType(String type) {
+		Assert.hasText(type, CustomPrompt.DOC_TYPE_NULL);
 	}
 
 	public static void validateUrl(String url) {

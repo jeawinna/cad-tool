@@ -10,6 +10,8 @@ public class CustomPrompt {
 
 	public static final String DETAIL_NUMBER_NULL = "detalNumNull";
 
+	public static final String DOC_TYPE_NULL = "docTypeNull";
+
 	public static final String ERROR_DETAIL_NUMBER_FORMAT = "erroDetailFormat";
 
 	public static final String ERROR_PREFERENCE_CAXA_CACHE = "erroPreferenceCaxaCache";

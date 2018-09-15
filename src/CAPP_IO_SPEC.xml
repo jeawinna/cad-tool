@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<plminfo GYGCMC="工艺规程名称" cpdh="产品代号" cpmc="产品名称" ljdh="零部件代号"
+<plminfo GYGCMC="成量机加工艺规程" cpdh="产品代号" cpmc="产品名称" ljdh="零部件代号"
 	ljmc="零部件名称" clph="材料牌号" clcc="材料尺寸" gy="共页" kpmc="卡片名称"
 	jdecode="JDE项目号" gylxlx="工艺路线类型" fcmc="分厂名称">
 	<partlist>

@@ -14,6 +14,8 @@ public class CustomPrompt {
 
 	public static final String ERROR_PREFERENCE_CAXA_CACHE = "erroPreferenceCaxaCache";
 
+	public static final String ERROR_PREFERENCE_CAXA_EXE = "erroPreferenceCaxaExe";
+
 	public static final String FILE_NOT_EXSIT = "fileNotExsit";
 
 	public static final String FOLDER_NULL = "folderNull";
@@ -26,9 +28,15 @@ public class CustomPrompt {
 
 	public static final String ONLY_ONE_PROPERTIES = "onlyOneProperties";
 
+	public static final String PREFERENCE_CAXA_CACHE_NULL = "preferenceCaxaCacheNull";
+
+	public static final String PREFERENCE_CAXA_EXE_NULL = "preferenceCaxaExeNull";
+
 	public static final String PREFERENCE_CAXA_NULL = "preferenceCaxaNull";
 
 	public static final String PREFERENCE_NULL = "preferenceNull";
 
 	public static final String PRODUCT_NULL = "productNull";
+
+	public static final String URL_NULL = "urlNull";
 }

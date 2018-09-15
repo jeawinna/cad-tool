@@ -1,5 +1,6 @@
 package com.bplead.cad.ui;
 
+import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -9,6 +10,7 @@ import org.apache.log4j.Logger;
 
 import com.bplead.cad.bean.io.CAPP;
 import com.bplead.cad.model.CustomStyleToolkit;
+import com.bplead.cad.util.ClientUtils;
 
 import priv.lee.cad.model.Callback;
 import priv.lee.cad.model.StyleToolkit;
@@ -17,7 +19,7 @@ import priv.lee.cad.util.Assert;
 import priv.lee.cad.util.PropertiesUtils;
 import priv.lee.cad.util.XmlUtils;
 
-public class CAPPMainFrame extends AbstractFrame {
+public class CAPPMainFrame extends AbstractFrame implements Callback {
 
 	private static Logger logger = Logger.getLogger(CADMainFrame.class);
 	private static final long serialVersionUID = -583597043543602853L;
@@ -31,7 +33,6 @@ public class CAPPMainFrame extends AbstractFrame {
 	private final String CAPP_REPOSITORY = "capp.xml.repository";
 	private ContainerPanel containerPanel;
 	private TabAttributePanel tabAttributePanel;
-
 	private StyleToolkit toolkit = new CustomStyleToolkit();
 
 	public CAPPMainFrame() {
@@ -40,8 +41,22 @@ public class CAPPMainFrame extends AbstractFrame {
 	}
 
 	@Override
+	public synchronized void call(Object object) {
+		notifyAll();
+	}
+
+	@Override
 	public double getHorizontalProportion() {
 		return 0.6d;
+	}
+
+	private File getRepository() {
+		if (ClientUtils.temprary == null || ClientUtils.temprary.getPreference() == null
+				|| ClientUtils.temprary.getPreference().getCaxa() == null
+				|| !new File(ClientUtils.temprary.getPreference().getCaxa().getCache()).exists()) {
+			return null;
+		}
+		return new File(ClientUtils.temprary.getPreference().getCaxa().getCache() + CAPP_REPOSITORY);
 	}
 
 	@Override
@@ -50,9 +65,16 @@ public class CAPPMainFrame extends AbstractFrame {
 	}
 
 	private void initCAPP() {
-		File xml = new File(CAPPMainFrame.class.getResource(PropertiesUtils.readProperty(CAPP_REPOSITORY)).getPath());
-		this.capp = XmlUtils.read(xml, CAPP.class);
-		logger.debug("capp:" + capp);
+		if (getRepository() == null) {
+			startPreferencesDialog(this);
+			dispose();
+		} else {
+			File xml = getRepository();
+			Assert.notNull(xml, "CAD tool initialize failed.Please check file /CAXA_CACHE"
+					+ PropertiesUtils.readProperty(CAPP_REPOSITORY) + " is exsits");
+			this.capp = XmlUtils.read(xml, CAPP.class);
+			logger.debug("capp:" + capp);
+		}
 	}
 
 	@Override
@@ -60,7 +82,9 @@ public class CAPPMainFrame extends AbstractFrame {
 		logger.info("initialize " + getClass() + " CAPP...");
 		initCAPP();
 
-		Assert.notNull(capp, "CAD initialize failed.Please check the " + PropertiesUtils.readProperty(CAPP_REPOSITORY));
+		if (capp == null) {
+			return;
+		}
 
 		logger.info("initialize " + getClass() + " menu bar...");
 		setJMenuBar(toolkit.getStandardMenuBar(new CheckinActionListenner(), new CheckoutActionListenner()));
@@ -77,6 +101,15 @@ public class CAPPMainFrame extends AbstractFrame {
 		logger.info("initialize " + getClass() + " tab attribute panel...");
 		tabAttributePanel = new TabAttributePanel(capp.getMpmParts());
 		getContentPane().add(tabAttributePanel);
+	}
+
+	private void startPreferencesDialog(Callback container) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				PreferencesDialog dialog = new PreferencesDialog(container);
+				dialog.activate();
+			}
+		});
 	}
 
 	public class CheckinActionListenner implements ActionListener, FilenameFilter {

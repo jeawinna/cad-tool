@@ -18,6 +18,7 @@ import com.bplead.cad.bean.client.CaxaTemporary;
 import com.bplead.cad.bean.client.Preference;
 import com.bplead.cad.bean.io.Container;
 import com.bplead.cad.util.ClientUtils;
+import com.bplead.cad.util.ValidateUtils;
 
 import priv.lee.cad.model.Callback;
 import priv.lee.cad.ui.AbstractDialog;
@@ -57,7 +58,7 @@ public class PreferencesDialog extends AbstractDialog {
 		add(preferencePanel);
 
 		logger.info("initialize option content...");
-		Option confirm = new Option(Option.CONFIRM_BUTTON, null, new ConfirmActionListener());
+		Option confirm = new Option(Option.CONFIRM_BUTTON, null, this);
 		add(new OptionPanel(Arrays.asList(confirm, Option.newCancelOption(this))));
 
 		logger.info("initialize completed...");
@@ -65,27 +66,38 @@ public class PreferencesDialog extends AbstractDialog {
 
 	@Override
 	public Object setCallbackObject() {
-		return null;
+		return ClientUtils.temprary;
 	}
 
-	private class ConfirmActionListener implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// ~ do confirm
-			if (preference == null) {
-				preference = new Preference();
-			}
-
-			logger.info("begin to write client temporay...");
-			preference.setCaxa(new CaxaTemporary(preferencePanel.cache.getText().getText(),
-					preferencePanel.exe.getText().getText()));
-			preference.setContainer(new Container(preferencePanel.product, preferencePanel.folder));
-
-			XmlUtils.store(ClientUtils.temprary);
-
-			dispose();
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// ~ do confirm
+		if (preference == null) {
+			preference = new Preference();
 		}
+		
+		String url = preferencePanel.url.getText().getText();
+		ValidateUtils.validateUrl(url);
+
+		String caxaCache = preferencePanel.cache.getText().getText();
+		ValidateUtils.validateCaxaCache(caxaCache);
+
+		String caxaExe = preferencePanel.exe.getText().getText();
+		ValidateUtils.validateCaxaExe(caxaExe);
+
+		SimplePdmLinkProduct product = preferencePanel.product;
+		ValidateUtils.validateProduct(product);
+
+		SimpleFolder folder = preferencePanel.folder;
+		ValidateUtils.validateFolder(folder);
+
+		logger.info("begin to write client temporay...");
+		preference.setCaxa(new CaxaTemporary(caxaCache, caxaExe));
+		preference.setContainer(new Container(product, folder));
+
+		XmlUtils.store(ClientUtils.temprary);
+
+		super.actionPerformed(e);
 	}
 
 	private class FindCaxaCacheActionListener implements ActionListener {

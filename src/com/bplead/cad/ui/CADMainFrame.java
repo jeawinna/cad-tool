@@ -1,5 +1,6 @@
 package com.bplead.cad.ui;
 
+import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -31,7 +32,7 @@ import priv.lee.cad.util.FTPUtils;
 import priv.lee.cad.util.PropertiesUtils;
 import priv.lee.cad.util.XmlUtils;
 
-public class CADMainFrame extends AbstractFrame {
+public class CADMainFrame extends AbstractFrame implements Callback {
 
 	private static final long serialVersionUID = -1719424691262349744L;
 	protected BasicAttributePanel basicAttributePanel;
@@ -48,8 +49,23 @@ public class CADMainFrame extends AbstractFrame {
 	}
 
 	@Override
+	public void call(Object object) {
+		activate();
+	}
+
+	@Override
 	public double getHorizontalProportion() {
 		return 0.6d;
+	}
+
+	private File getRepository() {
+		if (ClientUtils.temprary == null || ClientUtils.temprary.getPreference() == null
+				|| ClientUtils.temprary.getPreference().getCaxa() == null
+				|| !new File(ClientUtils.temprary.getPreference().getCaxa().getCache()).exists()) {
+			return null;
+		}
+		return new File(ClientUtils.temprary.getPreference().getCaxa().getCache()
+				+ PropertiesUtils.readProperty(CAD_REPOSITORY));
 	}
 
 	@Override
@@ -58,9 +74,16 @@ public class CADMainFrame extends AbstractFrame {
 	}
 
 	private void initCAD() {
-		File xml = new File(CADMainFrame.class.getResource(PropertiesUtils.readProperty(CAD_REPOSITORY)).getPath());
-		this.cad = XmlUtils.read(xml, CAD.class);
-		logger.debug("cad:" + cad);
+		if (getRepository() == null) {
+			startPreferencesDialog(this);
+			dispose();
+		} else {
+			File xml = getRepository();
+			Assert.notNull(xml, "CAD tool initialize failed.Please check file /CAXA_CACHE"
+					+ PropertiesUtils.readProperty(CAD_REPOSITORY) + " is exsits");
+			this.cad = XmlUtils.read(xml, CAD.class);
+			logger.debug("cad:" + cad);
+		}
 	}
 
 	@Override
@@ -68,7 +91,9 @@ public class CADMainFrame extends AbstractFrame {
 		logger.info("initialize " + getClass() + " CAD...");
 		initCAD();
 
-		Assert.notNull(cad, "CAD initialize failed.Please check the " + PropertiesUtils.readProperty(CAD_REPOSITORY));
+		if (cad == null) {
+			return;
+		}
 
 		logger.info("initialize " + getClass() + " menu bar...");
 		setJMenuBar(toolkit.getStandardMenuBar(new CheckinActionListenner(), new CheckoutActionListenner()));
@@ -84,6 +109,15 @@ public class CADMainFrame extends AbstractFrame {
 		logger.info("initialize " + getClass() + " detail attribute panel...");
 		detailAttributePanel = new DetailAttributePanel(cad);
 		getContentPane().add(detailAttributePanel);
+	}
+
+	private void startPreferencesDialog(Callback container) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				PreferencesDialog dialog = new PreferencesDialog(container);
+				dialog.activate();
+			}
+		});
 	}
 
 	public class CheckinActionListenner implements ActionListener, FilenameFilter {
@@ -107,10 +141,10 @@ public class CADMainFrame extends AbstractFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			ValidateUtils.preference();
+			ValidateUtils.validatePreference();
 
 			Document document = buildDocument();
-			ValidateUtils.checkin(document);
+			ValidateUtils.validateCheckin(document);
 
 			CheckinWorker worker = new CheckinWorker(document);
 			worker.execute();

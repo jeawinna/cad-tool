@@ -6,6 +6,8 @@ import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
 
+import com.bplead.cad.bean.SimpleFolder;
+import com.bplead.cad.bean.SimplePdmLinkProduct;
 import com.bplead.cad.bean.client.Preference;
 import com.bplead.cad.bean.io.Attachment;
 import com.bplead.cad.bean.io.Document;
@@ -26,7 +28,18 @@ public class ValidateUtils {
 		format = PropertiesUtils.readProperty(DETAILNUM_FORMAT);
 	}
 
-	public static void checkin(Document document) {
+	public static void validateCaxaCache(String caxaCache) {
+		Assert.hasText(caxaCache, CustomPrompt.ERROR_PREFERENCE_CAXA_CACHE);
+		Assert.isTrue(new File(caxaCache).isDirectory(), CustomPrompt.ERROR_PREFERENCE_CAXA_CACHE);
+	}
+
+	public static void validateCaxaExe(String caxaExe) {
+		Assert.hasText(caxaExe, CustomPrompt.PREFERENCE_CAXA_EXE_NULL);
+		Assert.isTrue(new File(caxaExe).exists(), CustomPrompt.ERROR_PREFERENCE_CAXA_EXE);
+
+	}
+
+	public static void validateCheckin(Document document) {
 		Assert.notNull(document, "Document is required");
 
 		logger.info("Validate checkin begin...");
@@ -54,14 +67,22 @@ public class ValidateUtils {
 		}
 		Assert.isTrue(containsExb, CustomPrompt.MISSING_EXB_FILE);
 
-		Assert.notNull(document.getContainer().getProduct(), CustomPrompt.PRODUCT_NULL);
+		validateProduct(document.getContainer().getProduct());
 
-		Assert.notNull(document.getContainer().getFolder(), CustomPrompt.FOLDER_NULL);
+		validateFolder(document.getContainer().getFolder());
 
 		logger.info("Validate checkin complete...");
 	}
 
-	public static void preference() {
+	public static boolean validateDetailNum(String detailNum) {
+		return Pattern.compile(format).matcher(detailNum).matches();
+	}
+
+	public static void validateFolder(SimpleFolder folder) {
+		Assert.notNull(folder, CustomPrompt.FOLDER_NULL);
+	}
+
+	public static void validatePreference() {
 		logger.info("Validate preference begin...");
 
 		Preference preference = ClientUtils.temprary.getPreference();
@@ -70,13 +91,18 @@ public class ValidateUtils {
 
 		Assert.notNull(preference.getCaxa(), CustomPrompt.PREFERENCE_CAXA_NULL);
 
-		Assert.isTrue(new File(preference.getCaxa().getCache()).isDirectory(),
-				CustomPrompt.ERROR_PREFERENCE_CAXA_CACHE);
+		validateCaxaCache(preference.getCaxa().getCache());
+
+		validateCaxaExe(preference.getCaxa().getLocation());
 
 		logger.info("Validate preference complete...");
 	}
 
-	private static boolean validateDetailNum(String detailNum) {
-		return Pattern.compile(format).matcher(detailNum).matches();
+	public static void validateProduct(SimplePdmLinkProduct product) {
+		Assert.notNull(product, CustomPrompt.PRODUCT_NULL);
+	}
+
+	public static void validateUrl(String url) {
+		Assert.hasText(url, CustomPrompt.URL_NULL);
 	}
 }

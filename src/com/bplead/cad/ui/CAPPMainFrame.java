@@ -56,7 +56,8 @@ public class CAPPMainFrame extends AbstractFrame implements Callback {
 				|| !new File(ClientUtils.temprary.getPreference().getCaxa().getCache()).exists()) {
 			return null;
 		}
-		return new File(ClientUtils.temprary.getPreference().getCaxa().getCache() + CAPP_REPOSITORY);
+		return new File(ClientUtils.temprary.getPreference().getCaxa().getCache()
+				+ PropertiesUtils.readProperty(CAPP_REPOSITORY));
 	}
 
 	@Override

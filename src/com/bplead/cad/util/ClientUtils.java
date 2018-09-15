@@ -16,6 +16,7 @@ import priv.lee.cad.util.StringUtils;
 
 public class ClientUtils extends ClientInstanceUtils {
 
+	public static StartArguments args = new StartArguments();
 	public static Temporary temprary = new Temporary();
 
 	public static boolean checkin(Document document) {
@@ -46,5 +47,28 @@ public class ClientUtils extends ClientInstanceUtils {
 		Assert.isTrue(StringUtils.hasText(number) || StringUtils.hasText(name), "Number or name is requried");
 		return invoke(RemoteMethod.SEARCH, new Class<?>[] { String.class, String.class }, new Object[] { number, name },
 				List.class);
+	}
+
+	public static class StartArguments {
+
+		public static final String CAD = "cad";
+		public static final String CAPP = "capp";
+		private String type;
+
+		public StartArguments() {
+
+		}
+
+		public StartArguments(String type) {
+			this.type = type;
+		}
+
+		public String getType() {
+			return type;
+		}
+
+		public void setType(String type) {
+			this.type = type;
+		}
 	}
 }

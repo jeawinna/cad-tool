@@ -1,5 +1,7 @@
 package com.bplead.cad.ui;
 
+import java.awt.EventQueue;
+
 import com.bplead.cad.bean.client.Temporary;
 import com.bplead.cad.util.ClientUtils;
 
@@ -18,7 +20,15 @@ public class LoginFrame extends AbstractLoginFrame {
 
 	@Override
 	public void startNextFrame() {
-		new CADMainFrame().activate();
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				if (ClientUtils.StartArguments.CAD.equals(ClientUtils.args.getType())) {
+					new CADMainFrame().activate();
+				} else {
+					new CAPPMainFrame().activate();
+				}
+			}
+		});
 	}
 
 	@Override

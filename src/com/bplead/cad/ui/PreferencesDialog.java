@@ -75,7 +75,7 @@ public class PreferencesDialog extends AbstractDialog {
 		if (preference == null) {
 			preference = new Preference();
 		}
-		
+
 		String url = preferencePanel.url.getText().getText();
 		ValidateUtils.validateUrl(url);
 
@@ -199,10 +199,12 @@ public class PreferencesDialog extends AbstractDialog {
 		}
 
 		private String getDefaultFolder() {
+			setFolder(isPreferenceContainerNull() ? null : preference.getContainer().getFolder());
 			return isPreferenceContainerNull() ? "" : preference.getContainer().getFolder().getName();
 		}
 
 		private String getDefaultPdm() {
+			setProduct(isPreferenceContainerNull() ? null : preference.getContainer().getProduct());
 			return isPreferenceContainerNull() ? "" : preference.getContainer().getProduct().getName();
 		}
 

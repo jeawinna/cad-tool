@@ -1,6 +1,5 @@
 package com.bplead.cad.ui;
 
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -13,7 +12,6 @@ import com.bplead.cad.model.CustomStyleToolkit;
 import com.bplead.cad.util.ClientUtils;
 
 import priv.lee.cad.model.Callback;
-import priv.lee.cad.model.StyleToolkit;
 import priv.lee.cad.ui.AbstractFrame;
 import priv.lee.cad.util.Assert;
 import priv.lee.cad.util.PropertiesUtils;
@@ -33,7 +31,7 @@ public class CAPPMainFrame extends AbstractFrame implements Callback {
 	private final String CAPP_REPOSITORY = "capp.xml.repository";
 	private ContainerPanel containerPanel;
 	private TabAttributePanel tabAttributePanel;
-	private StyleToolkit toolkit = new CustomStyleToolkit();
+	private CustomStyleToolkit toolkit = new CustomStyleToolkit(this);
 
 	public CAPPMainFrame() {
 		super(CAPPMainFrame.class);
@@ -41,8 +39,8 @@ public class CAPPMainFrame extends AbstractFrame implements Callback {
 	}
 
 	@Override
-	public synchronized void call(Object object) {
-		notifyAll();
+	public void call(Object object) {
+		reload();
 	}
 
 	@Override
@@ -67,7 +65,7 @@ public class CAPPMainFrame extends AbstractFrame implements Callback {
 
 	private void initCAPP() {
 		if (getRepository() == null) {
-			startPreferencesDialog(this);
+			toolkit.startPreferencesDialog(this);
 			dispose();
 		} else {
 			File xml = getRepository();
@@ -102,15 +100,6 @@ public class CAPPMainFrame extends AbstractFrame implements Callback {
 		logger.info("initialize " + getClass() + " tab attribute panel...");
 		tabAttributePanel = new TabAttributePanel(capp.getMpmParts());
 		getContentPane().add(tabAttributePanel);
-	}
-
-	private void startPreferencesDialog(Callback container) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				PreferencesDialog dialog = new PreferencesDialog(container);
-				dialog.activate();
-			}
-		});
 	}
 
 	public class CheckinActionListenner implements ActionListener, FilenameFilter {

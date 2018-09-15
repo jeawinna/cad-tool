@@ -57,15 +57,9 @@ public class ValidateUtils {
 		List<Attachment> attachments = document.getAttachments();
 		Assert.notEmpty(attachments, CustomPrompt.ATTACHMENTS_NULL);
 
-		boolean containsExb = false;
-		for (Attachment attachment : attachments) {
-			Assert.isTrue(new File(attachment.getAbsolutePath()).exists(), CustomPrompt.FILE_NOT_EXSIT);
-
-			if (attachment.getName().endsWith(primarySuffix)) {
-				containsExb = true;
-			}
+		if (ClientUtils.StartArguments.CAD.equals(ClientUtils.args.getType())) {
+			validateExb(attachments);
 		}
-		Assert.isTrue(containsExb, CustomPrompt.MISSING_EXB_FILE);
 
 		validateProduct(document.getContainer().getProduct());
 
@@ -76,6 +70,18 @@ public class ValidateUtils {
 
 	public static boolean validateDetailNum(String detailNum) {
 		return Pattern.compile(format).matcher(detailNum).matches();
+	}
+
+	public static void validateExb(List<Attachment> attachments) {
+		boolean containsExb = false;
+		for (Attachment attachment : attachments) {
+			Assert.isTrue(new File(attachment.getAbsolutePath()).exists(), CustomPrompt.FILE_NOT_EXSIT);
+
+			if (attachment.getName().endsWith(primarySuffix)) {
+				containsExb = true;
+			}
+		}
+		Assert.isTrue(containsExb, CustomPrompt.MISSING_EXB_FILE);
 	}
 
 	public static void validateFolder(SimpleFolder folder) {

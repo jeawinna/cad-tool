@@ -1,6 +1,5 @@
 package com.bplead.cad.ui;
 
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -25,7 +24,6 @@ import com.bplead.cad.util.ClientUtils;
 import com.bplead.cad.util.ValidateUtils;
 
 import priv.lee.cad.model.Callback;
-import priv.lee.cad.model.StyleToolkit;
 import priv.lee.cad.ui.AbstractFrame;
 import priv.lee.cad.util.Assert;
 import priv.lee.cad.util.FTPUtils;
@@ -41,7 +39,7 @@ public class CADMainFrame extends AbstractFrame implements Callback {
 	protected ContainerPanel containerPanel;
 	protected DetailAttributePanel detailAttributePanel;
 	private final Logger logger = Logger.getLogger(CADMainFrame.class);
-	protected StyleToolkit toolkit = new CustomStyleToolkit();
+	protected CustomStyleToolkit toolkit = new CustomStyleToolkit(this);
 
 	public CADMainFrame() {
 		super(CADMainFrame.class);
@@ -50,7 +48,7 @@ public class CADMainFrame extends AbstractFrame implements Callback {
 
 	@Override
 	public void call(Object object) {
-		activate();
+		reload();
 	}
 
 	@Override
@@ -75,7 +73,7 @@ public class CADMainFrame extends AbstractFrame implements Callback {
 
 	private void initCAD() {
 		if (getRepository() == null) {
-			startPreferencesDialog(this);
+			toolkit.startPreferencesDialog(this);
 			dispose();
 		} else {
 			File xml = getRepository();
@@ -109,15 +107,6 @@ public class CADMainFrame extends AbstractFrame implements Callback {
 		logger.info("initialize " + getClass() + " detail attribute panel...");
 		detailAttributePanel = new DetailAttributePanel(cad);
 		getContentPane().add(detailAttributePanel);
-	}
-
-	private void startPreferencesDialog(Callback container) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				PreferencesDialog dialog = new PreferencesDialog(container);
-				dialog.activate();
-			}
-		});
 	}
 
 	public class CheckinActionListenner implements ActionListener, FilenameFilter {
@@ -242,19 +231,6 @@ public class CADMainFrame extends AbstractFrame implements Callback {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			new SearchForDownloadDialog(this).activate();
-		}
-
-		@Override
-		public void call(Object object) {
-
-		}
-	}
-
-	public class PrefencesActionListener implements ActionListener, Callback {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			new PreferencesDialog(this).activate();
 		}
 
 		@Override

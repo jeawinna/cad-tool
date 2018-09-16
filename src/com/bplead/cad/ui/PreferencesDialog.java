@@ -32,41 +32,13 @@ import priv.lee.cad.util.XmlUtils;
 
 public class PreferencesDialog extends AbstractDialog {
 
-	private final Logger logger = Logger.getLogger(PreferencesDialog.class);
 	private static final long serialVersionUID = -2875157877197653599L;
+	private final Logger logger = Logger.getLogger(PreferencesDialog.class);
 	private Preference preference = ClientUtils.temprary.getPreference();
 	private PreferencesPanel preferencePanel;
 
 	public PreferencesDialog(Callback container) {
 		super(PreferencesDialog.class, container);
-	}
-
-	@Override
-	public double getHorizontalProportion() {
-		return 0.4d;
-	}
-
-	@Override
-	public double getVerticalProportion() {
-		return 0.35d;
-	}
-
-	@Override
-	public void initialize() {
-		logger.info("initialize preferences content...");
-		preferencePanel = new PreferencesPanel();
-		add(preferencePanel);
-
-		logger.info("initialize option content...");
-		Option confirm = new Option(Option.CONFIRM_BUTTON, null, this);
-		add(new OptionPanel(Arrays.asList(confirm, Option.newCancelOption(this))));
-
-		logger.info("initialize completed...");
-	}
-
-	@Override
-	public Object setCallbackObject() {
-		return ClientUtils.temprary;
 	}
 
 	@Override
@@ -98,6 +70,34 @@ public class PreferencesDialog extends AbstractDialog {
 		XmlUtils.store(ClientUtils.temprary);
 
 		super.actionPerformed(e);
+	}
+
+	@Override
+	public double getHorizontalProportion() {
+		return 0.4d;
+	}
+
+	@Override
+	public double getVerticalProportion() {
+		return 0.35d;
+	}
+
+	@Override
+	public void initialize() {
+		logger.info("initialize preferences content...");
+		preferencePanel = new PreferencesPanel();
+		add(preferencePanel);
+
+		logger.info("initialize option content...");
+		Option confirm = new Option(Option.CONFIRM_BUTTON, null, this);
+		add(new OptionPanel(Arrays.asList(confirm, Option.newCancelOption(this))));
+
+		logger.info("initialize completed...");
+	}
+
+	@Override
+	public Object setCallbackObject() {
+		return ClientUtils.temprary;
 	}
 
 	private class FindCaxaCacheActionListener implements ActionListener {
@@ -177,8 +177,8 @@ public class PreferencesDialog extends AbstractDialog {
 		private final double HEIGHT_PROPORTION = 0.08d;
 		private final double LABEL_PROPORTION = 0.18d;
 		private final String OPEN = "open";
-		public PromptTextField productTextField;
 		private SimplePdmLinkProduct product;
+		public PromptTextField productTextField;
 		private final double TEXT_PROPORTION = 0.55d;
 		private final String TITLE = "title";
 		public PromptTextField url;
@@ -187,10 +187,6 @@ public class PreferencesDialog extends AbstractDialog {
 		private String getCaxaCache() {
 			return (isPreferenceCaxaNull() || StringUtils.isEmpty(preference.getCaxa().getCache())) ? ""
 					: preference.getCaxa().getCache();
-		}
-
-		public void setFolder(SimpleFolder folder) {
-			this.folder = folder;
 		}
 
 		private String getCaxaExe() {
@@ -271,6 +267,10 @@ public class PreferencesDialog extends AbstractDialog {
 
 		private boolean isPreferenceContainerNull() {
 			return preference == null || preference.getContainer() == null;
+		}
+
+		public void setFolder(SimpleFolder folder) {
+			this.folder = folder;
 		}
 
 		public void setProduct(SimplePdmLinkProduct product) {

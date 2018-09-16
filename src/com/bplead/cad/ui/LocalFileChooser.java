@@ -9,8 +9,8 @@ import priv.lee.cad.ui.PromptTextField;
 
 public class LocalFileChooser extends JFileChooser {
 
-	private static final long serialVersionUID = -4355323193750393407L;
 	private static final String CHOOSE = "Choose";
+	private static final long serialVersionUID = -4355323193750393407L;
 
 	public LocalFileChooser(int mode, PromptTextField text) {
 		setFileSelectionMode(mode);

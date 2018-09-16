@@ -41,7 +41,7 @@ public class PopProgress extends AbstractDialog implements ActionListener {
 	@Override
 	public void initialize() {
 		add(prompt, BorderLayout.NORTH);
-		
+
 		Dimension dimension = getPreferredSize();
 		progress.setPreferredSize(new Dimension(dimension.width, dimension.height / 2));
 		add(progress, BorderLayout.CENTER);

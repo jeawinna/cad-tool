@@ -108,6 +108,17 @@ public class PdmLinkProductTable extends JTable implements ResourceMapper, Mouse
 		return products.get(row);
 	}
 
+	public SimplePdmLinkProduct getSelectedProduct() {
+		int rows = getModel().getRowCount();
+		for (int i = 0; i < rows; i++) {
+			Boolean selected = (Boolean) getValueAt(i, 0);
+			if (selected) {
+				return products.get(i);
+			}
+		}
+		return null;
+	}
+
 	private void initTable() {
 		if (products == null) {
 			return;
@@ -133,13 +144,6 @@ public class PdmLinkProductTable extends JTable implements ResourceMapper, Mouse
 			}
 		}
 		addMouseListener(this);
-	}
-
-	public void setColumnWidth() {
-		for (int column = 0; column < getColumnCount(); column++) {
-			int width = getColumnWidth(column);
-			getColumnModel().getColumn(column).setPreferredWidth(width);
-		}
 	}
 
 	@Override
@@ -181,19 +185,15 @@ public class PdmLinkProductTable extends JTable implements ResourceMapper, Mouse
 	public void mouseReleased(MouseEvent e) {
 	}
 
+	public void setColumnWidth() {
+		for (int column = 0; column < getColumnCount(); column++) {
+			int width = getColumnWidth(column);
+			getColumnModel().getColumn(column).setPreferredWidth(width);
+		}
+	}
+
 	@Override
 	public void setResourceMap(ResourceMap resourceMap) {
 		this.resourceMap = resourceMap;
-	}
-
-	public SimplePdmLinkProduct getSelectedProduct() {
-		int rows = getModel().getRowCount();
-		for (int i = 0; i < rows; i++) {
-			Boolean selected = (Boolean) getValueAt(i, 0);
-			if (selected) {
-				return products.get(i);
-			}
-		}
-		return null;
 	}
 }

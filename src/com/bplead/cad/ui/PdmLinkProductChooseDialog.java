@@ -29,11 +29,6 @@ public class PdmLinkProductChooseDialog extends AbstractDialog implements Action
 	}
 
 	@Override
-	public Object setCallbackObject() {
-		return table.getSelectedProduct();
-	}
-
-	@Override
 	public double getHorizontalProportion() {
 		return 0.2d;
 	}
@@ -53,6 +48,11 @@ public class PdmLinkProductChooseDialog extends AbstractDialog implements Action
 		add(new OptionPanel(Arrays.asList(confirm, Option.newCancelOption(this))));
 
 		logger.info("initialize completed...");
+	}
+
+	@Override
+	public Object setCallbackObject() {
+		return table.getSelectedProduct();
 	}
 
 	class PdmLinkProductsPanel extends AbstractPanel {

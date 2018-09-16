@@ -20,7 +20,6 @@ public class PopProgress extends AbstractDialog implements ActionListener {
 	public PopProgress(Callback callback) {
 		super(PopProgress.class, callback);
 		setUndecorated(true);
-		setAlwaysOnTop(true);
 	}
 
 	@Override

@@ -16,7 +16,7 @@ import com.bplead.cad.util.ClientUtils;
 import priv.lee.cad.model.ResourceMap;
 import priv.lee.cad.model.ResourceMapper;
 import priv.lee.cad.model.impl.DefaultResourceMap;
-import priv.lee.cad.util.Assert;
+import priv.lee.cad.util.ClientAssert;
 import priv.lee.cad.util.StringUtils;
 import priv.lee.cad.util.XmlUtils;
 
@@ -62,7 +62,7 @@ public class PdmLinkProductTable extends JTable implements ResourceMapper, Mouse
 
 	private Class<?> getCellContentType(int column) throws ClassNotFoundException {
 		String type = resourceMap.getString(PREFIX_COL_HEADER + column + COL_TYPE_SUFFIX);
-		Assert.hasText(type, "Column " + column + " type is required");
+		ClientAssert.hasText(type, "Column " + column + " type is required");
 		return Class.forName(type);
 	}
 
@@ -104,7 +104,7 @@ public class PdmLinkProductTable extends JTable implements ResourceMapper, Mouse
 		if (products == null) {
 			return null;
 		}
-		Assert.isTrue(row < products.size(), "Row out of bounds:" + row);
+		ClientAssert.isTrue(row < products.size(), "Row out of bounds:" + row);
 		return products.get(row);
 	}
 

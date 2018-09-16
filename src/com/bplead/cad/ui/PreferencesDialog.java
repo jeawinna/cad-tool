@@ -26,7 +26,7 @@ import priv.lee.cad.ui.AbstractPanel;
 import priv.lee.cad.ui.Option;
 import priv.lee.cad.ui.OptionPanel;
 import priv.lee.cad.ui.PromptTextField;
-import priv.lee.cad.util.Assert;
+import priv.lee.cad.util.ClientAssert;
 import priv.lee.cad.util.StringUtils;
 import priv.lee.cad.util.XmlUtils;
 
@@ -125,7 +125,7 @@ public class PreferencesDialog extends AbstractDialog {
 
 		@Override
 		public void call(Object object) {
-			Assert.notNull(object, "Callback object is required");
+			ClientAssert.notNull(object, "Callback object is required");
 
 			Object[] nodes = (Object[]) object;
 			SimpleFolder folder = ((FolderTree.FolderNode) nodes[nodes.length - 1]).getFolder();
@@ -153,8 +153,8 @@ public class PreferencesDialog extends AbstractDialog {
 
 		@Override
 		public void call(Object object) {
-			Assert.notNull(object, "Callback object is required");
-			Assert.isInstanceOf(SimplePdmLinkProduct.class, object,
+			ClientAssert.notNull(object, "Callback object is required");
+			ClientAssert.isInstanceOf(SimplePdmLinkProduct.class, object,
 					"Callback object must be a SimplePdmLinkProduct type");
 
 			SimplePdmLinkProduct product = (SimplePdmLinkProduct) object;

@@ -13,7 +13,7 @@ import com.bplead.cad.bean.SimpleFolder;
 import com.bplead.cad.bean.SimplePdmLinkProduct;
 import com.bplead.cad.util.ClientUtils;
 
-import priv.lee.cad.util.Assert;
+import priv.lee.cad.util.ClientAssert;
 
 public class FolderTree extends JTree {
 
@@ -22,7 +22,7 @@ public class FolderTree extends JTree {
 	private SimpleFolder rootFolder;
 
 	public FolderTree(SimplePdmLinkProduct product) {
-		Assert.notNull(product, "SimplePdmLinkProduct is required");
+		ClientAssert.notNull(product, "SimplePdmLinkProduct is required");
 
 		this.rootFolder = ClientUtils.getSimpleFolders(product);
 		logger.debug("rootFolder:" + rootFolder);

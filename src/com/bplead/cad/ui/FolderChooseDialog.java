@@ -13,7 +13,7 @@ import priv.lee.cad.model.Callback;
 import priv.lee.cad.ui.AbstractDialog;
 import priv.lee.cad.ui.Option;
 import priv.lee.cad.ui.OptionPanel;
-import priv.lee.cad.util.Assert;
+import priv.lee.cad.util.ClientAssert;
 
 public class FolderChooseDialog extends AbstractDialog {
 
@@ -26,7 +26,7 @@ public class FolderChooseDialog extends AbstractDialog {
 
 	public FolderChooseDialog(Callback callback, SimplePdmLinkProduct product) {
 		super(FolderChooseDialog.class, callback);
-		Assert.notNull(product, "SimplePdmLinkProduct is requried");
+		ClientAssert.notNull(product, "SimplePdmLinkProduct is requried");
 
 		this.product = product;
 	}

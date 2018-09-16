@@ -14,7 +14,7 @@ import com.bplead.cad.bean.io.CAD;
 import com.bplead.cad.bean.io.Document;
 import com.bplead.cad.model.CustomPrompt;
 
-import priv.lee.cad.util.Assert;
+import priv.lee.cad.util.ClientAssert;
 import priv.lee.cad.util.PropertiesUtils;
 import priv.lee.cad.util.StringUtils;
 
@@ -30,34 +30,34 @@ public class ValidateUtils {
 	}
 
 	public static void validateCaxaCache(String caxaCache) {
-		Assert.hasText(caxaCache, CustomPrompt.ERROR_PREFERENCE_CAXA_CACHE);
-		Assert.isTrue(new File(caxaCache).isDirectory(), CustomPrompt.ERROR_PREFERENCE_CAXA_CACHE);
+		ClientAssert.hasText(caxaCache, CustomPrompt.ERROR_PREFERENCE_CAXA_CACHE);
+		ClientAssert.isTrue(new File(caxaCache).isDirectory(), CustomPrompt.ERROR_PREFERENCE_CAXA_CACHE);
 	}
 
 	public static void validateCaxaExe(String caxaExe) {
-		Assert.hasText(caxaExe, CustomPrompt.PREFERENCE_CAXA_EXE_NULL);
-		Assert.isTrue(new File(caxaExe).exists(), CustomPrompt.ERROR_PREFERENCE_CAXA_EXE);
+		ClientAssert.hasText(caxaExe, CustomPrompt.PREFERENCE_CAXA_EXE_NULL);
+		ClientAssert.isTrue(new File(caxaExe).exists(), CustomPrompt.ERROR_PREFERENCE_CAXA_EXE);
 
 	}
 
 	public static void validateCheckin(Document document) {
-		Assert.notNull(document, "Document is required");
+		ClientAssert.notNull(document, "Document is required");
 
 		logger.info("Validate checkin begin...");
 
 		List<Attachment> attachments = document.getAttachments();
-		Assert.notEmpty(attachments, CustomPrompt.ATTACHMENTS_NULL);
+		ClientAssert.notEmpty(attachments, CustomPrompt.ATTACHMENTS_NULL);
 
 		if (ClientUtils.StartArguments.CAD.equals(ClientUtils.args.getType())) {
 			CAD cad = (CAD) document.getObject();
 
-			Assert.hasText(cad.getDetailNum(), CustomPrompt.DETAIL_NUMBER_NULL);
+			ClientAssert.hasText(cad.getDetailNum(), CustomPrompt.DETAIL_NUMBER_NULL);
 
-			Assert.isTrue(validateDetailNum(cad.getDetailNum()), CustomPrompt.ERROR_DETAIL_NUMBER_FORMAT);
+			ClientAssert.isTrue(validateDetailNum(cad.getDetailNum()), CustomPrompt.ERROR_DETAIL_NUMBER_FORMAT);
 			if (cad.getDetailNum().equals(cad.getNumber())) {
-				Assert.isTrue(!StringUtils.hasText(cad.getJdeNum()), CustomPrompt.JDE_NUMBER_NOT_NULL);
+				ClientAssert.isTrue(!StringUtils.hasText(cad.getJdeNum()), CustomPrompt.JDE_NUMBER_NOT_NULL);
 			} else {
-				Assert.isTrue(StringUtils.hasText(cad.getJdeNum()), CustomPrompt.JDE_NUMBER_NULL);
+				ClientAssert.isTrue(StringUtils.hasText(cad.getJdeNum()), CustomPrompt.JDE_NUMBER_NULL);
 			}
 
 			validateExb(attachments);
@@ -79,17 +79,17 @@ public class ValidateUtils {
 	public static void validateExb(List<Attachment> attachments) {
 		boolean containsExb = false;
 		for (Attachment attachment : attachments) {
-			Assert.isTrue(new File(attachment.getAbsolutePath()).exists(), CustomPrompt.FILE_NOT_EXSIT);
+			ClientAssert.isTrue(new File(attachment.getAbsolutePath()).exists(), CustomPrompt.FILE_NOT_EXSIT);
 
 			if (attachment.getName().endsWith(primarySuffix)) {
 				containsExb = true;
 			}
 		}
-		Assert.isTrue(containsExb, CustomPrompt.MISSING_EXB_FILE);
+		ClientAssert.isTrue(containsExb, CustomPrompt.MISSING_EXB_FILE);
 	}
 
 	public static void validateFolder(SimpleFolder folder) {
-		Assert.notNull(folder, CustomPrompt.FOLDER_NULL);
+		ClientAssert.notNull(folder, CustomPrompt.FOLDER_NULL);
 	}
 
 	public static void validatePreference() {
@@ -97,9 +97,9 @@ public class ValidateUtils {
 
 		Preference preference = ClientUtils.temprary.getPreference();
 
-		Assert.notNull(preference, CustomPrompt.PREFERENCE_NULL);
+		ClientAssert.notNull(preference, CustomPrompt.PREFERENCE_NULL);
 
-		Assert.notNull(preference.getCaxa(), CustomPrompt.PREFERENCE_CAXA_NULL);
+		ClientAssert.notNull(preference.getCaxa(), CustomPrompt.PREFERENCE_CAXA_NULL);
 
 		validateCaxaCache(preference.getCaxa().getCache());
 
@@ -109,14 +109,14 @@ public class ValidateUtils {
 	}
 
 	public static void validateProduct(SimplePdmLinkProduct product) {
-		Assert.notNull(product, CustomPrompt.PRODUCT_NULL);
+		ClientAssert.notNull(product, CustomPrompt.PRODUCT_NULL);
 	}
 
 	public static void validateType(String type) {
-		Assert.hasText(type, CustomPrompt.DOC_TYPE_NULL);
+		ClientAssert.hasText(type, CustomPrompt.DOC_TYPE_NULL);
 	}
 
 	public static void validateUrl(String url) {
-		Assert.hasText(url, CustomPrompt.URL_NULL);
+		ClientAssert.hasText(url, CustomPrompt.URL_NULL);
 	}
 }

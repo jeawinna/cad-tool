@@ -16,7 +16,7 @@ import com.bplead.cad.bean.SimpleDocument;
 import priv.lee.cad.model.ResourceMap;
 import priv.lee.cad.model.ResourceMapper;
 import priv.lee.cad.model.impl.DefaultResourceMap;
-import priv.lee.cad.util.Assert;
+import priv.lee.cad.util.ClientAssert;
 import priv.lee.cad.util.StringUtils;
 import priv.lee.cad.util.XmlUtils;
 
@@ -69,7 +69,7 @@ public class SearchResultTable extends JTable implements ResourceMapper, MouseLi
 
 	private Class<?> getCellContentType(int column) throws ClassNotFoundException {
 		String type = resourceMap.getString(PREFIX_COL_HEADER + column + COL_TYPE_SUFFIX);
-		Assert.hasText(type, "Column " + column + " type is required");
+		ClientAssert.hasText(type, "Column " + column + " type is required");
 		return Class.forName(type);
 	}
 
@@ -111,7 +111,7 @@ public class SearchResultTable extends JTable implements ResourceMapper, MouseLi
 		if (documents == null) {
 			return null;
 		}
-		Assert.isTrue(row < documents.size(), "Row out of bounds:" + row);
+		ClientAssert.isTrue(row < documents.size(), "Row out of bounds:" + row);
 		return documents.get(row);
 	}
 

@@ -23,7 +23,7 @@ import priv.lee.cad.ui.AbstractPanel;
 import priv.lee.cad.ui.Option;
 import priv.lee.cad.ui.OptionPanel;
 import priv.lee.cad.ui.PromptTextField;
-import priv.lee.cad.util.Assert;
+import priv.lee.cad.util.ClientAssert;
 
 public class ContainerPanel extends AbstractPanel {
 
@@ -84,8 +84,8 @@ public class ContainerPanel extends AbstractPanel {
 
 		@Override
 		public void call(Object object) {
-			Assert.notNull(object, "Callback object is required");
-			Assert.isInstanceOf(SimplePdmLinkProduct.class, object,
+			ClientAssert.notNull(object, "Callback object is required");
+			ClientAssert.isInstanceOf(SimplePdmLinkProduct.class, object,
 					"Callback object must be a SimplePdmLinkProduct type");
 
 			product = (SimplePdmLinkProduct) object;
@@ -200,7 +200,7 @@ public class ContainerPanel extends AbstractPanel {
 
 		@Override
 		public void call(Object object) {
-			Assert.notNull(object, "Callback object is required");
+			ClientAssert.notNull(object, "Callback object is required");
 
 			Object[] nodes = (Object[]) object;
 			folder = ((FolderTree.FolderNode) nodes[nodes.length - 1]).getFolder();

@@ -29,7 +29,7 @@ import priv.lee.cad.ui.AbstractPanel;
 import priv.lee.cad.ui.Option;
 import priv.lee.cad.ui.OptionPanel;
 import priv.lee.cad.ui.PromptTextField;
-import priv.lee.cad.util.Assert;
+import priv.lee.cad.util.ClientAssert;
 import priv.lee.cad.util.FTPUtils;
 
 public class SearchForDownloadDialog extends AbstractDialog implements ActionListener {
@@ -84,13 +84,13 @@ public class SearchForDownloadDialog extends AbstractDialog implements ActionLis
 	@Override
 	public Object setCallbackObject() {
 		String localPath = downloadSettingPanel.setting.getText().getText();
-		Assert.hasText(localPath, "Please choose your local repository");
+		ClientAssert.hasText(localPath, "Please choose your local repository");
 
 		List<SimpleDocument> documents = searchResultPanel.table.getSelectedDocuments();
-		Assert.notEmpty(documents, "Please select at least 1 document");
+		ClientAssert.notEmpty(documents, "Please select at least 1 document");
 
 		DataContent content = ClientUtils.download(documents);
-		Assert.notNull(content, "Failed to download.Please contact to the Administrators");
+		ClientAssert.notNull(content, "Failed to download.Please contact to the Administrators");
 
 		download(content.getServerFile(), new File(localPath + File.separator + content.getServerFile().getName()));
 		return null;

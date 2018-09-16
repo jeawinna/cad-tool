@@ -17,7 +17,7 @@ import com.bplead.cad.bean.io.Attachment;
 import com.bplead.cad.bean.io.Document;
 import com.bplead.cad.model.CustomPrompt;
 
-import priv.lee.cad.util.Assert;
+import priv.lee.cad.util.ClientAssert;
 import priv.lee.cad.util.ClientInstanceUtils;
 import priv.lee.cad.util.PropertiesUtils;
 import priv.lee.cad.util.StringUtils;
@@ -44,13 +44,13 @@ public class ClientUtils extends ClientInstanceUtils implements FilenameFilter {
 	}
 
 	public static boolean checkin(Document document) {
-		Assert.notNull(document, "Document is required");
+		ClientAssert.notNull(document, "Document is required");
 		return invoke(RemoteMethod.CHECKIN, new Class<?>[] { Document.class }, new Object[] { document },
 				Boolean.class);
 	}
 
 	public static DataContent download(List<SimpleDocument> documents) {
-		Assert.notEmpty(documents, "Documents is requried");
+		ClientAssert.notEmpty(documents, "Documents is requried");
 		return invoke(RemoteMethod.DOWNLOAD, new Class<?>[] { List.class }, new Object[] { documents },
 				DataContent.class);
 	}
@@ -64,7 +64,7 @@ public class ClientUtils extends ClientInstanceUtils implements FilenameFilter {
 			File directory = new File(temprary.getPreference().getCaxa().getCache());
 			File[] files = directory.listFiles(new ClientUtils());
 			if (files != null && files.length > 0) {
-				Assert.isTrue(files.length == 1, CustomPrompt.ONLY_ONE_PROPERTIES);
+				ClientAssert.isTrue(files.length == 1, CustomPrompt.ONLY_ONE_PROPERTIES);
 
 				Properties properties = new Properties();
 				properties.load(new FileInputStream(files[0]));
@@ -77,7 +77,7 @@ public class ClientUtils extends ClientInstanceUtils implements FilenameFilter {
 	}
 
 	public static SimpleFolder getSimpleFolders(SimplePdmLinkProduct product) {
-		Assert.notNull(product, "Product is requried");
+		ClientAssert.notNull(product, "Product is requried");
 		return invoke(RemoteMethod.GET_SIMPLE_FOLDERS, new Class<?>[] { SimplePdmLinkProduct.class },
 				new Object[] { product }, SimpleFolder.class);
 	}
@@ -89,7 +89,7 @@ public class ClientUtils extends ClientInstanceUtils implements FilenameFilter {
 
 	@SuppressWarnings("unchecked")
 	public static List<SimpleDocument> search(String number, String name) {
-		Assert.isTrue(StringUtils.hasText(number) || StringUtils.hasText(name), "Number or name is requried");
+		ClientAssert.isTrue(StringUtils.hasText(number) || StringUtils.hasText(name), "Number or name is requried");
 		return invoke(RemoteMethod.SEARCH, new Class<?>[] { String.class, String.class }, new Object[] { number, name },
 				List.class);
 	}

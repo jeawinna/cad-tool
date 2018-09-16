@@ -16,7 +16,7 @@ import org.apache.log4j.Logger;
 import com.bplead.cad.bean.io.DetailModel;
 
 import priv.lee.cad.ui.AbstractPanel;
-import priv.lee.cad.util.Assert;
+import priv.lee.cad.util.ClientAssert;
 
 public class DetailAttributePanel extends AbstractPanel {
 
@@ -102,7 +102,7 @@ public class DetailAttributePanel extends AbstractPanel {
 			Field field = fields[i];
 			field.setAccessible(true);
 			String name = getResourceMap().getString(field.getName());
-			Assert.hasText(name, "Table column name[" + field.getName() + "] must not be null");
+			ClientAssert.hasText(name, "Table column name[" + field.getName() + "] must not be null");
 			names[i] = name;
 			if (detail == null || detail.isEmpty()) {
 				continue;

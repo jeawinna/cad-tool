@@ -19,7 +19,7 @@ import com.bplead.cad.util.ValidateUtils;
 
 import priv.lee.cad.model.Callback;
 import priv.lee.cad.ui.AbstractFrame;
-import priv.lee.cad.util.Assert;
+import priv.lee.cad.util.ClientAssert;
 import priv.lee.cad.util.FTPUtils;
 import priv.lee.cad.util.PropertiesUtils;
 import priv.lee.cad.util.XmlUtils;
@@ -71,7 +71,7 @@ public class CAPPMainFrame extends AbstractFrame implements Callback {
 			dispose();
 		} else {
 			File xml = getRepository();
-			Assert.notNull(xml, "CAD tool initialize failed.Please check file /CAXA_CACHE"
+			ClientAssert.notNull(xml, "CAD tool initialize failed.Please check file /CAXA_CACHE"
 					+ PropertiesUtils.readProperty(CAPP_REPOSITORY) + " is exsits");
 			this.capp = XmlUtils.read(xml, CAPP.class);
 			logger.debug("capp:" + capp);

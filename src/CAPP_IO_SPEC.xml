@@ -37,4 +37,10 @@
 			<line id="3" SZKITL="项目号3" SZOPSQ="工序号3" />
 		</partinfo>
 	</partlist>
+	<attachment>
+		<absolutePath>C://1.cxp</absolutePath>
+	</attachment>
+	<attachment>
+		<absolutePath>C://2.pdf</absolutePath>
+	</attachment>
 </plminfo>

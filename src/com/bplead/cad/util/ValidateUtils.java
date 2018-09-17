@@ -45,7 +45,7 @@ public class ValidateUtils {
 
 		logger.info("Validate checkin begin...");
 
-		List<Attachment> attachments = document.getAttachments();
+		List<Attachment> attachments = document.getObject().getAttachments();
 		ClientAssert.notEmpty(attachments, CustomPrompt.ATTACHMENTS_NULL);
 
 		if (ClientUtils.StartArguments.CAD.equals(ClientUtils.args.getType())) {

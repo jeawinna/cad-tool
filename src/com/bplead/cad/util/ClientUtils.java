@@ -3,7 +3,6 @@ package com.bplead.cad.util;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FilenameFilter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -14,6 +13,7 @@ import com.bplead.cad.bean.SimplePdmLinkProduct;
 import com.bplead.cad.bean.client.Temporary;
 import com.bplead.cad.bean.constant.RemoteMethod;
 import com.bplead.cad.bean.io.Attachment;
+import com.bplead.cad.bean.io.AttachmentModel;
 import com.bplead.cad.bean.io.Document;
 import com.bplead.cad.model.CustomPrompt;
 
@@ -29,16 +29,16 @@ public class ClientUtils extends ClientInstanceUtils implements FilenameFilter {
 	private static final String OID = "oid";
 	public static Temporary temprary = new Temporary();
 
-	public static List<Attachment> buildAttachments(String primarySuffix) {
-		List<Attachment> attachments = new ArrayList<Attachment>();
-		File[] files = new File(temprary.getPreference().getCaxa().getCache()).listFiles();
-		for (int i = 0; i < files.length; i++) {
-			File file = files[i];
+	public static List<Attachment> buildAttachments(AttachmentModel model, String primarySuffix) {
+		List<Attachment> attachments = model.getAttachments();
+		for (Attachment attachment : attachments) {
+			File file = new File(attachment.getAbsolutePath());
 			if (file.getName().endsWith(ClientUtils.getConfigFileSuffix())) {
 				continue;
 			}
-			Attachment attachment = new Attachment(file, file.getName().endsWith(primarySuffix));
-			attachments.add(attachment);
+
+			attachment.setName(file.getName());
+			attachment.setPrimary(file.getName().endsWith(primarySuffix));
 		}
 		return attachments;
 	}

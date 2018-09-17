@@ -125,12 +125,13 @@ public class CADMainFrame extends AbstractFrame implements Callback {
 		}
 
 		private Document buildDocument() {
+			ClientUtils.buildAttachments(cad, primarySuffix);
+
 			Document document = new Document(null, cad.getName(), null);
 			document.setOid(ClientUtils.getDocumentOid());
 			document.setContainer(new Container(containerPanel.pdmlinkProductPanel.getProduct(),
 					containerPanel.subFolderPanel.getFolder()));
 			document.setObject(cad);
-			document.setAttachments(ClientUtils.buildAttachments(primarySuffix));
 			document.setType(docType);
 			return document;
 		}
@@ -158,7 +159,7 @@ public class CADMainFrame extends AbstractFrame implements Callback {
 		@Override
 		protected Boolean doInBackground() throws Exception {
 			logger.info("start...");
-			List<Attachment> attachments = document.getAttachments();
+			List<Attachment> attachments = document.getObject().getAttachments();
 			publish(new PopProgress.PromptProgress(getResourceMap().getString(PROMPT_0), 0));
 			for (Attachment attachment : attachments) {
 				File file = new File(attachment.getAbsolutePath());

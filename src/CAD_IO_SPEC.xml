@@ -109,4 +109,10 @@
 		<weight>总重1</weight>
 		<description>备注1</description>
 	</detail>
+	<attachment>
+		<absolutePath>C://1.exb</absolutePath>
+	</attachment>
+	<attachment>
+		<absolutePath>C://2.pdf</absolutePath>
+	</attachment>
 </root>

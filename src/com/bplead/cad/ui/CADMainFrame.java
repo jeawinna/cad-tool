@@ -128,7 +128,7 @@ public class CADMainFrame extends AbstractFrame implements Callback {
 			ClientUtils.buildAttachments(cad, primarySuffix);
 
 			Document document = new Document(null, cad.getName(), null);
-			document.setOid(ClientUtils.getDocumentOid());
+			document.setOid(ClientUtils.getDocumentOid(primarySuffix, cad.getAttachments()));
 			document.setContainer(new Container(containerPanel.pdmlinkProductPanel.getProduct(),
 					containerPanel.subFolderPanel.getFolder()));
 			document.setObject(cad);

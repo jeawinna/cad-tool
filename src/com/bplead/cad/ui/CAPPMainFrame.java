@@ -126,7 +126,7 @@ public class CAPPMainFrame extends AbstractFrame implements Callback {
 			ClientUtils.buildAttachments(capp, primarySuffix);
 
 			Document document = new Document(null, capp.getManuRegulationName(), null);
-			document.setOid(ClientUtils.getDocumentOid());
+			document.setOid(ClientUtils.getDocumentOid(primarySuffix, capp.getAttachments()));
 			document.setContainer(new Container(containerPanel.pdmlinkProductPanel.getProduct(),
 					containerPanel.subFolderPanel.getFolder()));
 			document.setObject(capp);

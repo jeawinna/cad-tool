@@ -2,7 +2,6 @@ package com.bplead.cad.util;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FilenameFilter;
 import java.util.List;
 import java.util.Properties;
 
@@ -15,14 +14,13 @@ import com.bplead.cad.bean.constant.RemoteMethod;
 import com.bplead.cad.bean.io.Attachment;
 import com.bplead.cad.bean.io.AttachmentModel;
 import com.bplead.cad.bean.io.Document;
-import com.bplead.cad.model.CustomPrompt;
 
 import priv.lee.cad.util.ClientAssert;
 import priv.lee.cad.util.ClientInstanceUtils;
 import priv.lee.cad.util.PropertiesUtils;
 import priv.lee.cad.util.StringUtils;
 
-public class ClientUtils extends ClientInstanceUtils implements FilenameFilter {
+public class ClientUtils extends ClientInstanceUtils {
 
 	public static StartArguments args = new StartArguments();
 	private static final String CONFIG_SUFFIX = "wt.document.config.file.suffix";
@@ -59,15 +57,21 @@ public class ClientUtils extends ClientInstanceUtils implements FilenameFilter {
 		return PropertiesUtils.readProperty(CONFIG_SUFFIX);
 	}
 
-	public static String getDocumentOid() {
+	public static String getDocumentOid(String primarySuffix, List<Attachment> attachments) {
 		try {
-			File directory = new File(temprary.getPreference().getCaxa().getCache());
-			File[] files = directory.listFiles(new ClientUtils());
-			if (files != null && files.length > 0) {
-				ClientAssert.isTrue(files.length == 1, CustomPrompt.ONLY_ONE_PROPERTIES);
+			File configFile = null;
+			for (Attachment attachment : attachments) {
+				if (attachment.isPrimary()) {
+					File directory = new File(attachment.getAbsolutePath()).getParentFile();
+					configFile = new File(directory,
+							attachment.getAbsolutePath().replace(primarySuffix, CONFIG_SUFFIX));
+					break;
+				}
+			}
 
+			if (configFile != null && configFile.exists()) {
 				Properties properties = new Properties();
-				properties.load(new FileInputStream(files[0]));
+				properties.load(new FileInputStream(configFile));
 				return properties.getProperty(OID);
 			}
 		} catch (Exception e) {
@@ -92,11 +96,6 @@ public class ClientUtils extends ClientInstanceUtils implements FilenameFilter {
 		ClientAssert.isTrue(StringUtils.hasText(number) || StringUtils.hasText(name), "Number or name is requried");
 		return invoke(RemoteMethod.SEARCH, new Class<?>[] { String.class, String.class }, new Object[] { number, name },
 				List.class);
-	}
-
-	@Override
-	public boolean accept(File dir, String name) {
-		return new File(dir, name).isFile() && name.endsWith(ClientUtils.getConfigFileSuffix());
 	}
 
 	public static class StartArguments {

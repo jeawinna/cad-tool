@@ -54,6 +54,7 @@ public class FTPUtils {
 		try {
 			ftpClient.connect(host, Integer.parseInt(port));
 			login = ftpClient.login(user, passwd);
+
 			if (login) {
 				ftpClient.setFileType(FTPClient.BINARY_FILE_TYPE);
 			}
@@ -97,8 +98,9 @@ public class FTPUtils {
 
 		try {
 			ftpClient.changeWorkingDirectory(path);
+			ftpClient.enterLocalPassiveMode();
 			FileOutputStream output = new FileOutputStream(localFile);
-			download = ftpClient.retrieveFile(new String(serverFile.getName().getBytes(UTF_8), ISO_8859_1), output);
+			download = ftpClient.retrieveFile(new String(serverFile.getName().getBytes(UTF_8), UTF_8), output);
 			output.close();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -118,8 +120,8 @@ public class FTPUtils {
 		try {
 			input = new FileInputStream(localFile);
 			ftpClient.changeWorkingDirectory(path);
-			ftpClient.enterLocalActiveMode();
-			upload = ftpClient.storeFile(new String(localFile.getName().getBytes(UTF_8), ISO_8859_1), input);
+			ftpClient.enterLocalPassiveMode();
+			upload = ftpClient.storeFile(new String(localFile.getName().getBytes(UTF_8), UTF_8), input);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

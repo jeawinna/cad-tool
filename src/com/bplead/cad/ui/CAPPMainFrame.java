@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.List;
 
+import javax.swing.JOptionPane;
 import javax.swing.SwingWorker;
 
 import org.apache.log4j.Logger;
@@ -149,6 +150,9 @@ public class CAPPMainFrame extends AbstractFrame implements Callback {
 		private final String PROMPT_0 = "checkin.prompt.0";
 		private final String PROMPT_100 = "checkin.prompt.100";
 		private final String PROMPT_50 = "checkin.prompt.50";
+		private final String PROMPT_FAILED = "checkin.prompt.failed";
+		private final String PROMPT_SUCCESSED = "checkin.prompt.successed";
+		private final String PROMPT_TITLE = "checkin.prompt.title";
 
 		public CheckinWorker(Document document) {
 			this.document = document;
@@ -172,6 +176,13 @@ public class CAPPMainFrame extends AbstractFrame implements Callback {
 			}
 			publish(new PopProgress.PromptProgress(getResourceMap().getString(PROMPT_50), 50));
 			boolean successed = ClientUtils.checkin(document);
+			if (successed) {
+				JOptionPane.showMessageDialog(null, getResourceMap().getString(PROMPT_SUCCESSED),
+						getResourceMap().getString(PROMPT_TITLE), JOptionPane.OK_OPTION);
+			} else {
+				JOptionPane.showMessageDialog(null, getResourceMap().getString(PROMPT_FAILED),
+						getResourceMap().getString(PROMPT_TITLE), JOptionPane.OK_OPTION);
+			}
 			logger.info("complete...");
 			return successed;
 		}

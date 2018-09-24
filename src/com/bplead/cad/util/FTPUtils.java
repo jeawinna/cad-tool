@@ -25,7 +25,6 @@ public class FTPUtils {
 	private FTPClient ftpClient;
 	private String host;
 	private final String HOST = "ftp.host";
-	private final String ISO_8859_1 = "ISO-8859-1";
 	private String passwd;
 	private final String PASSWD = "ftp.passwd";
 	private String path;
@@ -69,7 +68,7 @@ public class FTPUtils {
 		ClientAssert.notNull(serverFile, "FTP server file is required");
 		try {
 			ftpClient.changeWorkingDirectory(path);
-			return ftpClient.deleteFile(new String(serverFile.getName().getBytes(UTF_8), ISO_8859_1));
+			return ftpClient.deleteFile(new String(serverFile.getName().getBytes(UTF_8), UTF_8));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

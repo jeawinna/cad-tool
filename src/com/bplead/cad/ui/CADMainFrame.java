@@ -125,8 +125,11 @@ public class CADMainFrame extends AbstractFrame implements Callback {
 		}
 
 		private Document buildDocument() {
+			// ~ build attachments
 			ClientUtils.buildAttachments(cad, primarySuffix);
+			cad.getAttachments().add(new Attachment(getRepository(), false));
 
+			// ~ build document
 			Document document = new Document(null, cad.getName(), null);
 			document.setOid(ClientUtils.getDocumentOid(primarySuffix, cad.getAttachments()));
 			document.setContainer(new Container(containerPanel.pdmlinkProductPanel.getProduct(),

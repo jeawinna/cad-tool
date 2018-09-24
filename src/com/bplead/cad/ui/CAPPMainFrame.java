@@ -123,8 +123,11 @@ public class CAPPMainFrame extends AbstractFrame implements Callback {
 		}
 
 		private Document buildDocument() {
+			// ~ build attachments
 			ClientUtils.buildAttachments(capp, primarySuffix);
+			capp.getAttachments().add(new Attachment(getRepository(), false));
 
+			// ~ build document
 			Document document = new Document(null, capp.getManuRegulationName(), null);
 			document.setOid(ClientUtils.getDocumentOid(primarySuffix, capp.getAttachments()));
 			document.setContainer(new Container(containerPanel.pdmlinkProductPanel.getProduct(),

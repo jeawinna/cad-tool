@@ -76,7 +76,7 @@ public class CAPPMainFrame extends AbstractFrame implements Callback {
 					+ PropertiesUtils.readProperty(CAPP_REPOSITORY) + " is exsits");
 			this.capp = XmlUtils.read(xml, CAPP.class);
 			logger.debug("capp:" + capp);
-			
+
 			// add configuration file of CAXA(*.xml) to attachment list
 			capp.getAttachments().add(new Attachment(getRepository(), false));
 		}
@@ -112,8 +112,6 @@ public class CAPPMainFrame extends AbstractFrame implements Callback {
 
 		private final String DOC_TYPE_PRIFIX = "capp.manuregu.";
 		private final String DOC_TYPE_SUFFIX = ".document.type";
-		private final String PRIMARY_SUFFIX = "capp.document.primary.file.suffix";
-		private String primarySuffix = PropertiesUtils.readProperty(PRIMARY_SUFFIX);
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -128,11 +126,11 @@ public class CAPPMainFrame extends AbstractFrame implements Callback {
 
 		private Document buildDocument() {
 			// build attachments
-			ClientUtils.buildAttachments(capp, primarySuffix);
+			ClientUtils.buildAttachments(capp, ClientUtils.cappPrimarySuffix);
 
 			// ~ build document
 			Document document = new Document(null, capp.getManuRegulationName(), null);
-			document.setOid(ClientUtils.getDocumentOid(primarySuffix, capp.getAttachments()));
+			document.setOid(ClientUtils.getDocumentOid(ClientUtils.cappPrimarySuffix, capp.getAttachments()));
 			document.setContainer(new Container(containerPanel.pdmlinkProductPanel.getProduct(),
 					containerPanel.subFolderPanel.getFolder()));
 			document.setObject(capp);
@@ -209,7 +207,7 @@ public class CAPPMainFrame extends AbstractFrame implements Callback {
 
 		@Override
 		public void call(Object object) {
-
+			ClientUtils.open((File) object);
 		}
 	}
 }

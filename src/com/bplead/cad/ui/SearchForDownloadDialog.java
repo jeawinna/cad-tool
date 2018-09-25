@@ -21,6 +21,7 @@ import org.apache.log4j.Logger;
 
 import com.bplead.cad.bean.DataContent;
 import com.bplead.cad.bean.SimpleDocument;
+import com.bplead.cad.model.CustomPrompt;
 import com.bplead.cad.util.ClientUtils;
 import com.bplead.cad.util.FTPUtils;
 
@@ -66,15 +67,15 @@ public class SearchForDownloadDialog extends AbstractDialog implements ActionLis
 		logger.info("initialize " + getClass() + " layout...");
 		setLayout(layout);
 
-		logger.info("initialize " + SearchConditionsPanel.class + " content...");
+		logger.info("initialize " + getClass() + " content...");
 		searchConditionPanel = new SearchConditionsPanel();
 		add(searchConditionPanel);
 
-		logger.info("initialize " + SearchResultPanel.class + " content...");
+		logger.info("initialize " + getClass() + " content...");
 		searchResultPanel = new SearchResultPanel();
 		add(searchResultPanel);
 
-		logger.info("initialize " + DownloadSettingPanel.class + " content...");
+		logger.info("initialize " + getClass() + " content...");
 		downloadSettingPanel = new DownloadSettingPanel();
 		add(downloadSettingPanel);
 
@@ -84,16 +85,20 @@ public class SearchForDownloadDialog extends AbstractDialog implements ActionLis
 	@Override
 	public Object setCallbackObject() {
 		String localPath = downloadSettingPanel.setting.getText().getText();
-		ClientAssert.hasText(localPath, "Please choose your local repository");
+		ClientAssert.hasText(localPath, CustomPrompt.LOCAL_REPOSITORY_NULL);
 
 		List<SimpleDocument> documents = searchResultPanel.table.getSelectedDocuments();
-		ClientAssert.notEmpty(documents, "Please select at least 1 document");
+		ClientAssert.notEmpty(documents, CustomPrompt.SELECTED_ITEM_NULL);
 
-		DataContent content = ClientUtils.download(documents);
-		ClientAssert.notNull(content, "Failed to download.Please contact to the Administrators");
+		DataContent content = ClientUtils.checkoutAndDownload(documents);
+		ClientAssert.notNull(content, CustomPrompt.FAILD_OPTION);
 
-		download(content.getServerFile(), new File(localPath + File.separator + content.getServerFile().getName()));
-		return null;
+		logger.info("download " + getClass() + "  completed...");
+		File localFile = new File(localPath + File.separator + content.getServerFile().getName());
+		download(content.getServerFile(), localFile);
+
+		logger.info("unzip file...");
+		return ClientUtils.unzip(localFile);
 	}
 
 	class DownloadSettingPanel extends AbstractPanel implements ActionListener {

@@ -3,6 +3,7 @@ package com.bplead.cad.ui;
 import java.awt.EventQueue;
 
 import com.bplead.cad.bean.client.Temporary;
+import com.bplead.cad.model.CustomPrompt;
 import com.bplead.cad.util.ClientUtils;
 
 import priv.lee.cad.model.ServerClientTemporary;
@@ -33,9 +34,9 @@ public class LoginFrame extends AbstractLoginFrame {
 
 	@Override
 	public ServerClientTemporary toTemporary() {
-		ClientAssert.hasText(server.host.getTextContent(), LoginFrame.class.getName() + "_1");
-		ClientAssert.hasText(server.user.getTextContent(), LoginFrame.class.getName() + "_2");
-		ClientAssert.hasText(server.pwd.getTextContent(), LoginFrame.class.getName() + "_3");
+		ClientAssert.hasText(server.host.getTextContent(), CustomPrompt.HOST_NULL);
+		ClientAssert.hasText(server.user.getTextContent(), CustomPrompt.USER_NULL);
+		ClientAssert.hasText(server.pwd.getTextContent(), CustomPrompt.PWD_NULL);
 
 		Temporary temporary = XmlUtils.read(Temporary.class);
 		if (temporary == null || !server.user.getTextContent().equals(temporary.getUserName())) {

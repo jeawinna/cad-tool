@@ -76,7 +76,7 @@ public class CADMainFrame extends AbstractFrame implements Callback {
 					+ PropertiesUtils.readProperty(CAD_REPOSITORY) + " is exsits");
 			this.cad = XmlUtils.read(xml, CAD.class);
 			logger.debug("cad:" + cad);
-			
+
 			// add configuration file of CAXA(*.xml) to attachment list
 			cad.getAttachments().add(new Attachment(getRepository(), false));
 		}
@@ -111,8 +111,6 @@ public class CADMainFrame extends AbstractFrame implements Callback {
 
 		private static final String DOC_TYPE = "wt.document.type";
 		private String docType;
-		private final String PRIMARY_SUFFIX = "wt.document.primary.file.suffix";
-		private String primarySuffix = PropertiesUtils.readProperty(PRIMARY_SUFFIX);
 		{
 			docType = PropertiesUtils.readProperty(DOC_TYPE);
 		}
@@ -130,11 +128,11 @@ public class CADMainFrame extends AbstractFrame implements Callback {
 
 		private Document buildDocument() {
 			// build attachments
-			ClientUtils.buildAttachments(cad, primarySuffix);
+			ClientUtils.buildAttachments(cad, ClientUtils.cadPrimarySuffix);
 
 			// ~ build document
 			Document document = new Document(null, cad.getName(), null);
-			document.setOid(ClientUtils.getDocumentOid(primarySuffix, cad.getAttachments()));
+			document.setOid(ClientUtils.getDocumentOid(ClientUtils.cadPrimarySuffix, cad.getAttachments()));
 			document.setContainer(new Container(containerPanel.pdmlinkProductPanel.getProduct(),
 					containerPanel.subFolderPanel.getFolder()));
 			document.setObject(cad);
@@ -207,7 +205,7 @@ public class CADMainFrame extends AbstractFrame implements Callback {
 
 		@Override
 		public void call(Object object) {
-
+			ClientUtils.open((File) object);
 		}
 	}
 }

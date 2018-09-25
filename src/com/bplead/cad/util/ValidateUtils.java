@@ -23,8 +23,6 @@ public class ValidateUtils {
 	private static final String DETAILNUM_FORMAT = "detail.number.format";
 	private static String format;
 	private static final Logger logger = Logger.getLogger(ValidateUtils.class);
-	private static final String PRIMARY_SUFFIX = "wt.document.primary.file.suffix";
-	private static String primarySuffix = PropertiesUtils.readProperty(PRIMARY_SUFFIX);
 	static {
 		format = PropertiesUtils.readProperty(DETAILNUM_FORMAT);
 	}
@@ -61,6 +59,8 @@ public class ValidateUtils {
 			}
 
 			validateExb(attachments);
+		} else {
+			validateCxp(attachments);
 		}
 
 		validateProduct(document.getContainer().getProduct());
@@ -72,20 +72,16 @@ public class ValidateUtils {
 		logger.info("Validate checkin complete...");
 	}
 
+	public static void validateCxp(List<Attachment> attachments) {
+		ClientAssert.isTrue(validateSuffix(attachments, ClientUtils.cappPrimarySuffix), CustomPrompt.MISSING_CXP_FILE);
+	}
+
 	public static boolean validateDetailNum(String detailNum) {
 		return Pattern.compile(format).matcher(detailNum).matches();
 	}
 
 	public static void validateExb(List<Attachment> attachments) {
-		boolean containsExb = false;
-		for (Attachment attachment : attachments) {
-			ClientAssert.isTrue(new File(attachment.getAbsolutePath()).exists(), CustomPrompt.FILE_NOT_EXSIT);
-
-			if (attachment.getName().endsWith(primarySuffix)) {
-				containsExb = true;
-			}
-		}
-		ClientAssert.isTrue(containsExb, CustomPrompt.MISSING_EXB_FILE);
+		ClientAssert.isTrue(validateSuffix(attachments, ClientUtils.cadPrimarySuffix), CustomPrompt.MISSING_EXB_FILE);
 	}
 
 	public static void validateFolder(SimpleFolder folder) {
@@ -110,6 +106,17 @@ public class ValidateUtils {
 
 	public static void validateProduct(SimplePdmLinkProduct product) {
 		ClientAssert.notNull(product, CustomPrompt.PRODUCT_NULL);
+	}
+
+	private static boolean validateSuffix(List<Attachment> attachments, String suffix) {
+		for (Attachment attachment : attachments) {
+			ClientAssert.isTrue(new File(attachment.getAbsolutePath()).exists(), CustomPrompt.FILE_NOT_EXSIT);
+
+			if (attachment.getName().endsWith(suffix)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public static void validateType(String type) {

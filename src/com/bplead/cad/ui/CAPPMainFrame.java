@@ -76,6 +76,9 @@ public class CAPPMainFrame extends AbstractFrame implements Callback {
 					+ PropertiesUtils.readProperty(CAPP_REPOSITORY) + " is exsits");
 			this.capp = XmlUtils.read(xml, CAPP.class);
 			logger.debug("capp:" + capp);
+			
+			// add configuration file of CAXA(*.xml) to attachment list
+			capp.getAttachments().add(new Attachment(getRepository(), false));
 		}
 	}
 
@@ -124,9 +127,8 @@ public class CAPPMainFrame extends AbstractFrame implements Callback {
 		}
 
 		private Document buildDocument() {
-			// ~ build attachments
+			// build attachments
 			ClientUtils.buildAttachments(capp, primarySuffix);
-			capp.getAttachments().add(new Attachment(getRepository(), false));
 
 			// ~ build document
 			Document document = new Document(null, capp.getManuRegulationName(), null);

@@ -76,6 +76,9 @@ public class CADMainFrame extends AbstractFrame implements Callback {
 					+ PropertiesUtils.readProperty(CAD_REPOSITORY) + " is exsits");
 			this.cad = XmlUtils.read(xml, CAD.class);
 			logger.debug("cad:" + cad);
+			
+			// add configuration file of CAXA(*.xml) to attachment list
+			cad.getAttachments().add(new Attachment(getRepository(), false));
 		}
 	}
 
@@ -126,9 +129,8 @@ public class CADMainFrame extends AbstractFrame implements Callback {
 		}
 
 		private Document buildDocument() {
-			// ~ build attachments
+			// build attachments
 			ClientUtils.buildAttachments(cad, primarySuffix);
-			cad.getAttachments().add(new Attachment(getRepository(), false));
 
 			// ~ build document
 			Document document = new Document(null, cad.getName(), null);

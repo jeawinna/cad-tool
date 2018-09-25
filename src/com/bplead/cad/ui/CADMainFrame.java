@@ -176,7 +176,7 @@ public class CADMainFrame extends AbstractFrame implements Callback {
 			boolean successed = ClientUtils.checkin(document);
 			if (successed) {
 				JOptionPane.showMessageDialog(null, getResourceMap().getString(PROMPT_SUCCESSED),
-						getResourceMap().getString(PROMPT_TITLE), JOptionPane.OK_OPTION);
+						getResourceMap().getString(PROMPT_TITLE), JOptionPane.INFORMATION_MESSAGE);
 			} else {
 				JOptionPane.showMessageDialog(null, getResourceMap().getString(PROMPT_FAILED),
 						getResourceMap().getString(PROMPT_TITLE), JOptionPane.OK_OPTION);

@@ -22,6 +22,7 @@ import org.apache.log4j.Logger;
 import com.bplead.cad.bean.DataContent;
 import com.bplead.cad.bean.SimpleDocument;
 import com.bplead.cad.util.ClientUtils;
+import com.bplead.cad.util.FTPUtils;
 
 import priv.lee.cad.model.Callback;
 import priv.lee.cad.ui.AbstractDialog;
@@ -30,7 +31,6 @@ import priv.lee.cad.ui.Option;
 import priv.lee.cad.ui.OptionPanel;
 import priv.lee.cad.ui.PromptTextField;
 import priv.lee.cad.util.ClientAssert;
-import priv.lee.cad.util.FTPUtils;
 
 public class SearchForDownloadDialog extends AbstractDialog implements ActionListener {
 

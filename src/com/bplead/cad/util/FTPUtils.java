@@ -25,6 +25,7 @@ public class FTPUtils {
 	private FTPClient ftpClient;
 	private String host;
 	private final String HOST = "ftp.host";
+	private final String ISO_8859_1 = "ISO-8859-1";
 	private String passwd;
 	private final String PASSWD = "ftp.passwd";
 	private String path;
@@ -68,7 +69,7 @@ public class FTPUtils {
 		ClientAssert.notNull(serverFile, "FTP server file is required");
 		try {
 			ftpClient.changeWorkingDirectory(path);
-			return ftpClient.deleteFile(new String(serverFile.getName().getBytes(UTF_8), UTF_8));
+			return ftpClient.deleteFile(new String(serverFile.getName().getBytes(UTF_8), ISO_8859_1));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -99,7 +100,7 @@ public class FTPUtils {
 			ftpClient.changeWorkingDirectory(path);
 			ftpClient.enterLocalPassiveMode();
 			FileOutputStream output = new FileOutputStream(localFile);
-			download = ftpClient.retrieveFile(new String(serverFile.getName().getBytes(UTF_8), UTF_8), output);
+			download = ftpClient.retrieveFile(new String(serverFile.getName().getBytes(UTF_8), ISO_8859_1), output);
 			output.close();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -120,7 +121,7 @@ public class FTPUtils {
 			input = new FileInputStream(localFile);
 			ftpClient.changeWorkingDirectory(path);
 			ftpClient.enterLocalPassiveMode();
-			upload = ftpClient.storeFile(new String(localFile.getName().getBytes(UTF_8), UTF_8), input);
+			upload = ftpClient.storeFile(new String(localFile.getName().getBytes(UTF_8), ISO_8859_1), input);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

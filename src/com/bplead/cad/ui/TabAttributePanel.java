@@ -78,7 +78,7 @@ public class TabAttributePanel extends JTabbedPane implements ResourceMapper, Ti
 			attributePanel.setAutoResizeOff(true);
 			attributePanel.setVerticalProportion(0.87d);
 			attributePanel.setHorizontalProportion(0.98d);
-			addTab(mpmPart.getProjectNum(), attributePanel);
+			addTab(mpmPart.getJdeNum(), attributePanel);
 		}
 	}
 

@@ -58,6 +58,8 @@ public class TabAttributePanel extends JTabbedPane implements ResourceMapper, Ti
 	}
 
 	public void initComponents() {
+		setTabLayoutPolicy(SCROLL_TAB_LAYOUT);
+		
 		doSelfAdaption();
 
 		initialize();

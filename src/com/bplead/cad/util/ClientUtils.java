@@ -169,6 +169,7 @@ public class ClientUtils extends ClientInstanceUtils {
 
 		public static final String CAD = "cad";
 		public static final String CAPP = "capp";
+		public static final String DOWNLOAD = "download";
 		private String type;
 
 		public StartArguments() {

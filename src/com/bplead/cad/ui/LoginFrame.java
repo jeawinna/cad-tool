@@ -25,8 +25,12 @@ public class LoginFrame extends AbstractLoginFrame {
 			public void run() {
 				if (ClientUtils.StartArguments.CAD.equals(ClientUtils.args.getType())) {
 					new CADMainFrame().activate();
-				} else {
+				} else if (ClientUtils.StartArguments.CAPP.equals(ClientUtils.args.getType())) {
 					new CAPPMainFrame().activate();
+				} else if (ClientUtils.StartArguments.DOWNLOAD.equals(ClientUtils.args.getType())) {
+					new SearchForDownloadDialog(null).activate();
+				} else {
+					throw new RuntimeException("Unsupport start arguments:" + ClientUtils.args);
 				}
 			}
 		});

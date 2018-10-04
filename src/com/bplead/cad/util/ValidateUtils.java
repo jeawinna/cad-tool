@@ -59,7 +59,7 @@ public class ValidateUtils {
 			}
 
 			validateExb(attachments);
-		} else {
+		} else if (ClientUtils.StartArguments.CAPP.equals(ClientUtils.args.getType())) {
 			validateCxp(attachments);
 		}
 
